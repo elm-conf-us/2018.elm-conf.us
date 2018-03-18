@@ -1,6 +1,6 @@
 # Speak at elm-conf
 
-The elm-conf CFP (call for proposals) is open from April 9th through May 13th.
+The elm-conf call for speakers is open from April 9th through May 13th.
 
 The quick facts:
 
@@ -24,7 +24,7 @@ While we will consider all talks, we're specifically looking for:
 
 That said, the best elm-conf talks are a mix of practical and philosophical&mdash;if your proposal tells us both *what* and *why*, we'll be very happy to see your proposal.
 
-If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available online.
+If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available onlineg.
 
 ## Submitting a Talk
 

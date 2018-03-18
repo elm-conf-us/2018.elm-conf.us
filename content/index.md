@@ -4,12 +4,11 @@ elm-conf is a single-day, one-track conference for the Elm programming language 
 
 ---
 
-## Call for Proposals
+## Call for Speakers
 
-Want to speak at elm-conf?
+Want to [speak at elm-conf]((speak-at-elm-conf.md))?
 You can!
 The elm-conf call for proposals (CFP) opens April 9th and runs through May 13th.
-See [the CFS page for more details](speak-at-elm-conf.md).
 
 ## So, what's elm-conf?
 
