@@ -20,7 +20,22 @@ TODO link to the CFP site.
 
 ## First-time Speakers
 
-We are reserving several spots for first-time speakers this year.
+If you're a first time conference speaker, you still have a really good shot of getting in.
+We believe that first-time speakers have a unique perspective on both Elm and conference talks, and should be encouraged to speak up!
+
+In fact, we are reserving several spots for first-time speakers.
+Our community gets stronger the more new and diverse voices there are, and this is part of our efforts to make that happen.
+If this is you, please indicate so on the CFP form!
+
+Once accepted, we will help you give your first conference talk.
+This includes talk structure, practice sessions, and access to more experienced speakers to talk about about what works well.
+
+You will also be invited to the speaker dinner.
+We encourage you to attend this; it's a nice time to get to know your fellow speakers better.
+
+We will also make sure you get a chance to become familiar with the venue before the audience is there&mdash;this helps calm jitters more than you'd think!
+
+If you have any other questions about this, please [email us](mailto:elm-conf@thestrangeloop.com)!
 
 ## Talk Formats
 
