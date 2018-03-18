@@ -22,7 +22,7 @@ While we will consider all talks, we're specifically looking for:
 
 - TODO
 
-That said, the best elm-conf talks are a mix of practical and philosophical&mdash;if your proposal tells us both *what* and *why*, we'll be very happy to see your proposal.
+That said, the best elm-conf talks are a mix of practical and philosophical&mdash;we'll be happy to see any proposal that tells us both *what* and *why*.
 
 If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available onlineg.
 
