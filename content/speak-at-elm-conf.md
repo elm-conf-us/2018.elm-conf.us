@@ -6,7 +6,7 @@ The quick facts:
 
 - You can submit as many talks as you like, but we'll pick at most one.
 - Your talk will be reviewed anonymously by a small group (see "Anonymity" below.)
-- We're happy to give you feedback on your ideas before before you send them in: email [elm-conf@thestrangeloop.com](mailto:elm-conf@thestrangeloop.com).
+- We're happy to give you feedback on your ideas before before you send them in: [email elm-conf@thestrangeloop.com](mailto:elm-conf@thestrangeloop.com).
 - If we accept your talk, we'll:
   - fly you to St. Louis ($TODO stipend for speakers coming from outside the USA)
   - book you a hotel room close to the venue for the duration of the conference
