@@ -43,4 +43,4 @@ We've had a lot of success with this; it's given us a nice mix of veteran and fi
 That said, we recognize that any process involving humans will be imperfect.
 The Elm community is fairly small and sometimes it's impossible to avoid putting identifying information in a proposal.
 If you find yourself in that situation, focus on making a *high-quality* proposal over an *anonymized* one.
-One member of the committee will be anonymizing proposals to the extent possible; yours will still get a fair chance.
+We'll give every proposal as fair a shot as we can.
