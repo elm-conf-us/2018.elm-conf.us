@@ -14,6 +14,18 @@ The quick facts:
   - work with you to make a great talk
   - invite you to a speakers dinner prior to the conference
 
+## Talk Formats
+
+All talks are 30 minutes long. (TODO except keynotes?)
+
+While we will consider all talks, we're specifically looking for:
+
+- TODO
+
+That said, the best elm-conf talks are a mix of practical and philosophical&mdash;if your proposal tells us both *what* and *why*, we'll be very happy to see your proposal.
+
+If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available online.
+
 ## Submitting a Talk
 
 TODO link to the CFP site.
@@ -36,18 +48,6 @@ We encourage you to attend this; it's a nice time to get to know your fellow spe
 We will also make sure you get a chance to become familiar with the venue before the audience is there&mdash;this helps calm jitters more than you'd think!
 
 If you have any other questions about this, please [email us](mailto:elm-conf@thestrangeloop.com)!
-
-## Talk Formats
-
-All talks are 30 minutes long. (TODO except keynotes?)
-
-While we will consider all talks, we're specifically looking for:
-
-- TODO
-
-That said, the best elm-conf talks are a mix of practical and philosophical&mdash;if your proposal tells us both *what* and *why*, we'll be very happy to see your proposal.
-
-If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available online.
 
 ## How Anonymous Proposals Work
 
