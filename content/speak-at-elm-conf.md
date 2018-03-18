@@ -24,7 +24,7 @@ While we will consider all talks, we're specifically looking for:
 
 That said, the best elm-conf talks are a mix of practical and philosophical&mdash;we'll be happy to see any proposal that tells us both *what* and *why*.
 
-If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available onlineg.
+If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) are available online.
 
 ## Submitting a Talk
 
