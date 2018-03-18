@@ -36,11 +36,11 @@ If you need further inspiration, the talks from [2016](TODO) and [2017](TODO) ar
 
 ## How Anonymous Proposals Work
 
-The first pass of talk evaluation is done anonymously by a group of Elm community members.
+The first pass of talk evaluation is done anonymously by a group of Elm community members and external observers.
 We do this to give everyone the fairest shot possible at being accepted, and to avoid picking the same speakers every year.
 We've had a lot of success with this; it's given us a nice mix of veteran and first-time speakers on tons of great topics over the years.
 
 That said, we recognize that any process involving humans will be imperfect.
 The Elm community is fairly small and sometimes it's impossible to avoid putting identifying information in a proposal.
 If you find yourself in that situation, focus on making a *high-quality* proposal over an *anonymized* one.
-We'll give every proposal as fair a shot as we can.
+We lean on the committee members outside the Elm community here; they can give these proposals the fairest shot.
