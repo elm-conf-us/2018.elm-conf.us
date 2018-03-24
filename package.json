@@ -1,0 +1,21 @@
+{
+  "name": "2018.elm-conf.us",
+  "version": "1.0.0",
+  "description": "elm-conf US 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elm-conf-us/2018.elm-conf.us.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/elm-conf-us/2018.elm-conf.us/issues"
+  },
+  "homepage": "https://github.com/elm-conf-us/2018.elm-conf.us#readme",
+  "dependencies": {
+    "remark": "^9.0.0"
+  }
+}
