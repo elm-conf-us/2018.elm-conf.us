@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/elm-conf-us/2018.elm-conf.us#readme",
   "dependencies": {
+    "elm": "^0.18.0",
     "js-yaml": "^3.11.0",
     "remark": "^9.0.0",
     "remark-frontmatter": "^1.2.0",
