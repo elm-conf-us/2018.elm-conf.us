@@ -1,4 +1,3 @@
-const report = require("vfile-reporter");
 const unified = require("unified");
 const vfile = require("to-vfile");
 const yaml = require("js-yaml");
@@ -56,6 +55,5 @@ const parseWithFrontmatter = unified()
   .use(removePropertiesUnsafe, ["position"])
   .use(removeNewlineNodesUnsafe)
   .process(vfile.readSync(process.argv[1]), function(err, file) {
-    console.error(report(err || file));
     console.log(String(file));
   });
