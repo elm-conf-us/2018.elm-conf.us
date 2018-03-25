@@ -1,12 +1,16 @@
 ELM=$(wildcard src/*.elm src/**/*.elm)
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(MARKDOWN:content/%.md=public/%.json)
+MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
-public: $(MARKDOWN_AST) public/index.js
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) public/index.js
 
 public/%.json: content/%.md scripts/mdToAst.js node_modules
 	mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
+
+public/%.html: public/%.json scripts/astToHtml.js node_modules
+	node scripts/astToHtml.js $< > $@
 
 public/index.js: node_modules elm-stuff $(ELM)
 	mkdir -p $(@D)
