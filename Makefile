@@ -3,12 +3,14 @@ MARKDOWN_AST=$(MARKDOWN:content/%.md=public/%.json)
 
 public: $(MARKDOWN_AST)
 
-clean:
-	rm -rf node_modules elm-stuff public
-
 public/%.json: content/%.md scripts/mdToAst.js node_modules
 	mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
+
+# plumbing
+
+clean:
+	rm -rf node_modules elm-stuff public
 
 node_modules: package.json
 	npm install
