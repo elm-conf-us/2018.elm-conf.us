@@ -25,3 +25,4 @@ node_modules: package.json
 
 elm-stuff: elm-package.json node_modules
 	./node_modules/.bin/elm-package install --yes
+	touch -m $@
