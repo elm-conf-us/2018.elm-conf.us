@@ -23,6 +23,7 @@
     "remark-parse": "^5.0.0",
     "remark-rehype": "^3.0.0",
     "to-vfile": "^2.2.0",
+    "uglify-js": "^3.3.16",
     "unified": "^6.1.6"
   }
 }
