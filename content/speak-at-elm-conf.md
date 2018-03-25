@@ -1,4 +1,6 @@
-# Speak at elm-conf
+---
+title: Speak at elm-conf
+---
 
 The elm-conf call for speakers is open from April 9th through May 13th.
 

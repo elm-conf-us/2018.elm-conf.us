@@ -1,4 +1,6 @@
-# About elm-conf
+---
+title: About elm-conf
+---
 
 elm-conf is a single-day, one-track conference for the Elm programming language community, now in its third year.
 Thank you to everyone who helps make elm-conf US a reality: speakers, attendees, the talk selection committee, and our sponsors.

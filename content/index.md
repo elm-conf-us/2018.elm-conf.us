@@ -1,6 +1,5 @@
 ---
 title: elm-conf 2018
-url: /
 ---
 
 # elm-conf
