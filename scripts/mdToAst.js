@@ -54,6 +54,6 @@ const parseWithFrontmatter = unified()
   .use(require("remark-rehype"))
   .use(removePropertiesUnsafe, ["position"])
   .use(removeNewlineNodesUnsafe)
-  .process(vfile.readSync(process.argv[1]), function(err, file) {
+  .process(vfile.readSync(process.argv[2]), function(err, file) {
     console.log(String(file));
   });
