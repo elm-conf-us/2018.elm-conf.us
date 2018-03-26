@@ -4,7 +4,8 @@
     "repository": "https://github.com/user/project.git",
     "license": "not yet",
     "source-directories": [
-        "./src/"
+        "./src/",
+        "./generated/"
     ],
     "exposed-modules": [],
     "dependencies": {

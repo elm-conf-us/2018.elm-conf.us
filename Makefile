@@ -26,10 +26,21 @@ public/index.js: node_modules elm-stuff $(ELM)
 	./node_modules/.bin/uglifyjs --compress --output=$@.min $@
 	mv $@.min $@
 
+# code generation
+
+generated/Routing/Lookup.elm: $(MARKDOWN) scripts/routing.py
+	@mkdir -p $(@D)
+	python ./scripts/routing.py lookup \
+		--module-name=Routing.Lookup \
+		--sources='${MARKDOWN}' \
+		--jsons='${MARKDOWN_AST}' \
+		--htmls='${MARKDOWN_HTML}' \
+		--output-if-changed=$@
+
 # plumbing
 
 clean:
-	rm -rf node_modules elm-stuff public
+	rm -rf node_modules elm-stuff public generated
 
 node_modules: package.json
 	npm install
