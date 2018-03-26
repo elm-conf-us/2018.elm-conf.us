@@ -14,7 +14,7 @@ public/%.html: public/%.json scripts/astToHtml.js node_modules
 
 public/index.js: node_modules elm-stuff $(ELM)
 	@mkdir -p $(@D)
-	./node_modules/.bin/elm-make --output=$@ src/Main.elm
+	./node_modules/.bin/elm-make --warn --output=$@ src/Main.elm
 	./node_modules/.bin/uglifyjs --compress --output=$@.min $@
 	mv $@.min $@
 
