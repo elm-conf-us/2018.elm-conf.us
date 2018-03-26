@@ -1,6 +1,5 @@
-module Elements.Content exposing (root)
+module Page.Content.View exposing (root)
 
-import Css exposing (..)
 import Dict exposing (Dict)
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes

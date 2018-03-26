@@ -1,17 +1,17 @@
 module Main exposing (..)
 
-import Elements.Content as Content
 import Html exposing (Html)
 import Html.Styled as Styled
 import Json.Decode exposing (Value, decodeValue)
 import Page exposing (Page)
+import Page.Content.View exposing (root)
 
 
 view : Result String Page -> Html msg
 view res =
     case res of
         Ok { content } ->
-            Styled.toUnstyled (Content.root content)
+            Styled.toUnstyled (root content)
 
         Err err ->
             Html.text err
