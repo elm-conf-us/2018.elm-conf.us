@@ -4,13 +4,14 @@ function main(input) {
   const body = JSON.parse(fs.readFileSync(input));
   const frontMatter = body.frontMatter;
 
+  startScript = "Elm.Main.fullscreen(" + JSON.stringify(body) + ")";
+
   console.log(
     "<html><head><title>" +
       frontMatter.title +
-      '</title><script src="/index.js"></head><body>' +
-      '<div id="data" data-page="' +
-      JSON.stringify(body).replace(/"/g, "&quot;", -1) +
-      '"></div></body></html>'
+      '</title></head><body><script src="/index.js"></script><script>' +
+      startScript +
+      "</script></body></html>"
   );
 }
 
