@@ -1,9 +1,13 @@
 ELM=$(wildcard src/*.elm src/**/*.elm)
+
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(MARKDOWN:content/%.md=public/%.json)
 MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) public/index.js
+CSS_SRC=$(wildcard static/*.css static/**/*.css)
+CSS=$(CSS_SRC:static/%.css=public/%.css)
+
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) public/index.js
 
 public/%.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
@@ -11,6 +15,10 @@ public/%.json: content/%.md scripts/mdToAst.js node_modules
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
+
+public/%.css: static/%.css node_modules
+	@mkdir -p $(@D)
+	./node_modules/.bin/node-sass --output-style compressed $< > $@
 
 public/index.js: node_modules elm-stuff $(ELM)
 	@mkdir -p $(@D)
