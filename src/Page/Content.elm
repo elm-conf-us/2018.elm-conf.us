@@ -1,4 +1,4 @@
-module Page.Content exposing (Content, Root, decoder)
+module Page.Content exposing (Content(..), Root(..), decoder)
 
 import Dict exposing (Dict)
 import Json.Decode as Decode exposing (..)
