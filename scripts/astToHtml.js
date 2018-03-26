@@ -7,7 +7,7 @@ function main(input) {
   startScript = "Elm.Main.fullscreen(" + JSON.stringify(body) + ")";
 
   console.log(
-    "<html><head><title>" +
+    '<html><head><link rel="stylesheet" href="/css/reset.css"><title>' +
       frontMatter.title +
       '</title></head><body><script src="/index.js"></script><script>' +
       startScript +
