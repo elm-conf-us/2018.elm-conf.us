@@ -1,37 +1,48 @@
-module Page.Content exposing (Content, decoder)
+module Page.Content exposing (Content, Root, decoder)
 
 import Dict exposing (Dict)
-import Json.Decode as Decode exposing (Decoder)
+import Json.Decode as Decode exposing (..)
 
 
-type
-    Content
-    -- TODO: separate to contentRoot or List Content or something
+type Root
     = Root (List Content)
-    | Element String (Dict String Decode.Value) (List Content)
+
+
+type Content
+    = Element String (Dict String Decode.Value) (List Content)
     | Text String
 
 
-decoder : Decoder Content
+decoder : Decoder Root
 decoder =
-    Decode.field "type" Decode.string
-        |> Decode.andThen
-            (\type_ ->
-                case type_ of
-                    "root" ->
-                        Decode.map Root
-                            (Decode.field "children" <| Decode.list decoder)
+    taggedType <|
+        \type_ ->
+            case type_ of
+                "root" ->
+                    map Root (field "children" <| list content)
 
-                    "element" ->
-                        Decode.map3 Element
-                            (Decode.field "tagName" Decode.string)
-                            (Decode.field "properties" <| Decode.dict Decode.value)
-                            (Decode.field "children" <| Decode.list decoder)
+                _ ->
+                    fail ("I don't know how to decode a '" ++ type_ ++ "'")
 
-                    "text" ->
-                        Decode.map Text
-                            (Decode.field "value" Decode.string)
 
-                    _ ->
-                        Decode.fail ("I don't know how to decode a '" ++ type_ ++ "'")
-            )
+content : Decoder Content
+content =
+    taggedType <|
+        \type_ ->
+            case type_ of
+                "element" ->
+                    map3 Element
+                        (field "tagName" string)
+                        (field "properties" <| dict value)
+                        (field "children" <| list content)
+
+                "text" ->
+                    map Text (field "value" string)
+
+                _ ->
+                    fail ("I don't know how to decode a '" ++ type_ ++ "'")
+
+
+taggedType : (String -> Decoder a) -> Decoder a
+taggedType fn =
+    field "type" string |> andThen fn

@@ -1,12 +1,12 @@
 module Page exposing (Page, decoder)
 
 import Json.Decode exposing (..)
-import Page.Content as Content exposing (Content)
+import Page.Content as Content
 
 
 type alias Page =
     { title : String
-    , content : Content
+    , content : Content.Root
     }
 
 
