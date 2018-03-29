@@ -1,13 +1,17 @@
 ELM=$(wildcard src/*.elm src/**/*.elm)
 
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
-MARKDOWN_AST=$(MARKDOWN:content/%.md=public/%/index.json)
+MARKDOWN_AST=public/index.json $(patsubst content/%.md,public/%/index.json,$(filter-out %index.md,${MARKDOWN}))
 MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
 CSS=$(CSS_SRC:static/%.css=public/%.css)
 
 public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) public/index.js
+
+public/index.json: content/index.md scripts/mdToAst.js node_modules
+	@mkdir -p $(@D)
+	node scripts/mdToAst.js $< > $@
 
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
