@@ -41,8 +41,8 @@ def lookup(args):
     ]
 
     code = [
-        '( "{}", Internal {{ html = "{}", json = "{}" }} )'.format(*item)
-        for item in zip(sources, htmls, jsons)
+        '( "{}", Internal {{ json = "{}", html = "{}" }} )'.format(*item)
+        for item in zip(sources, jsons, htmls)
     ]
 
     return write_if_changed(
