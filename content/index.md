@@ -2,8 +2,6 @@
 title: elm-conf 2018
 ---
 
-# elm-conf
-
 elm-conf is a single-day, one-track conference for the Elm programming language community. Join us on September 28, 2018 for our third year!
 
 ---
