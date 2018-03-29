@@ -1,4 +1,5 @@
 ELM=$(shell find src -name '*.elm')
+ELM_FLAGS=
 
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(patsubst %/index/index.json,%/index.json,$(MARKDOWN:content/%.md=public/%/index.json))
@@ -26,7 +27,7 @@ public/%.css: static/%.css node_modules
 
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
-	./node_modules/.bin/elm-make --warn --output=$@ src/Main.elm
+	./node_modules/.bin/elm-make ${ELM_FLAGS} --warn --output=$@ src/Main.elm
 	./node_modules/.bin/uglifyjs --compress --output=$@.min $@
 	mv $@.min $@
 
