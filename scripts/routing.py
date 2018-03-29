@@ -16,9 +16,11 @@ def camelize(name):
 
 
 LOOKUP = '''\
-module {name} exposing (Route(..), lookup, {exposing})
+module {name} exposing (Route(..), lookup, parser, {exposing})
 
 import Dict exposing (Dict)
+import Navigation
+import UrlParser exposing ((</>), map, s, top)
 
 
 type Route
@@ -29,6 +31,17 @@ type Route
 lookup : String -> Route
 lookup route =
     Dict.get route routes |> Maybe.withDefault (External route)
+
+
+parser : Navigation.Location -> Maybe Route
+parser location =
+    let
+        selector =
+            UrlParser.oneOf
+                [ {parsers}
+                ]
+    in
+    UrlParser.parsePath selector location
 
 
 routes : Dict String Route
@@ -69,16 +82,35 @@ def lookup(args):
         in zip(identifiers, jsons, htmls)
     )
 
-    code = [
+    lookups = [
         '( "{0}", {1} )'.format(*item)
         for item in zip(sources, identifiers)
     ]
+
+    parsers = sorted(
+        [
+            'map (\_ -> {0}) ({1})'.format(
+                identifier,
+                ' </> '.join(
+                    's "{}"'.format(segment)
+                    for segment in html.split('/')
+                    if segment != ''
+                ) or 'top',
+            )
+            for (identifier, html)
+            in zip(identifiers, htmls)
+        ],
+        # higher-up routes will be shorter. They use `top`, which doesn't
+        # consume, so they'll need to go first.
+        key=len,
+    )
 
     return write_if_changed(
         args.output_if_changed,
         LOOKUP.format(
             name=args.module_name,
-            lookups='\n        , '.join(code),
+            parsers='\n                , '.join(parsers),
+            lookups='\n        , '.join(lookups),
             routes=routes,
             exposing=', '.join(identifiers)
         )
