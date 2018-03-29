@@ -12,7 +12,9 @@ def remove_prefix(prefix, paths):
 def camelize(name):
     segments = name.split('-')
 
-    return ''.join([segments[0]] + [segment.capitalize() for segment in segments[1:]])
+    return ''.join(
+        [segments[0]] + [segment.capitalize() for segment in segments[1:]]
+    )
 
 
 LOOKUP = '''\
