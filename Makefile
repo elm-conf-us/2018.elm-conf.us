@@ -28,7 +28,7 @@ public/%.css: static/%.css node_modules
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
 	./node_modules/.bin/elm-make ${ELM_FLAGS} --warn --output=$@ src/Main.elm
-	./node_modules/.bin/uglifyjs --compress --output=$@.min $@
+	if [[ -z "${ELM_FLAGS}" ]]; then ./node_modules/.bin/uglifyjs --compress --output=$@.min $@; fi
 	mv $@.min $@
 
 # code generation
