@@ -60,8 +60,6 @@ def lookup(args):
         for source in sources
     ]
 
-    print(zip(sources, identifiers), file=sys.stderr)
-
     routes = ''.join(
         ROUTE.format(
             name=identifier,
