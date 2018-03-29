@@ -10,7 +10,7 @@ def remove_prefix(prefix, paths):
 
 
 LOOKUP = '''\
-module {} exposing (Route, lookup)
+module {} exposing (Route(..), lookup)
 
 import Dict exposing (Dict)
 
@@ -42,7 +42,7 @@ def lookup(args):
 
     code = [
         '( "{}", Internal {{ html = "{}", json = "{}" }} )'.format(*item)
-        for item in zip(sources, jsons, htmls)
+        for item in zip(sources, htmls, jsons)
     ]
 
     return write_if_changed(

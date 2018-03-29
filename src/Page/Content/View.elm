@@ -10,6 +10,7 @@ import Page.Content
         , Ordering(..)
         , Root(Root)
         )
+import Route
 
 
 root : Root -> Html msg
@@ -42,7 +43,16 @@ content node =
             Html.p [] (List.map content children)
 
         Link href children ->
-            Html.a [ Attributes.href href ] (List.map content children)
+            let
+                destination =
+                    case Route.lookup href of
+                        Route.Internal { html } ->
+                            html
+
+                        Route.External elsewhere ->
+                            elsewhere
+            in
+            Html.a [ Attributes.href destination ] (List.map content children)
 
         Text stuff ->
             Html.text stuff
