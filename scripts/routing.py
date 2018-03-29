@@ -9,39 +9,27 @@ def remove_prefix(prefix, paths):
     return [path[len(prefix):] for path in paths]
 
 
-def list_of_tuples_elm(lot):
-    items = [
-        '( "{}", "{}" )'.format(one, two)
-        for (one, two)
-        in lot
-    ]
-    return '[ ' + ', '.join(items) + ' ]'
-
-
 LOOKUP = '''\
-module {} exposing (human, json)
+module {} exposing (Route, lookup)
 
 import Dict exposing (Dict)
 
 
-toHuman : Dict String String
-toHuman =
-    Dict.fromList {}
+type Route
+    = Internal {{ json : String, html : String }}
+    | External String
 
 
-human : String -> Maybe String
-human markdown =
-    Dict.get markdown toHuman
+routes : Dict String Route
+routes =
+    Dict.fromList
+        [ {}
+        ]
 
 
-toJson : Dict String String
-toJson =
-    Dict.fromList {}
-
-
-json : String -> Maybe String
-json markdown =
-    Dict.get markdown toJson
+lookup : String -> Route
+lookup route =
+    Dict.get route routes |> Maybe.withDefault (External route)
 '''
 
 
@@ -52,15 +40,16 @@ def lookup(args):
         os.path.dirname(path) for path in remove_prefix('public', args.htmls)
     ]
 
-    to_json = zip(sources, jsons)
-    to_human = zip(sources, htmls)
+    code = [
+        '( "{}", Internal {{ html = "{}", json = "{}" }} )'.format(*item)
+        for item in zip(sources, jsons, htmls)
+    ]
 
     return write_if_changed(
         args.output_if_changed,
         LOOKUP.format(
             args.module_name,
-            list_of_tuples_elm(to_human),
-            list_of_tuples_elm(to_json),
+            '\n        , '.join(code)
         )
     )
 

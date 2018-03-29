@@ -1,4 +1,4 @@
-ELM=$(wildcard src/*.elm src/**/*.elm)
+ELM=$(shell find src -name '*.elm')
 
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=public/index.json $(patsubst content/%.md,public/%/index.json,$(filter-out %index.md,${MARKDOWN}))
@@ -24,7 +24,7 @@ public/%.css: static/%.css node_modules
 	@mkdir -p $(@D)
 	./node_modules/.bin/node-sass --output-style compressed $< > $@
 
-public/index.js: node_modules elm-stuff $(ELM)
+public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
 	./node_modules/.bin/elm-make --warn --output=$@ src/Main.elm
 	./node_modules/.bin/uglifyjs --compress --output=$@.min $@
@@ -32,10 +32,10 @@ public/index.js: node_modules elm-stuff $(ELM)
 
 # code generation
 
-generated/Routing/Lookup.elm: $(MARKDOWN) scripts/routing.py
+generated/Route.elm: $(MARKDOWN) scripts/routing.py
 	@mkdir -p $(@D)
 	python ./scripts/routing.py lookup \
-		--module-name=Routing.Lookup \
+		--module-name=Route \
 		--sources='${MARKDOWN}' \
 		--jsons='${MARKDOWN_AST}' \
 		--htmls='${MARKDOWN_HTML}' \
