@@ -1,10 +1,15 @@
 module Page.Content.View exposing (root)
 
-import Dict exposing (Dict)
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes
-import Json.Decode
-import Page.Content exposing (Content(Element, Text), Root(Root))
+import Page.Content
+    exposing
+        ( Content(..)
+        , EmphasisAmount(..)
+        , Level(..)
+        , Ordering(..)
+        , Root(Root)
+        )
 
 
 root : Root -> Html msg
@@ -15,13 +20,35 @@ root (Root children) =
 content : Content -> Html msg
 content node =
     case node of
-        Element tag props children ->
-            Html.node tag (properties props) (List.map content children)
+        Heading First children ->
+            Html.h1 [] (List.map content children)
+
+        Heading Second children ->
+            Html.h2 [] (List.map content children)
+
+        SemanticBreak ->
+            Html.hr [] []
+
+        ListParent Unordered children ->
+            Html.ul [] (List.map content children)
+
+        ListParent Ordered children ->
+            Html.ol [] (List.map content children)
+
+        ListItem children ->
+            Html.li [] (List.map content children)
+
+        Paragraph children ->
+            Html.p [] (List.map content children)
+
+        Link href children ->
+            Html.a [ Attributes.href href ] (List.map content children)
 
         Text stuff ->
             Html.text stuff
 
+        Emphasized Regular children ->
+            Html.em [] (List.map content children)
 
-properties : Dict String Json.Decode.Value -> List (Attribute msg)
-properties =
-    Dict.foldr (\k v acc -> Attributes.property k v :: acc) []
+        Emphasized Strong children ->
+            Html.strong [] (List.map content children)

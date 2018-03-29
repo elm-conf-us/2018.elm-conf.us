@@ -1,8 +1,14 @@
-module Page.Content exposing (Content(..), Root(..), decoder)
+module Page.Content
+    exposing
+        ( Content(..)
+        , EmphasisAmount(..)
+        , Level(..)
+        , Ordering(..)
+        , Root(..)
+        , decoder
+        )
 
-import Dict exposing (Dict)
 import Json.Decode as Decode exposing (..)
-import Set
 
 
 type Root
@@ -10,8 +16,29 @@ type Root
 
 
 type Content
-    = Element String (Dict String Decode.Value) (List Content)
+    = Heading Level (List Content)
+    | SemanticBreak
+    | ListParent Ordering (List Content)
+    | ListItem (List Content)
+    | Paragraph (List Content)
+    | Link String (List Content)
     | Text String
+    | Emphasized EmphasisAmount (List Content)
+
+
+type Level
+    = First
+    | Second
+
+
+type Ordering
+    = Ordered
+    | Unordered
+
+
+type EmphasisAmount
+    = Regular
+    | Strong
 
 
 decoder : Decoder Root
@@ -32,11 +59,12 @@ content =
         \type_ ->
             case type_ of
                 "element" ->
-                    map3 Element
-                        (field "tagName" string)
-                        (field "properties" properties)
-                        (field "children" <| list content)
+                    field "tagName" string |> andThen element
 
+                -- map3 Element
+                --     (field "tagName" string)
+                --     (field "properties" value)
+                --     (field "children" <| list content)
                 "text" ->
                     map Text (field "value" string)
 
@@ -44,21 +72,45 @@ content =
                     fail ("I don't know how to decode a '" ++ type_ ++ "' for content")
 
 
-properties : Decoder (Dict String Decode.Value)
-properties =
+element : String -> Decoder Content
+element tag =
     let
-        allowedProperties =
-            Set.fromList [ "href" ]
+        children =
+            field "children" (list content)
     in
-    dict value
-        |> map (Dict.partition <| \key _ -> Set.member key allowedProperties)
-        |> andThen
-            (\( good, bad ) ->
-                if Dict.isEmpty bad then
-                    succeed good
-                else
-                    fail <| "Some properties aren't allowed: " ++ toString (Dict.keys bad)
-            )
+    case tag of
+        "h1" ->
+            map (Heading First) children
+
+        "h2" ->
+            map (Heading Second) children
+
+        "hr" ->
+            succeed SemanticBreak
+
+        "ul" ->
+            map (ListParent Unordered) children
+
+        "ol" ->
+            map (ListParent Ordered) children
+
+        "li" ->
+            map ListItem children
+
+        "p" ->
+            map Paragraph children
+
+        "a" ->
+            map2 Link (at [ "properties", "href" ] string) children
+
+        "em" ->
+            map (Emphasized Regular) children
+
+        "strong" ->
+            map (Emphasized Strong) children
+
+        _ ->
+            fail ("The '" ++ tag ++ "' tag is not allowed!")
 
 
 taggedType : (String -> Decoder a) -> Decoder a
