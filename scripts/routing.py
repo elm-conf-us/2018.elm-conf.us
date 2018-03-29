@@ -9,6 +9,12 @@ def remove_prefix(prefix, paths):
     return [path[len(prefix):] for path in paths]
 
 
+def camelize(name):
+    segments = name.split('-')
+
+    return ''.join([segments[0]] + [segment.capitalize() for segment in segments[1:]])
+
+
 LOOKUP = '''\
 module {} exposing (Route(..), lookup)
 
@@ -20,16 +26,25 @@ type Route
     | External String
 
 
+lookup : String -> Route
+lookup route =
+    Dict.get route routes |> Maybe.withDefault (External route)
+
+
 routes : Dict String Route
 routes =
     Dict.fromList
         [ {}
         ]
+{}
+'''
+
+ROUTE = '''\
 
 
-lookup : String -> Route
-lookup route =
-    Dict.get route routes |> Maybe.withDefault (External route)
+{name} : Route
+{name} =
+    {body}
 '''
 
 
@@ -40,16 +55,33 @@ def lookup(args):
         os.path.dirname(path) for path in remove_prefix('public', args.htmls)
     ]
 
+    identifiers = [
+        camelize(os.path.splitext(source)[0])
+        for source in sources
+    ]
+
+    print(zip(sources, identifiers), file=sys.stderr)
+
+    routes = ''.join(
+        ROUTE.format(
+            name=identifier,
+            body='Internal {{ json = "{}", html = "{}" }}'.format(json, html)
+        )
+        for (identifier, json, html)
+        in zip(identifiers, jsons, htmls)
+    )
+
     code = [
-        '( "{}", Internal {{ json = "{}", html = "{}" }} )'.format(*item)
-        for item in zip(sources, jsons, htmls)
+        '( "{0}", {1} )'.format(*item)
+        for item in zip(sources, identifiers)
     ]
 
     return write_if_changed(
         args.output_if_changed,
         LOOKUP.format(
             args.module_name,
-            '\n        , '.join(code)
+            '\n        , '.join(code),
+            routes,
         )
     )
 
