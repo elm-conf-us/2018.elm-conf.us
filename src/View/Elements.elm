@@ -23,5 +23,19 @@ header routes =
 
 
 headerLink : String -> Route -> Html msg
-headerLink string msg =
-    Html.text string
+headerLink caption route =
+    link caption route []
+
+
+link : String -> Route -> List (Attribute msg) -> Html msg
+link caption route base =
+    let
+        destination =
+            case route of
+                Route.Internal { html } ->
+                    [ Attributes.href html ]
+
+                Route.External html ->
+                    [ Attributes.href html ]
+    in
+    Html.a (destination ++ base) [ Html.text caption ]
