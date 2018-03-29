@@ -1,7 +1,6 @@
 module Page.Content.View exposing (root)
 
 import Html.Styled as Html exposing (Attribute, Html)
-import Html.Styled.Attributes as Attributes
 import Page.Content
     exposing
         ( Content(..)
@@ -11,6 +10,7 @@ import Page.Content
         , Root(Root)
         )
 import Route
+import View.Elements as Elements
 
 
 root : Root -> Html msg
@@ -43,16 +43,7 @@ content node =
             Html.p [] (List.map content children)
 
         Link href children ->
-            let
-                destination =
-                    case Route.lookup href of
-                        Route.Internal { html } ->
-                            html
-
-                        Route.External elsewhere ->
-                            elsewhere
-            in
-            Html.a [ Attributes.href destination ] (List.map content children)
+            Elements.link (Route.lookup href) [] (List.map content children)
 
         Text stuff ->
             Html.text stuff

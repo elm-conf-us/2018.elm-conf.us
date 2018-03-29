@@ -2,6 +2,7 @@ module View.Elements
     exposing
         ( container
         , header
+        , link
         )
 
 import Css exposing (..)
