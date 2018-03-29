@@ -24,11 +24,11 @@ header routes =
 
 headerLink : String -> Route -> Html msg
 headerLink caption route =
-    link caption route []
+    link route [] [ Html.text caption ]
 
 
-link : String -> Route -> List (Attribute msg) -> Html msg
-link caption route base =
+link : Route -> List (Attribute msg) -> List (Html msg) -> Html msg
+link route base children =
     let
         destination =
             case route of
@@ -38,4 +38,4 @@ link caption route base =
                 Route.External html ->
                     [ Attributes.href html ]
     in
-    Html.a (destination ++ base) [ Html.text caption ]
+    Html.a (destination ++ base) children
