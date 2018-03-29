@@ -1,7 +1,7 @@
 ELM=$(shell find src -name '*.elm')
 
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
-MARKDOWN_AST=public/index.json $(patsubst content/%.md,public/%/index.json,$(filter-out %index.md,${MARKDOWN}))
+MARKDOWN_AST=$(patsubst %/index/index.json,%/index.json,$(MARKDOWN:content/%.md=public/%/index.json))
 MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
