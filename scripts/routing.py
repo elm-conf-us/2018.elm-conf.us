@@ -16,7 +16,7 @@ def camelize(name):
 
 
 LOOKUP = '''\
-module {} exposing (Route(..), lookup)
+module {name} exposing (Route(..), lookup, {exposing})
 
 import Dict exposing (Dict)
 
@@ -34,9 +34,9 @@ lookup route =
 routes : Dict String Route
 routes =
     Dict.fromList
-        [ {}
+        [ {lookups}
         ]
-{}
+{routes}
 '''
 
 ROUTE = '''\
@@ -77,9 +77,10 @@ def lookup(args):
     return write_if_changed(
         args.output_if_changed,
         LOOKUP.format(
-            args.module_name,
-            '\n        , '.join(code),
-            routes,
+            name=args.module_name,
+            lookups='\n        , '.join(code),
+            routes=routes,
+            exposing=', '.join(identifiers)
         )
     )
 
