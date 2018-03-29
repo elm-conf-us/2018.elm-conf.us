@@ -91,7 +91,7 @@ def lookup(args):
 
     parsers = sorted(
         [
-            'map (\_ -> {0}) ({1})'.format(
+            'map {0} ({1})'.format(
                 identifier,
                 ' </> '.join(
                     's "{}"'.format(segment)
