@@ -5,7 +5,6 @@ module View.Elements
         , link
         )
 
-import Css exposing (..)
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes
 import Route exposing (Route)
