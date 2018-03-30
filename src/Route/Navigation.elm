@@ -46,6 +46,7 @@ current (Model model) =
 
 type Msg
     = NewRoute Route
+    | GoTo Route
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -59,3 +60,10 @@ update msg (Model model) =
             ( Model { model | current = { old | route = route } }
             , Cmd.none
             )
+
+        _ ->
+            let
+                _ =
+                    Debug.log "unhandled" ( msg, model )
+            in
+            ( Model model, Cmd.none )

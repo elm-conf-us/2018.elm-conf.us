@@ -10,15 +10,16 @@ import Page.Content
         , Root(Root)
         )
 import Route
+import Route.Navigation exposing (Msg)
 import View.Elements as Elements
 
 
-root : Root -> Html msg
+root : Root -> Html Msg
 root (Root children) =
     Html.main_ [] (List.map content children)
 
 
-content : Content -> Html msg
+content : Content -> Html Msg
 content node =
     case node of
         Heading First children ->
