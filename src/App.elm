@@ -1,9 +1,23 @@
-module App exposing (Model, Msg(..), Problem(..), view)
+module App
+    exposing
+        ( Model
+        , Msg(..)
+        , Problem(..)
+        , init
+        , view
+        )
 
 import Html.Styled as Html exposing (Html)
+import Json.Decode exposing (Value, decodeValue)
+import Navigation
+import Page
 import Route exposing (Route)
 import Route.Navigation
 import View
+
+
+type alias Model =
+    Result Problem Route.Navigation.Model
 
 
 type Problem
@@ -11,8 +25,26 @@ type Problem
     | BadPage String
 
 
-type alias Model =
-    Result Problem Route.Navigation.Model
+init : Value -> Navigation.Location -> ( Model, Cmd Msg )
+init flags location =
+    let
+        routeRes =
+            Route.parser location
+
+        pageRes =
+            decodeValue Page.decoder flags
+    in
+    case ( routeRes, pageRes ) of
+        ( Just route, Ok page ) ->
+            Route.Navigation.init route page
+                |> Tuple.mapFirst Ok
+                |> Tuple.mapSecond (Cmd.map NavigationMsg)
+
+        ( Nothing, _ ) ->
+            ( Err BadRoute, Cmd.none )
+
+        ( _, Err err ) ->
+            ( Err (BadPage err), Cmd.none )
 
 
 type Msg
