@@ -12,7 +12,7 @@ main =
     Navigation.programWithFlags
         (NewRoute << Route.parser)
         { init = init
-        , update = \_ page -> ( page, Cmd.none )
+        , update = update
         , view = Styled.toUnstyled << view
         , subscriptions = \_ -> Sub.none
         }

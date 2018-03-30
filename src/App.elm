@@ -4,6 +4,7 @@ module App
         , Msg(..)
         , Problem(..)
         , init
+        , update
         , view
         )
 
@@ -50,6 +51,11 @@ init flags location =
 type Msg
     = NewRoute (Maybe Route)
     | NavigationMsg Route.Navigation.Msg
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    ( model, Cmd.none )
 
 
 view : Model -> Html Msg
