@@ -8,6 +8,7 @@ module App
         , view
         )
 
+import Html as RootHtml
 import Html.Styled as Html exposing (Html)
 import Json.Decode exposing (Value, decodeValue)
 import Navigation
@@ -58,15 +59,16 @@ update msg model =
     ( model, Cmd.none )
 
 
-view : Model -> Html Msg
+view : Model -> RootHtml.Html Msg
 view res =
-    case res of
-        Ok inner ->
-            Html.map NavigationMsg <| View.view inner
+    Html.toUnstyled <|
+        case res of
+            Ok inner ->
+                Html.map NavigationMsg <| View.view inner
 
-        Err BadRoute ->
-            Html.text "TODO nice 404 page"
+            Err BadRoute ->
+                Html.text "TODO nice 404 page"
 
-        Err (BadPage err) ->
-            -- TOOD: nice 500 page
-            Html.text err
+            Err (BadPage err) ->
+                -- TOOD: nice 500 page
+                Html.text err
