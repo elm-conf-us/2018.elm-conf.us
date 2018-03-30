@@ -2,7 +2,7 @@ module Route.Navigation
     exposing
         ( Current
         , Model
-        , Msg
+        , Msg(..)
         , current
         , init
         , update
@@ -45,9 +45,17 @@ current (Model model) =
 
 
 type Msg
-    = TODO
+    = NewRoute Route
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    ( model, Cmd.none )
+update msg (Model model) =
+    case msg of
+        NewRoute route ->
+            let
+                old =
+                    model.current
+            in
+            ( Model { model | current = { old | route = route } }
+            , Cmd.none
+            )

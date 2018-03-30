@@ -56,7 +56,23 @@ type Msg
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        NewRoute (Just route) ->
+            update (NavigationMsg (Route.Navigation.NewRoute route)) model
+
+        NewRoute Nothing ->
+            ( Err BadRoute, Cmd.none )
+
+        NavigationMsg subMsg ->
+            model
+                |> Result.map (Route.Navigation.update subMsg)
+                |> Result.map
+                    (\( innerModel, innerMsg ) ->
+                        ( Ok innerModel
+                        , Cmd.map NavigationMsg innerMsg
+                        )
+                    )
+                |> Result.withDefault ( model, Cmd.none )
 
 
 view : Model -> RootHtml.Html Msg
