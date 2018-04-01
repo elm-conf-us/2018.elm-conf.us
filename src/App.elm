@@ -19,39 +19,37 @@ import View
 
 
 type alias Model =
-    { toRefactor :
-        Result Problem Route.Navigation.Model
+    { toRefactor : Result Problem Route.Navigation.Model
+    , route : Maybe Route
     }
 
 
 type Problem
-    = BadRoute
+    = FakeProblemToRefactor
     | BadPage String
 
 
 init : Value -> Navigation.Location -> ( Model, Cmd Msg )
 init flags location =
     let
-        routeRes =
-            Route.parser location
-
         pageRes =
             decodeValue Page.decoder flags
 
         ( toRefactor, msg ) =
-            case ( routeRes, pageRes ) of
-                ( Just route, Ok page ) ->
-                    Route.Navigation.init route page
+            case pageRes of
+                Ok page ->
+                    Route.Navigation.init page
                         |> Tuple.mapFirst Ok
                         |> Tuple.mapSecond (Cmd.map NavigationMsg)
 
-                ( Nothing, _ ) ->
-                    ( Err BadRoute, Cmd.none )
-
-                ( _, Err err ) ->
+                Err err ->
                     ( Err (BadPage err), Cmd.none )
     in
-    ( { toRefactor = toRefactor }, msg )
+    ( { toRefactor = toRefactor
+      , route = Route.parser location
+      }
+    , msg
+    )
 
 
 type Msg
@@ -62,11 +60,8 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        NewRoute (Just route) ->
-            update (NavigationMsg (Route.Navigation.NewRoute route)) model
-
-        NewRoute Nothing ->
-            ( { toRefactor = Err BadRoute }, Cmd.none )
+        NewRoute route ->
+            ( { model | route = route }, Cmd.none )
 
         NavigationMsg subMsg ->
             let
@@ -81,19 +76,19 @@ update msg model =
                             )
                         |> Result.withDefault ( model.toRefactor, Cmd.none )
             in
-            ( { toRefactor = toRefactor }, newMsg )
+            ( { model | toRefactor = toRefactor }, newMsg )
 
 
 view : Model -> RootHtml.Html Msg
-view res =
+view model =
     Html.toUnstyled <|
-        case res.toRefactor of
-            Ok inner ->
+        case ( model.route, model.toRefactor ) of
+            ( Just _, Ok inner ) ->
                 Html.map NavigationMsg <| View.view inner
 
-            Err BadRoute ->
+            ( Nothing, _ ) ->
                 Html.text "TODO nice 404 page"
 
-            Err (BadPage err) ->
-                -- TOOD: nice 500 page
-                Html.text err
+            ( _, Err err ) ->
+                -- TODO: nice 500 page
+                Html.text <| toString err

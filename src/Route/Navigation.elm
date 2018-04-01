@@ -17,24 +17,20 @@ import Task
 
 
 type alias Current =
-    { route : Route
-    , page : Page
-    }
+    { page : Page }
 
 
 type Model
     = Model
-        { route : Route
-        , page : Page
+        { page : Page
         , cache : Dict String Page
         }
 
 
-init : Route -> Page -> ( Model, Cmd Msg )
-init route page =
+init : Page -> ( Model, Cmd Msg )
+init page =
     ( Model
-        { route = route
-        , page = page
+        { page = page
         , cache = Dict.empty
         }
     , Cmd.none
@@ -45,24 +41,22 @@ init route page =
 the cache.
 -}
 current : Model -> Current
-current (Model { route, page }) =
-    Current route page
+current (Model { page }) =
+    Current page
 
 
 type Msg
-    = NewRoute Route
-    | NewPage String String (Result Http.Error Page)
+    = NewPage String String (Result Http.Error Page)
     | GoTo Route
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg (Model model) =
     case msg of
-        NewRoute route ->
-            ( Model { model | route = route }
-            , Cmd.none
-            )
-
+        -- NewRoute route ->
+        --     ( Model { model | route = route }
+        --     , Cmd.none
+        --     )
         NewPage location display (Ok page) ->
             ( Model
                 { model
