@@ -1,13 +1,16 @@
 const fs = require("fs");
+const uglify = require("uglify-js");
 
 function main(input) {
   const body = JSON.parse(fs.readFileSync(input));
   const frontMatter = body.frontMatter;
 
-  startScript =
-    "var app = Elm.Main.fullscreen(" +
-    JSON.stringify(body) +
-    "); app.ports.setTitle.subscribe(function(title) { document.title = title });";
+  const startScript = uglify.minify(`
+    (function() {
+      var app = Elm.Main.fullscreen(${JSON.stringify(body)});
+      app.ports.setTitle.subscribe(function(title) { document.title = title });
+    })();
+  `).code;
 
   console.log(
     "<html><head>" +
