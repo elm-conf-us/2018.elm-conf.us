@@ -61,29 +61,35 @@ init flags location =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        NewRoute (Just (Internal route)) ->
+            case Dict.get route.json model.cache of
+                Just page ->
+                    ( { model
+                        | page = Ok page
+                        , route = Just (Internal route)
+                      }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    ( { model | route = Just (Internal route) }
+                    , Http.get route.json Page.decoder
+                        |> Http.toTask
+                        |> Task.map (\page -> ( route.json, page ))
+                        |> Task.attempt NewPage
+                    )
+
         NewRoute route ->
+            -- this is what happens when we either navigate to page we don't
+            -- control or fail to parse (very fine difference there...) The
+            -- result is the same: 404 page!
             ( { model | route = route }, Cmd.none )
 
         GoTo (External route) ->
             ( model, Navigation.load route )
 
         GoTo (Internal route) ->
-            case Dict.get route.json model.cache of
-                Just page ->
-                    ( { model | page = Ok page }
-                    , Navigation.newUrl route.html
-                    )
-
-                Nothing ->
-                    ( model
-                    , Cmd.batch
-                        [ Navigation.newUrl route.html
-                        , Http.get route.json Page.decoder
-                            |> Http.toTask
-                            |> Task.map (\page -> ( route.json, page ))
-                            |> Task.attempt NewPage
-                        ]
-                    )
+            ( model, Navigation.newUrl route.html )
 
         NewPage (Ok ( key, page )) ->
             ( { model
@@ -94,4 +100,6 @@ update msg model =
             )
 
         NewPage (Err err) ->
-            ( { model | page = Err err }, Cmd.none )
+            ( { model | page = Err err }
+            , Cmd.none
+            )
