@@ -1,8 +1,8 @@
 module View.Elements
     exposing
         ( container
-        , header
         , link
+        , nav
         )
 
 import App exposing (Msg(..))
@@ -18,15 +18,15 @@ container =
     Html.div [ Attributes.css [] ]
 
 
-header : List ( String, Route ) -> Html Msg
-header routes =
+nav : List ( String, Route ) -> Html Msg
+nav routes =
     Html.nav
         []
-        (List.map (\( name, route ) -> headerLink name route) routes)
+        (List.map (\( name, route ) -> navLink name route) routes)
 
 
-headerLink : String -> Route -> Html Msg
-headerLink caption route =
+navLink : String -> Route -> Html Msg
+navLink caption route =
     link route [] [ Html.text caption ]
 
 

@@ -27,7 +27,7 @@ view model =
 content : Page -> Html Msg
 content page =
     Elements.container
-        [ Elements.header
+        [ Elements.nav
             [ ( "elm-conf", Route.index )
             , ( "About", Route.about )
             , ( "Speak at elm-conf", Route.speakAtElmConf )
