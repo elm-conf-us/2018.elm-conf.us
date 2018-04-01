@@ -1,4 +1,4 @@
-module App
+port module App
     exposing
         ( Model
         , Msg(..)
@@ -13,6 +13,9 @@ import Navigation
 import Page exposing (Page)
 import Route exposing (Route(..))
 import Task
+
+
+port setTitle : String -> Cmd msg
 
 
 type alias Model =
@@ -68,7 +71,7 @@ update msg model =
                         | page = Ok page
                         , route = Just (Internal route)
                       }
-                    , Cmd.none
+                    , setTitle page.title
                     )
 
                 Nothing ->
@@ -96,7 +99,7 @@ update msg model =
                 | page = Ok page
                 , cache = Dict.insert key page model.cache
               }
-            , Cmd.none
+            , setTitle page.title
             )
 
         NewPage (Err err) ->

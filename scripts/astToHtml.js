@@ -4,7 +4,10 @@ function main(input) {
   const body = JSON.parse(fs.readFileSync(input));
   const frontMatter = body.frontMatter;
 
-  startScript = "Elm.Main.fullscreen(" + JSON.stringify(body) + ")";
+  startScript =
+    "var app = Elm.Main.fullscreen(" +
+    JSON.stringify(body) +
+    "); app.ports.setTitle.subscribe(function(title) { document.title = title });";
 
   console.log(
     "<html><head>" +
