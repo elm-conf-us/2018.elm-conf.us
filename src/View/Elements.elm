@@ -38,6 +38,7 @@ link route base children =
                 Route.Internal { html } ->
                     [ Attributes.href html
                     , Events.onWithOptions "click"
+                        -- TODO: this is blocking cmd-click
                         { stopPropagation = True
                         , preventDefault = True
                         }
