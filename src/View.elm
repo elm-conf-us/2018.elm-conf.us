@@ -12,16 +12,18 @@ import View.Elements as Elements
 view : Model -> RootHtml.Html Msg
 view model =
     Html.toUnstyled <|
-        case ( model.route, model.page ) of
-            ( Just _, Ok inner ) ->
-                content inner
+        Elements.container
+            [ case ( model.route, model.page ) of
+                ( Just _, Ok inner ) ->
+                    content inner
 
-            ( Nothing, _ ) ->
-                Html.text "TODO nice 404 page"
+                ( Nothing, _ ) ->
+                    Html.text "TODO nice 404 page"
 
-            ( _, Err err ) ->
-                -- TODO: nice 500 page
-                Html.text <| toString err
+                ( _, Err err ) ->
+                    -- TODO: nice 500 page
+                    Html.text <| toString err
+            ]
 
 
 content : Page -> Html Msg

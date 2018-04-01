@@ -11,11 +11,12 @@ import Html.Styled.Attributes as Attributes
 import Html.Styled.Events as Events exposing (defaultOptions)
 import Json.Decode exposing (succeed)
 import Route exposing (Route)
+import Styles.Text as Text
 
 
 container : List (Html Msg) -> Html Msg
 container =
-    Html.div [ Attributes.css [] ]
+    Html.div [ Text.body ]
 
 
 nav : List ( String, Route ) -> Html Msg
