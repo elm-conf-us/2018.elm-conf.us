@@ -1,9 +1,10 @@
 module Main exposing (..)
 
-import App exposing (..)
+import App exposing (Model, Msg(..), init, update)
 import Json.Decode exposing (Value)
 import Navigation
 import Route
+import View exposing (view)
 
 
 main : Program Value Model Msg

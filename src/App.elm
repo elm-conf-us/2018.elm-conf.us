@@ -2,59 +2,45 @@ module App
     exposing
         ( Model
         , Msg(..)
-        , Problem(..)
         , init
         , update
-        , view
         )
 
 import Html as RootHtml
-import Html.Styled as Html exposing (Html)
+import Http
 import Json.Decode exposing (Value, decodeValue)
 import Navigation
-import Page
-import Route exposing (Route)
-import Route.Navigation
-import View
+import Page exposing (Page)
+import Route exposing (Route(..))
+import Task
 
 
 type alias Model =
-    { toRefactor : Result Problem Route.Navigation.Model
-    , route : Maybe Route
+    { route : Maybe Route
+    , page : Result Http.Error Page
     }
 
 
-type Problem
-    = FakeProblemToRefactor
-    | BadPage String
+type Msg
+    = GoTo Route
+    | NewRoute (Maybe Route)
+    | NewPage (Result Http.Error Page)
 
 
 init : Value -> Navigation.Location -> ( Model, Cmd Msg )
 init flags location =
-    let
-        pageRes =
-            decodeValue Page.decoder flags
-
-        ( toRefactor, msg ) =
-            case pageRes of
+    ( { route = Route.parser location
+      , page =
+            case decodeValue Page.decoder flags of
                 Ok page ->
-                    Route.Navigation.init page
-                        |> Tuple.mapFirst Ok
-                        |> Tuple.mapSecond (Cmd.map NavigationMsg)
+                    Ok page
 
-                Err err ->
-                    ( Err (BadPage err), Cmd.none )
-    in
-    ( { toRefactor = toRefactor
-      , route = Route.parser location
+                Err problems ->
+                    -- TODO: use an accurate error
+                    Err Http.Timeout
       }
-    , msg
+    , Cmd.none
     )
-
-
-type Msg
-    = NewRoute (Maybe Route)
-    | NavigationMsg Route.Navigation.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -63,32 +49,18 @@ update msg model =
         NewRoute route ->
             ( { model | route = route }, Cmd.none )
 
-        NavigationMsg subMsg ->
-            let
-                ( toRefactor, newMsg ) =
-                    model.toRefactor
-                        |> Result.map (Route.Navigation.update subMsg)
-                        |> Result.map
-                            (\( innerModel, innerMsg ) ->
-                                ( Ok innerModel
-                                , Cmd.map NavigationMsg innerMsg
-                                )
-                            )
-                        |> Result.withDefault ( model.toRefactor, Cmd.none )
-            in
-            ( { model | toRefactor = toRefactor }, newMsg )
+        GoTo (External route) ->
+            ( model, Navigation.load route )
 
+        GoTo (Internal route) ->
+            ( model
+            , Cmd.batch
+                [ Navigation.newUrl route.html
+                , Http.get route.json Page.decoder
+                    |> Http.toTask
+                    |> Task.attempt NewPage
+                ]
+            )
 
-view : Model -> RootHtml.Html Msg
-view model =
-    Html.toUnstyled <|
-        case ( model.route, model.toRefactor ) of
-            ( Just _, Ok inner ) ->
-                Html.map NavigationMsg <| View.view inner
-
-            ( Nothing, _ ) ->
-                Html.text "TODO nice 404 page"
-
-            ( _, Err err ) ->
-                -- TODO: nice 500 page
-                Html.text <| toString err
+        NewPage page ->
+            ( { model | page = page }, Cmd.none )

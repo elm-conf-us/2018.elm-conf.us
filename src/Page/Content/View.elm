@@ -1,5 +1,6 @@
 module Page.Content.View exposing (root)
 
+import App exposing (Msg)
 import Html.Styled as Html exposing (Attribute, Html)
 import Page.Content
     exposing
@@ -10,7 +11,6 @@ import Page.Content
         , Root(Root)
         )
 import Route
-import Route.Navigation exposing (Msg)
 import View.Elements as Elements
 
 

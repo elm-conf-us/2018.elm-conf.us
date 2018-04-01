@@ -5,12 +5,12 @@ module View.Elements
         , link
         )
 
+import App exposing (Msg(..))
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes
 import Html.Styled.Events as Events exposing (defaultOptions)
 import Json.Decode exposing (succeed)
 import Route exposing (Route)
-import Route.Navigation exposing (Msg(..))
 
 
 container : List (Html Msg) -> Html Msg
