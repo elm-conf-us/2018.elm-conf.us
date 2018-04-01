@@ -1,5 +1,6 @@
 const fs = require("fs");
 const uglify = require("uglify-js");
+const minify = require("html-minifier").minify;
 
 function main(input) {
   const body = JSON.parse(fs.readFileSync(input));
@@ -12,15 +13,35 @@ function main(input) {
     })();
   `).code;
 
-  console.log(
-    "<html><head>" +
-      '<link rel="stylesheet" href="/css/reset.css">' +
-      '<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn" rel="stylesheet">' +
-      ("<title>" + frontMatter.title + "</title>") +
-      '</head><body><script src="/index.js"></script><script>' +
-      startScript +
-      "</script></body></html>"
+  const html = minify(
+    `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" href="/css/reset.css">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn" rel="stylesheet">
+        <title>${frontMatter.title}</title>
+      </head>
+      <body>
+        <script src="/index.js"></script>
+        <script>${startScript}</script>
+      </body>
+    </html>
+    `,
+    {
+      collapseWhitespace: true,
+      collapseInlineTagWhitespace: true,
+      html5: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+      removeEmptyElements: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true
+    }
   );
+
+  console.log(html);
 }
 
 main(process.argv[2]);
