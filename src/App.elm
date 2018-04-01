@@ -19,7 +19,9 @@ import View
 
 
 type alias Model =
-    Result Problem Route.Navigation.Model
+    { toRefactor :
+        Result Problem Route.Navigation.Model
+    }
 
 
 type Problem
@@ -35,18 +37,21 @@ init flags location =
 
         pageRes =
             decodeValue Page.decoder flags
+
+        ( toRefactor, msg ) =
+            case ( routeRes, pageRes ) of
+                ( Just route, Ok page ) ->
+                    Route.Navigation.init route page
+                        |> Tuple.mapFirst Ok
+                        |> Tuple.mapSecond (Cmd.map NavigationMsg)
+
+                ( Nothing, _ ) ->
+                    ( Err BadRoute, Cmd.none )
+
+                ( _, Err err ) ->
+                    ( Err (BadPage err), Cmd.none )
     in
-    case ( routeRes, pageRes ) of
-        ( Just route, Ok page ) ->
-            Route.Navigation.init route page
-                |> Tuple.mapFirst Ok
-                |> Tuple.mapSecond (Cmd.map NavigationMsg)
-
-        ( Nothing, _ ) ->
-            ( Err BadRoute, Cmd.none )
-
-        ( _, Err err ) ->
-            ( Err (BadPage err), Cmd.none )
+    ( { toRefactor = toRefactor }, msg )
 
 
 type Msg
@@ -61,24 +66,28 @@ update msg model =
             update (NavigationMsg (Route.Navigation.NewRoute route)) model
 
         NewRoute Nothing ->
-            ( Err BadRoute, Cmd.none )
+            ( { toRefactor = Err BadRoute }, Cmd.none )
 
         NavigationMsg subMsg ->
-            model
-                |> Result.map (Route.Navigation.update subMsg)
-                |> Result.map
-                    (\( innerModel, innerMsg ) ->
-                        ( Ok innerModel
-                        , Cmd.map NavigationMsg innerMsg
-                        )
-                    )
-                |> Result.withDefault ( model, Cmd.none )
+            let
+                ( toRefactor, newMsg ) =
+                    model.toRefactor
+                        |> Result.map (Route.Navigation.update subMsg)
+                        |> Result.map
+                            (\( innerModel, innerMsg ) ->
+                                ( Ok innerModel
+                                , Cmd.map NavigationMsg innerMsg
+                                )
+                            )
+                        |> Result.withDefault ( model.toRefactor, Cmd.none )
+            in
+            ( { toRefactor = toRefactor }, newMsg )
 
 
 view : Model -> RootHtml.Html Msg
 view res =
     Html.toUnstyled <|
-        case res of
+        case res.toRefactor of
             Ok inner ->
                 Html.map NavigationMsg <| View.view inner
 
