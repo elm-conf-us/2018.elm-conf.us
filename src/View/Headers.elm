@@ -26,8 +26,19 @@ spaceAfter =
 frontPage : Html Msg
 frontPage =
     Html.header
-        [ spaceAfter ]
-        [ navBar LightOnDark ]
+        [ spaceAfter
+        , css
+            [ backgroundImage <|
+                linearGradient2
+                    (deg 0)
+                    (stop Colors.white)
+                    (stop2 Colors.peach <| px 20)
+                    [ stop Colors.orange ]
+            ]
+        ]
+        [ navBar LightOnDark
+        , Elements.spacer 2
+        ]
 
 
 innerPage : Html Msg

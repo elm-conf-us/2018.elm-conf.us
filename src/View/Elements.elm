@@ -3,11 +3,13 @@ module View.Elements
         ( container
         , link
         , nav
+        , spacer
         )
 
 import App exposing (Msg(..))
+import Css
 import Html.Styled as Html exposing (Attribute, Html)
-import Html.Styled.Attributes as Attributes
+import Html.Styled.Attributes as Attributes exposing (css)
 import Html.Styled.Events as Events exposing (defaultOptions)
 import Json.Decode exposing (succeed)
 import Route exposing (Route)
@@ -50,3 +52,8 @@ link route base children =
                     [ Attributes.href html ]
     in
     Html.a (destination ++ base) children
+
+
+spacer : Float -> Html msg
+spacer scale =
+    Html.div [ css [ Css.height <| Text.scale scale ] ] []
