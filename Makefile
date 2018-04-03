@@ -28,7 +28,10 @@ public/%.css: static/%.css node_modules
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
 	./node_modules/.bin/elm-make ${ELM_FLAGS} --warn --output=$@ src/Main.elm
-	if [[ -z "${ELM_FLAGS}" ]]; then ./node_modules/.bin/uglifyjs --mangle --compress 'pure_funcs="F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9",pure_getters=true,keep_fargs=false,unsafe_comps=true,unsafe=true' --output=$@.min $@; mv $@.min $@; fi
+	if [[ -z "${ELM_FLAGS}" ]]; then ./node_modules/.bin/uglifyjs --output=$@.min $@; mv $@.min $@; fi
+
+public/index.min.js: public/index.js node_modules
+	./node_modules/.bin/babel --plugins elm-pre-minify $< | ./node_modules/.bin/uglifyjs --compress --mangle > $@
 
 # code generation
 

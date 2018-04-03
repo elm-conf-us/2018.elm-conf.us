@@ -16,6 +16,8 @@
   },
   "homepage": "https://github.com/elm-conf-us/2018.elm-conf.us#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-elm-pre-minify": "^0.1.2",
     "elm": "^0.18.0",
     "html-minifier": "^3.5.13",
     "js-yaml": "^3.11.0",
