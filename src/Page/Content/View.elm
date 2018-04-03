@@ -17,15 +17,9 @@ import Styles.Text as Text
 import View.Elements as Elements
 
 
-root : Root -> Html Msg
+root : Root -> List (Html Msg)
 root (Root children) =
-    Html.main_
-        [ css
-            [ Css.width Text.wideColumnSize
-            , Css.margin2 Css.zero Css.auto
-            ]
-        ]
-        (List.map content children)
+    List.map content children
 
 
 content : Content -> Html Msg

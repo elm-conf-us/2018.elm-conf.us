@@ -4,7 +4,7 @@ import App exposing (Model, Msg(..))
 import Html as RootHtml
 import Html.Styled as Html exposing (Html)
 import Page exposing (Page)
-import Page.Content.View exposing (root)
+import Page.View
 import Route exposing (Route)
 import View.Elements as Elements
 import View.Headers as Headers
@@ -31,5 +31,5 @@ content : Route -> Page -> Html Msg
 content active page =
     Html.div []
         [ Headers.forPage active
-        , root page.content
+        , Page.View.content active page
         ]
