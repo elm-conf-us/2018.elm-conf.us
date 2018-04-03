@@ -20,7 +20,8 @@ module Styles.Text
 -}
 
 import Css exposing (..)
-import Html.Styled exposing (Attribute)
+import Css.Foreign as Foreign
+import Html.Styled exposing (Attribute, Html)
 import Html.Styled.Attributes exposing (css)
 
 
@@ -33,13 +34,15 @@ scale place =
     ratio ^ place |> Css.rem
 
 
-body : Attribute msg
+body : Html msg
 body =
-    css
-        [ fontSize (px 18) -- TODO: this isn't sufficiently global
-        , fontFamilies [ "Vollkorn", serif.value ]
+    Foreign.global
+        [ Foreign.body
+            [ fontSize (px 18) -- TODO: this isn't sufficiently global
+            , fontFamilies [ "Vollkorn", serif.value ]
 
-        {- TODO text color -}
+            {- TODO text color -}
+            ]
         ]
 
 

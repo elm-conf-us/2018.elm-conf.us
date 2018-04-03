@@ -15,8 +15,8 @@ import Styles.Text as Text
 
 
 container : List (Html Msg) -> Html Msg
-container =
-    Html.div [ Text.body ]
+container stuff =
+    Html.div [] (Text.body :: stuff)
 
 
 nav : List ( String, Route ) -> Html Msg
