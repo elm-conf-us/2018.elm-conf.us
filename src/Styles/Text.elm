@@ -2,6 +2,7 @@ module Styles.Text
     exposing
         ( a
         , body
+        , fullSize
         , h1
         , h2
         , li
@@ -9,6 +10,7 @@ module Styles.Text
         , p
         , scale
         , ul
+        , wideColumnSize
         )
 
 {-| These are separated from regular styles to:
@@ -35,6 +37,16 @@ scale place =
             1.414
     in
     ratio ^ place |> Css.rem
+
+
+fullSize : Px
+fullSize =
+    px 900
+
+
+wideColumnSize : Px
+wideColumnSize =
+    px 540
 
 
 body : Html msg

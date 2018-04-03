@@ -35,7 +35,7 @@ navBar : List (Attribute Msg) -> Html Msg
 navBar attrs =
     Html.div
         (css
-            [ width (px 900)
+            [ width Text.fullSize
             , margin2 zero auto
             , displayFlex
             , justifyContent spaceBetween
