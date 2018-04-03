@@ -32,12 +32,24 @@ frontPage =
                 linearGradient2
                     (deg 0)
                     (stop Colors.white)
-                    (stop2 Colors.peach <| px 20)
+                    (stop2 Colors.peach <| Text.scale 2)
                     [ stop Colors.orange ]
             ]
         ]
         [ navBar LightOnDark
         , Elements.spacer 2
+        , Html.p
+            [ Text.hero
+            , css
+                [ width Text.fullSize
+                , margin2 zero auto
+                ]
+            ]
+            [ Html.text "elm-conf is a single-day, one-track conference for the Elm programming language community."
+            , Html.br [] []
+            , Html.text "Join us on September 26, 2018!"
+            ]
+        , Elements.spacer 4
         ]
 
 

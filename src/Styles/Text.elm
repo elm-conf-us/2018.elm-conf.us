@@ -6,6 +6,7 @@ module Styles.Text
         , fullSize
         , h1
         , h2
+        , hero
         , li
         , ol
         , p
@@ -157,5 +158,15 @@ aReversed : Attribute msg
 aReversed =
     css
         [ baseLink
+        , color Colors.white
+        ]
+
+
+hero : Attribute msg
+hero =
+    css
+        [ fontSize <| scale 3
+        , lineHeight <| scale 4
+        , textAlign center
         , color Colors.white
         ]
