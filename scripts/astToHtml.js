@@ -19,7 +19,7 @@ function main(input) {
     <html>
       <head>
         <link rel="stylesheet" href="/css/reset.css">
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn:400,400i,600" rel="stylesheet">
         <title>${frontMatter.title}</title>
       </head>
       <body>
