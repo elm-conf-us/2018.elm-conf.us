@@ -68,6 +68,10 @@ h2 =
         ]
 
 
+
+-- H3 is Vollkorn at regular text size, but semibold (600 weight)
+
+
 p : Attribute msg
 p =
     css
