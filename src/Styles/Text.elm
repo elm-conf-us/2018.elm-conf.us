@@ -41,12 +41,12 @@ scale place =
 
 fullSize : Px
 fullSize =
-    px 900
+    px 1024
 
 
 wideColumnSize : Px
 wideColumnSize =
-    px 540
+    px 800
 
 
 body : Html msg
@@ -65,6 +65,8 @@ h1 =
     css
         [ fontSize <| scale 3
         , lineHeight <| scale 4
+        , marginBottom <| scale 0.5
+        , marginTop <| scale 2
         , fontFamilies [ "Josefin Sans", sansSerif.value ]
         , color Colors.peach
         ]
@@ -75,6 +77,8 @@ h2 =
     css
         [ fontSize <| scale 2
         , lineHeight <| scale 3
+        , marginBottom <| scale 0.5
+        , marginTop <| scale 2
         , fontFamilies [ "Josefin Sans", sansSerif.value ]
         , color Colors.peach
         ]

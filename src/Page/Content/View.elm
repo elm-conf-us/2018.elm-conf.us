@@ -1,7 +1,9 @@
 module Page.Content.View exposing (root)
 
 import App exposing (Msg)
+import Css
 import Html.Styled as Html exposing (Attribute, Html)
+import Html.Styled.Attributes exposing (css)
 import Page.Content
     exposing
         ( Content(..)
@@ -17,7 +19,13 @@ import View.Elements as Elements
 
 root : Root -> Html Msg
 root (Root children) =
-    Html.main_ [] (List.map content children)
+    Html.main_
+        [ css
+            [ Css.width Text.wideColumnSize
+            , Css.margin2 Css.zero Css.auto
+            ]
+        ]
+        (List.map content children)
 
 
 content : Content -> Html Msg
