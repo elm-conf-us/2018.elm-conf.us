@@ -13,7 +13,7 @@ import View.Elements as Elements
 innerPage : Html Msg
 innerPage =
     Html.header
-        [ css [] ]
+        [ css [ marginBottom (Text.scale 4) ] ]
         [ Html.div
             [ css
                 [ backgroundImage <|
