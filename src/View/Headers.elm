@@ -27,59 +27,66 @@ innerPage =
                 ]
             ]
             []
-        , navBar [ Text.a ]
+        , navBar DarkOnLight
         ]
 
 
-navBar : List (Attribute Msg) -> Html Msg
-navBar attrs =
+type NavVariant
+    = DarkOnLight
+    | LightOnDark
+
+
+navBar : NavVariant -> Html Msg
+navBar variant =
     Html.div
-        (css
+        [ css
             [ width Text.fullSize
             , margin2 zero auto
             , displayFlex
             , justifyContent spaceBetween
             , alignItems center
             ]
-            :: attrs
-        )
-        [ navLogo attrs
-        , navLinks attrs
+        ]
+        [ navLogo variant
+        , navLinks variant
         ]
 
 
-navLogo : List (Attribute Msg) -> Html Msg
-navLogo attrs =
-    navLink
-        (css
-            [ fontSize (Text.scale 2)
-            , fontWeight (int 600)
+navLogo : NavVariant -> Html Msg
+navLogo variant =
+    navLink variant Route.index <|
+        Html.span
+            [ css
+                [ fontSize (Text.scale 2)
+                , fontWeight (int 600)
+                ]
             ]
-            :: attrs
-        )
-        "elm-conf"
-        Route.index
+            [ Html.text "elm-conf" ]
 
 
-navLinks : List (Attribute Msg) -> Html Msg
-navLinks attrs =
-    Html.nav
-        attrs
-        [ navLink attrs "about" Route.about
-        , navLink attrs "speak at elm-conf" Route.speakAtElmConf
+navLinks : NavVariant -> Html Msg
+navLinks variant =
+    Html.nav []
+        [ navLink variant Route.about <| Html.text "about"
+        , navLink variant Route.speakAtElmConf <| Html.text "speak at elm-conf"
         ]
 
 
-navLink : List (Attribute Msg) -> String -> Route -> Html Msg
-navLink attrs caption route =
+navLink : NavVariant -> Route -> Html Msg -> Html Msg
+navLink variant route caption =
     Elements.link
         route
-        (css
+        [ css
             [ padding (Text.scale 0.5)
             , firstChild [ paddingLeft zero ]
             , lastChild [ paddingRight zero ]
-            , textDecoration none
             ]
-            :: attrs
-        )
-        [ Html.text caption ]
+        , Text.a
+        , case variant of
+            DarkOnLight ->
+                css []
+
+            LightOnDark ->
+                css [ color Colors.white ]
+        ]
+        [ caption ]
