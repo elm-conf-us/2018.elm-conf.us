@@ -38,31 +38,35 @@ frontPage =
         ]
         [ navBar LightOnDark
         , Elements.spacer 5
-        , Html.h1
-            [ Text.hero
-            , css
+        , Html.div
+            [ css
                 [ width Text.fullSize
                 , margin2 zero auto
-                , paddingBottom <| Text.scale 3
-                ]
-            ]
-            [ Html.text "elm-conf is a single-day, one-track conference for the Elm programming language community."
-            , Html.br [] []
-            , Html.text "Join us on September 26, 2018!"
-            ]
-        , Elements.linkGhostButton
-            -- TODO: the right link here
-            Route.speakAtElmConf
-            [ Text.aReversed
-            , css
-                [ margin2 zero auto
-                , width <| px 250
-                , display block
                 , textAlign center
-                , fontSize <| Text.scale 2
                 ]
             ]
-            [ Html.text "submit a talk" ]
+            [ Elements.elmLogo 4
+                [ css
+                    [ margin2 zero auto
+                    , marginBottom <| Text.scale 1
+                    ]
+                ]
+            , Html.h1
+                [ Text.hero
+                , css [ paddingBottom <| Text.scale 3 ]
+                ]
+                [ Html.text "elm-conf is a single-day, one-track conference for the Elm programming language community."
+                , Html.br [] []
+                , Html.text "Join us on September 26, 2018!"
+                ]
+            , Elements.linkGhostButton
+                -- TODO: the right link here
+                Route.speakAtElmConf
+                [ Text.aReversed
+                , css [ fontSize <| Text.scale 2 ]
+                ]
+                [ Html.text "submit a talk" ]
+            ]
         , Elements.spacer 5
         ]
 

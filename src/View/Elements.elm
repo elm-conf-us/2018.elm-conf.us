@@ -81,14 +81,15 @@ spacer scale =
     Html.div [ css [ Css.height <| Text.scale scale ] ] []
 
 
-elmLogo : Float -> Html msg
-elmLogo scale =
+elmLogo : Float -> List (Attribute msg) -> Html msg
+elmLogo scale rest =
     Html.div
-        [ css
+        (css
             [ Css.width <| Text.scale scale
             , Css.height <| Text.scale scale
             ]
-        ]
+            :: rest
+        )
         [ Svg.svg
             [ SvgA.viewBox "0 0 324 324"
             , SvgA.preserveAspectRatio "xMidYMid meet"
