@@ -19,8 +19,8 @@ innerPage =
                 [ backgroundImage <|
                     linearGradient2
                         (deg 90)
-                        (stop Colors.pink)
                         (stop Colors.peach)
+                        (stop Colors.orange)
                         []
                 , height (px 5)
                 , marginBottom (Text.scale 1)

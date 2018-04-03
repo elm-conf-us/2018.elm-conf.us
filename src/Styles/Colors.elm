@@ -1,15 +1,15 @@
-module Styles.Colors exposing (black, peach, pink, white)
+module Styles.Colors exposing (black, orange, peach, white)
 
 import Css exposing (Color, hex)
 
 
-peach : Color
-peach =
+orange : Color
+orange =
     hex "FFC371"
 
 
-pink : Color
-pink =
+peach : Color
+peach =
     hex "FF5F6D"
 
 

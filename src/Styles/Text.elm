@@ -54,7 +54,7 @@ h1 =
         [ fontSize <| scale 3
         , lineHeight <| scale 4
         , fontFamilies [ "Josefin Sans", sansSerif.value ]
-        , color Colors.pink
+        , color Colors.peach
         ]
 
 
@@ -64,7 +64,7 @@ h2 =
         [ fontSize <| scale 2
         , lineHeight <| scale 3
         , fontFamilies [ "Josefin Sans", sansSerif.value ]
-        , color Colors.pink
+        , color Colors.peach
         ]
 
 
@@ -108,6 +108,6 @@ li =
 a : Attribute msg
 a =
     css
-        [ color Colors.pink
+        [ color Colors.peach
         , textDecoration none
         ]
