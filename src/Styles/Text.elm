@@ -36,23 +36,23 @@ scale place =
         ratio =
             1.414
     in
-    ratio ^ place |> Css.rem
+    ratio ^ (place - 1) |> Css.rem
 
 
 fullSize : Px
 fullSize =
-    px 1024
+    px 900
 
 
 wideColumnSize : Px
 wideColumnSize =
-    px 800
+    px 636
 
 
 body : Html msg
 body =
     Foreign.global
-        [ Foreign.body
+        [ Foreign.html
             [ fontSize (px 18)
             , fontFamilies [ "Vollkorn", serif.value ]
             , color Colors.black
@@ -88,21 +88,35 @@ h2 =
 -- H3 is Vollkorn at regular text size, but semibold (600 weight)
 
 
+baseText : Style
+baseText =
+    Css.batch
+        [ fontSize <| scale 1
+        , lineHeight <| scale 2
+        ]
+
+
 p : Attribute msg
 p =
     css
-        [ fontSize <| scale 1
-        , lineHeight <| scale 2
+        [ baseText
         , marginBottom <| scale 1
+        ]
+
+
+baseList : Style
+baseList =
+    Css.batch
+        [ paddingLeft <| scale 1
+        , paddingRight <| scale 1
         ]
 
 
 ul : Attribute msg
 ul =
     css
-        [ listStyle disc
-        , paddingLeft <| scale 0.5
-        , marginLeft <| scale 0.5
+        [ baseList
+        , listStyle disc
         , marginBottom <| scale 1
         ]
 
@@ -110,24 +124,21 @@ ul =
 ol : Attribute msg
 ol =
     css
-        [ listStyle decimal
-        , paddingLeft <| scale 0.5
-        , marginLeft <| scale 0.5
+        [ baseList
+        , listStyle decimal
         , marginBottom <| scale 1
         ]
 
 
 li : Attribute msg
 li =
-    css
-        [ fontSize <| scale 1
-        , lineHeight <| scale 2
-        ]
+    css [ baseText ]
 
 
 a : Attribute msg
 a =
     css
-        [ color Colors.peach
+        [ baseText
+        , color Colors.peach
         , textDecoration none
         ]
