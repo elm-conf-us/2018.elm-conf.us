@@ -7,6 +7,7 @@ import Page exposing (Page)
 import Page.View
 import Route exposing (Route)
 import View.Elements as Elements
+import View.Footer as Footer
 import View.Headers as Headers
 
 
@@ -32,4 +33,5 @@ content active page =
     Html.div []
         [ Headers.forPage active
         , Page.View.content active page
+        , Footer.footer
         ]

@@ -38,6 +38,8 @@ navLink caption route =
     link route [] [ Html.text caption ]
 
 
+{-| TODO: flip the first two arguments so this is easier to use
+-}
 link : Route -> List (Attribute Msg) -> List (Html Msg) -> Html Msg
 link route base children =
     let

@@ -2,10 +2,12 @@ module Styles.Text
     exposing
         ( a
         , aReversed
+        , aReversedInline
         , body
         , fullSize
         , h1
         , h2
+        , h2Reversed
         , hero
         , li
         , ol
@@ -62,27 +64,45 @@ body =
         ]
 
 
+baseHeader : Style
+baseHeader =
+    Css.batch
+        [ fontFamilies [ "Josefin Sans", sansSerif.value ]
+        , color Colors.peach
+        ]
+
+
 h1 : Attribute msg
 h1 =
     css
-        [ fontSize <| scale 3
+        [ baseHeader
+        , fontSize <| scale 3
         , lineHeight <| scale 4
         , marginBottom <| scale 0.5
         , marginTop <| scale 2
-        , fontFamilies [ "Josefin Sans", sansSerif.value ]
-        , color Colors.peach
         ]
 
 
 h2 : Attribute msg
 h2 =
     css
-        [ fontSize <| scale 2
+        [ baseHeader
+        , fontSize <| scale 2
         , lineHeight <| scale 3
         , marginBottom <| scale 0.5
         , marginTop <| scale 2
-        , fontFamilies [ "Josefin Sans", sansSerif.value ]
-        , color Colors.peach
+        ]
+
+
+h2Reversed : Attribute msg
+h2Reversed =
+    css
+        [ baseHeader
+        , color Colors.white
+        , fontSize <| scale 2
+        , lineHeight <| scale 3
+        , marginBottom <| scale 0.5
+        , marginTop <| scale 2
         ]
 
 
@@ -159,6 +179,15 @@ aReversed =
     css
         [ baseLink
         , color Colors.white
+        ]
+
+
+aReversedInline : Attribute msg
+aReversedInline =
+    css
+        [ baseLink
+        , color Colors.white
+        , textDecoration underline
         ]
 
 
