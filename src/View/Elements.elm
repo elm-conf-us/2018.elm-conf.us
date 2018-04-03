@@ -1,6 +1,7 @@
 module View.Elements
     exposing
         ( container
+        , elmLogo
         , link
         , linkGhostButton
         , nav
@@ -16,6 +17,8 @@ import Json.Decode exposing (succeed)
 import Route exposing (Route)
 import Styles.Colors as Colors
 import Styles.Text as Text
+import Svg.Styled as Svg
+import Svg.Styled.Attributes as SvgA
 
 
 container : List (Html Msg) -> Html Msg
@@ -76,3 +79,40 @@ linkGhostButton route base children =
 spacer : Float -> Html msg
 spacer scale =
     Html.div [ css [ Css.height <| Text.scale scale ] ] []
+
+
+elmLogo : Float -> Html msg
+elmLogo scale =
+    Html.div
+        [ css
+            [ Css.width <| Text.scale scale
+            , Css.height <| Text.scale scale
+            ]
+        ]
+        [ Svg.svg
+            [ SvgA.viewBox "0 0 324 324"
+            , SvgA.preserveAspectRatio "xMidYMid meet"
+            ]
+            [ Svg.g
+                [ SvgA.stroke "none"
+                , SvgA.strokeWidth "1"
+                , SvgA.fill "#FDFDFD"
+                , SvgA.fillRule "nonzero"
+                ]
+                [ Svg.polygon [ SvgA.points "162.000501 153 232 83 92 83" ] []
+                , Svg.polygon [ SvgA.points "9 0 79.264979 70 232 70 161.734023 0" ] []
+                , Svg.polygon [ SvgA.points "324 144 324 0 180 0" ] []
+                , Svg.polygon [ SvgA.points "153 161.998999 0 9 0 315" ] []
+                , Svg.polygon [ SvgA.points "256 246.999498 324 315 324 179" ] []
+                , Svg.polygon [ SvgA.points "161.999499 171 9 324 315 324" ] []
+                , Svg.rect
+                    [ SvgA.transform "translate(247.311293, 161.311293) rotate(45.000000) translate(-247.311293, -161.311293)"
+                    , SvgA.x "193.473809"
+                    , SvgA.y "107.228311"
+                    , SvgA.width "108"
+                    , SvgA.height "108"
+                    ]
+                    []
+                ]
+            ]
+        ]
