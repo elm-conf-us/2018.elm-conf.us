@@ -141,4 +141,5 @@ a =
         [ baseText
         , color Colors.peach
         , textDecoration none
+        , hover [ textDecoration underline ]
         ]
