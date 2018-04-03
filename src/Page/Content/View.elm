@@ -1,9 +1,7 @@
 module Page.Content.View exposing (root)
 
 import App exposing (Msg)
-import Css
 import Html.Styled as Html exposing (Attribute, Html)
-import Html.Styled.Attributes exposing (css)
 import Page.Content
     exposing
         ( Content(..)
