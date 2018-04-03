@@ -40,8 +40,7 @@ body =
         [ Foreign.body
             [ fontSize (px 18) -- TODO: this isn't sufficiently global
             , fontFamilies [ "Vollkorn", serif.value ]
-
-            {- TODO text color -}
+            , color (hex "#4A4A4A")
             ]
         ]
 
