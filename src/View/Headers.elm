@@ -18,17 +18,22 @@ forPage active =
         innerPage
 
 
+spaceAfter : Attribute Msg
+spaceAfter =
+    css [ marginBottom (Text.scale 4) ]
+
+
 frontPage : Html Msg
 frontPage =
     Html.header
-        []
+        [ spaceAfter ]
         [ navBar LightOnDark ]
 
 
 innerPage : Html Msg
 innerPage =
     Html.header
-        [ css [ marginBottom (Text.scale 4) ] ]
+        [ spaceAfter ]
         [ Html.div
             [ css
                 [ backgroundImage <|
@@ -96,12 +101,11 @@ navLink variant route caption =
             , firstChild [ paddingLeft zero ]
             , lastChild [ paddingRight zero ]
             ]
-        , Text.a
         , case variant of
             DarkOnLight ->
-                css []
+                Text.a
 
             LightOnDark ->
-                css [ color Colors.white ]
+                Text.aReversed
         ]
         [ caption ]

@@ -1,6 +1,7 @@
 module Styles.Text
     exposing
         ( a
+        , aReversed
         , body
         , fullSize
         , h1
@@ -135,11 +136,26 @@ li =
     css [ baseText ]
 
 
+baseLink : Style
+baseLink =
+    Css.batch
+        [ baseText
+        , textDecoration none
+        , hover [ textDecoration underline ]
+        ]
+
+
 a : Attribute msg
 a =
     css
-        [ baseText
+        [ baseLink
         , color Colors.peach
-        , textDecoration none
-        , hover [ textDecoration underline ]
+        ]
+
+
+aReversed : Attribute msg
+aReversed =
+    css
+        [ baseLink
+        , color Colors.white
         ]
