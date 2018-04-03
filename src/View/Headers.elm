@@ -27,7 +27,7 @@ innerPage =
                 ]
             ]
             []
-        , navBar [ css [ color Colors.pink ] ]
+        , navBar [ Text.a ]
         ]
 
 

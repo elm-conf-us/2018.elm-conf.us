@@ -45,7 +45,10 @@ content node =
             Html.p [ Text.p ] (List.map content children)
 
         Link href children ->
-            Elements.link (Route.lookup href) [] (List.map content children)
+            Elements.link
+                (Route.lookup href)
+                [ Text.a ]
+                (List.map content children)
 
         Text stuff ->
             Html.text stuff

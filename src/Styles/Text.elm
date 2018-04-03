@@ -1,6 +1,7 @@
 module Styles.Text
     exposing
-        ( body
+        ( a
+        , body
         , h1
         , h2
         , li
@@ -52,6 +53,8 @@ h1 =
     css
         [ fontSize <| scale 3
         , lineHeight <| scale 4
+        , fontFamilies [ "Josefin Sans", sansSerif.value ]
+        , color Colors.pink
         ]
 
 
@@ -60,6 +63,8 @@ h2 =
     css
         [ fontSize <| scale 2
         , lineHeight <| scale 3
+        , fontFamilies [ "Josefin Sans", sansSerif.value ]
+        , color Colors.pink
         ]
 
 
@@ -97,4 +102,12 @@ li =
     css
         [ fontSize <| scale 1
         , lineHeight <| scale 2
+        ]
+
+
+a : Attribute msg
+a =
+    css
+        [ color Colors.pink
+        , textDecoration none
         ]
