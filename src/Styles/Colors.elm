@@ -1,6 +1,13 @@
-module Styles.Colors exposing (black, orange, peach, white)
+module Styles.Colors
+    exposing
+        ( black
+        , ghostlyWhite
+        , orange
+        , peach
+        , white
+        )
 
-import Css exposing (Color, hex)
+import Css exposing (Color, hex, hsla)
 
 
 orange : Color
@@ -16,6 +23,11 @@ peach =
 white : Color
 white =
     hex "FFFFFF"
+
+
+ghostlyWhite : Color
+ghostlyWhite =
+    hsla 0 0 100 0.1
 
 
 black : Color
