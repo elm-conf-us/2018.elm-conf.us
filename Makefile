@@ -1,5 +1,6 @@
 ELM=$(shell find src -name '*.elm')
 ELM_FLAGS=
+ENVIRONMENT=production
 
 MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(patsubst %/index/index.json,%/index.json,$(MARKDOWN:content/%.md=public/%/index.json))
@@ -28,10 +29,11 @@ public/%.css: static/%.css node_modules
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
 	./node_modules/.bin/elm-make ${ELM_FLAGS} --warn --output=$@ src/Main.elm
-	if [[ -z "${ELM_FLAGS}" ]]; then ./node_modules/.bin/uglifyjs --output=$@.min $@; mv $@.min $@; fi
-
-public/index.min.js: public/index.js node_modules
-	./node_modules/.bin/babel --plugins elm-pre-minify $< | ./node_modules/.bin/uglifyjs --compress --mangle > $@
+ifeq (${ENVIRONMENT},production)
+	./node_modules/.bin/babel --plugins elm-pre-minify $@ | ./node_modules/.bin/uglifyjs --compress --mangle > $@.min
+	mv $@.min $@
+else
+endif
 
 # code generation
 
