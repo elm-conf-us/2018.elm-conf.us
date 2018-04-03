@@ -75,7 +75,9 @@ navLink attrs caption route =
     Elements.link
         route
         (css
-            [ marginLeft (Text.scale 0.5)
+            [ padding (Text.scale 0.5)
+            , firstChild [ paddingLeft zero ]
+            , lastChild [ paddingRight zero ]
             , textDecoration none
             ]
             :: attrs
