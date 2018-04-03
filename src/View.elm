@@ -5,8 +5,8 @@ import Html as RootHtml
 import Html.Styled as Html exposing (Html)
 import Page exposing (Page)
 import Page.Content.View exposing (root)
-import Route
 import View.Elements as Elements
+import View.Headers as Headers
 
 
 view : Model -> RootHtml.Html Msg
@@ -29,10 +29,6 @@ view model =
 content : Page -> Html Msg
 content page =
     Html.div []
-        [ Elements.nav
-            [ ( "elm-conf", Route.index )
-            , ( "About", Route.about )
-            , ( "Speak at elm-conf", Route.speakAtElmConf )
-            ]
+        [ Headers.innerPage
         , root page.content
         ]

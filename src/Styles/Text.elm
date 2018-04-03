@@ -6,6 +6,7 @@ module Styles.Text
         , li
         , ol
         , p
+        , scale
         , ul
         )
 
