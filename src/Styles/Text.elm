@@ -23,6 +23,7 @@ import Css exposing (..)
 import Css.Foreign as Foreign
 import Html.Styled exposing (Attribute, Html)
 import Html.Styled.Attributes exposing (css)
+import Styles.Colors as Colors
 
 
 scale : Float -> Rem
@@ -40,7 +41,7 @@ body =
         [ Foreign.body
             [ fontSize (px 18) -- TODO: this isn't sufficiently global
             , fontFamilies [ "Vollkorn", serif.value ]
-            , color (hex "#4A4A4A")
+            , color Colors.black
             ]
         ]
 
