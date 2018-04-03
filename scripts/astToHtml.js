@@ -18,6 +18,7 @@ function main(input) {
     <!DOCTYPE html>
     <html>
       <head>
+        <!-- TODO: make these stylesheets load async -->
         <link rel="stylesheet" href="/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn:400,400i,600" rel="stylesheet">
         <title>${frontMatter.title}</title>
@@ -37,7 +38,8 @@ function main(input) {
       removeEmptyElements: true,
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
-      useShortDoctype: true
+      useShortDoctype: true,
+      removeComments: true
     }
   );
 
