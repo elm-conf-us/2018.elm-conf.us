@@ -1,4 +1,4 @@
-module View.Headers exposing (innerPage)
+module View.Headers exposing (forPage)
 
 import App exposing (Msg)
 import Css exposing (..)
@@ -8,6 +8,21 @@ import Route exposing (Route)
 import Styles.Colors as Colors
 import Styles.Text as Text
 import View.Elements as Elements
+
+
+forPage : Route -> Html Msg
+forPage active =
+    if active == Route.index then
+        frontPage
+    else
+        innerPage
+
+
+frontPage : Html Msg
+frontPage =
+    Html.header
+        []
+        [ navBar LightOnDark ]
 
 
 innerPage : Html Msg
