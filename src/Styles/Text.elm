@@ -41,7 +41,7 @@ body : Html msg
 body =
     Foreign.global
         [ Foreign.body
-            [ fontSize (px 18) -- TODO: this isn't sufficiently global
+            [ fontSize (px 18)
             , fontFamilies [ "Vollkorn", serif.value ]
             , color Colors.black
             ]
