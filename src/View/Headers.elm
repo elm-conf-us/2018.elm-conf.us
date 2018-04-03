@@ -38,7 +38,7 @@ frontPage =
         ]
         [ navBar LightOnDark
         , Elements.spacer 5
-        , Html.p
+        , Html.h1
             [ Text.hero
             , css
                 [ width Text.fullSize
