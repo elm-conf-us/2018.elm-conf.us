@@ -28,12 +28,17 @@ frontPage =
     Html.header
         [ spaceAfter
         , css
-            [ backgroundImage <|
-                linearGradient2
-                    (deg 0)
-                    (stop Colors.white)
-                    (stop2 Colors.peach <| Text.scale 2)
-                    [ stop Colors.orange ]
+            [ backgroundImage <| linearGradient (stop Colors.orange) (stop Colors.peach) []
+
+            -- TODO: restore this when we make the waves. The white helps with
+            -- the transition. Removing for now so that it's not blocking
+            -- shipping if we run out of time to do so.
+            --
+            -- linearGradient2
+            --     (deg 0)
+            --     (stop Colors.white)
+            --     (stop2 Colors.peach <| Text.scale 2)
+            --     [ stop Colors.orange ]
             ]
         ]
         [ navBar LightOnDark
