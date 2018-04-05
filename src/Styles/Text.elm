@@ -4,6 +4,7 @@ module Styles.Text
         , aReversed
         , aReversedInline
         , body
+        , em
         , fullSize
         , h1
         , h2
@@ -200,6 +201,11 @@ hero =
         , textAlign center
         , color Colors.white
         ]
+
+
+em : Attribute msg
+em =
+    css [ fontStyle italic ]
 
 
 strong : Attribute msg

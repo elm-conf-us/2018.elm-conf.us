@@ -54,7 +54,7 @@ content node =
             Html.text stuff
 
         Emphasized Regular children ->
-            Html.em [] (List.map content children)
+            Html.em [ Text.em ] (List.map content children)
 
         Emphasized Strong children ->
             Html.strong [ Text.strong ] (List.map content children)
