@@ -4,6 +4,7 @@ module Styles.Text
         , aReversed
         , aReversedInline
         , body
+        , code
         , em
         , fullSize
         , h1
@@ -211,3 +212,11 @@ em =
 strong : Attribute msg
 strong =
     css [ fontWeight (int 600) ]
+
+
+code : Attribute msg
+code =
+    css
+        [ fontFamily monospace
+        , fontSize (Css.rem 0.9)
+        ]

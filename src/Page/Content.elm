@@ -24,6 +24,7 @@ type Content
     | Link String (List Content)
     | Text String
     | Emphasized EmphasisAmount (List Content)
+    | Code (List Content)
 
 
 type Level
@@ -108,6 +109,9 @@ element tag =
 
         "strong" ->
             map (Emphasized Strong) children
+
+        "code" ->
+            map Code children
 
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")
