@@ -57,4 +57,4 @@ content node =
             Html.em [] (List.map content children)
 
         Emphasized Strong children ->
-            Html.strong [] (List.map content children)
+            Html.strong [ Text.strong ] (List.map content children)

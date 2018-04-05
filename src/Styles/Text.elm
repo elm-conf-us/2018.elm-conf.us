@@ -13,6 +13,7 @@ module Styles.Text
         , ol
         , p
         , scale
+        , strong
         , ul
         , wideColumnSize
         )
@@ -199,3 +200,8 @@ hero =
         , textAlign center
         , color Colors.white
         ]
+
+
+strong : Attribute msg
+strong =
+    css [ fontWeight (int 600) ]
