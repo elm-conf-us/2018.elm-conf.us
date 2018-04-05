@@ -47,8 +47,13 @@ init flags location =
                     Ok page
 
                 Err problems ->
-                    -- TODO: use an accurate error
-                    Err Http.Timeout
+                    Err <|
+                        Http.BadPayload problems
+                            { url = ""
+                            , status = { code = -1, message = "" }
+                            , body = ""
+                            , headers = Dict.empty
+                            }
       , cache =
             case ( route, pageRes ) of
                 ( Just (Internal { json }), Ok page ) ->
