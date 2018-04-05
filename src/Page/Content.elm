@@ -30,6 +30,7 @@ type Content
 type Level
     = First
     | Second
+    | Third
 
 
 type Ordering
@@ -85,6 +86,9 @@ element tag =
 
         "h2" ->
             map (Heading Second) children
+
+        "h3" ->
+            map (Heading Third) children
 
         "hr" ->
             succeed SemanticBreak

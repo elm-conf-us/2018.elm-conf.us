@@ -29,6 +29,9 @@ content node =
         Heading Second children ->
             Html.h2 [ Text.h2 ] (List.map content children)
 
+        Heading Third children ->
+            Html.h3 [ Text.h3 ] (List.map content children)
+
         SemanticBreak ->
             Html.hr [] []
 
