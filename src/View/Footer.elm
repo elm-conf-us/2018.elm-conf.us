@@ -5,6 +5,7 @@ import Css exposing (..)
 import Html.Styled as Html exposing (Html)
 import Html.Styled.Attributes as Attributes exposing (css)
 import Route
+import Styles.Breakpoints as Breakpoints
 import Styles.Colors as Colors
 import Styles.Text as Text
 import View.Elements as Elements
@@ -31,9 +32,13 @@ sections =
         , Html.footer
             [ css
                 [ displayFlex
-                , width Text.fullSize
+                , maxWidth Text.fullSize
                 , margin2 zero auto
                 , color Colors.white
+                , Breakpoints.belowFullSize
+                    [ padding2 zero <| Text.scale 1
+                    , flexDirection column
+                    ]
                 ]
             ]
             [ section "Mailing List"

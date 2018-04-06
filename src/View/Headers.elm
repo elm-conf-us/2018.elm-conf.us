@@ -5,6 +5,7 @@ import Css exposing (..)
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes exposing (css)
 import Route exposing (Route)
+import Styles.Breakpoints as Breakpoints
 import Styles.Colors as Colors
 import Styles.Text as Text
 import View.Elements as Elements
@@ -29,6 +30,8 @@ frontPage =
         [ spaceAfter
         , css
             [ backgroundImage <| linearGradient (stop Colors.orange) (stop Colors.peach) []
+            , Breakpoints.belowFullSize
+                [ padding2 zero <| Text.scale 1 ]
 
             -- TODO: restore this when we make the waves. The white helps with
             -- the transition. Removing for now so that it's not blocking
@@ -45,7 +48,7 @@ frontPage =
         , Elements.spacer 5
         , Html.div
             [ css
-                [ width Text.fullSize
+                [ maxWidth Text.fullSize
                 , margin2 zero auto
                 , textAlign center
                 ]
@@ -58,7 +61,13 @@ frontPage =
                 ]
             , Html.h1
                 [ Text.hero
-                , css [ paddingBottom <| Text.scale 3 ]
+                , css
+                    [ paddingBottom <| Text.scale 3
+                    , Breakpoints.belowFullSize
+                        [ fontSize (Text.scale 2) |> important
+                        , lineHeight (Text.scale 3) |> important
+                        ]
+                    ]
                 ]
                 [ Html.text "elm-conf is a single-day, one-track conference for the Elm programming language community."
                 , Html.br [] []
@@ -106,11 +115,13 @@ navBar : NavVariant -> Html Msg
 navBar variant =
     Html.div
         [ css
-            [ width Text.fullSize
+            [ maxWidth Text.fullSize
             , margin2 zero auto
             , displayFlex
             , justifyContent spaceBetween
             , alignItems center
+            , Breakpoints.belowFullSize
+                [ flexDirection column ]
             ]
         ]
         [ navLogo variant
