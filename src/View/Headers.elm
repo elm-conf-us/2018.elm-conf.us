@@ -63,7 +63,7 @@ frontPage =
                 [ Text.hero
                 , css
                     [ paddingBottom <| Text.scale 3
-                    , Breakpoints.belowFullSize
+                    , Breakpoints.belowWideColumnSize
                         [ fontSize (Text.scale 2) |> important
                         , lineHeight (Text.scale 3) |> important
                         ]

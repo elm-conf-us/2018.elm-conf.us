@@ -7,6 +7,7 @@ import Html.Styled.Attributes exposing (css)
 import Page exposing (Page)
 import Page.Content.View exposing (root)
 import Route exposing (Route)
+import Styles.Breakpoints as Breakpoints
 import Styles.Text as Text
 
 
@@ -22,8 +23,9 @@ content route page =
     in
     Html.main_
         [ css
-            [ Css.width Text.wideColumnSize
+            [ Css.maxWidth Text.wideColumnSize
             , Css.margin2 Css.zero Css.auto
+            , Breakpoints.belowWideColumnSize [ Css.padding2 Css.zero <| Text.scale 1 ]
             ]
         ]
         (heading :: root page.content)
