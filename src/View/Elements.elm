@@ -15,7 +15,7 @@ import Html.Styled.Attributes as Attributes exposing (css)
 import Html.Styled.Events as Events exposing (defaultOptions)
 import Json.Decode exposing (succeed)
 import Route exposing (Route)
-import Styles.Colors as Colors
+import Styles.Elements as Elements
 import Styles.Text as Text
 import Svg.Styled as Svg
 import Svg.Styled.Attributes as SvgA
@@ -65,16 +65,7 @@ linkGhostButton : Route -> List (Attribute Msg) -> List (Html Msg) -> Html Msg
 linkGhostButton route base children =
     link
         route
-        (css
-            [ Css.padding2 (Css.px 10) (Css.px 30)
-            , Css.color Colors.white
-            , Css.border3 (Css.px 1) Css.solid Colors.white
-            , Css.borderRadius (Css.px 4)
-            , Css.hover [ Css.textDecoration Css.none ]
-            , Css.backgroundColor Colors.ghostlyWhite
-            ]
-            :: base
-        )
+        (Elements.ghostButton :: base)
         children
 
 

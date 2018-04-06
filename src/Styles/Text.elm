@@ -60,6 +60,7 @@ body =
             [ fontSize (px 18)
             , fontFamilies [ "Vollkorn", serif.value ]
             , color Colors.black
+            , boxSizing borderBox
             ]
         ]
 
