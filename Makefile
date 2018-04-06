@@ -9,7 +9,10 @@ MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
 CSS=$(CSS_SRC:static/%.css=public/%.css)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) public/index.js
+IMAGES_SRC=$(shell find static/images -type f)
+IMAGES=$(IMAGES_SRC:static/%=public/%)
+
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) public/index.js
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
@@ -25,6 +28,10 @@ public/%.html: public/%.json scripts/astToHtml.js node_modules
 public/%.css: static/%.css node_modules
 	@mkdir -p $(@D)
 	./node_modules/.bin/node-sass --output-style compressed $< > $@
+
+public/images/%: static/images/% node_modules
+	@mkdir -p $(@D)
+	./node_modules/.bin/imagemin $< > $@
 
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
