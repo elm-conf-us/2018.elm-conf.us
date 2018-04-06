@@ -18,6 +18,7 @@ function main(input) {
     <!DOCTYPE html>
     <html>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- TODO: make these stylesheets load async -->
         <link rel="stylesheet" href="/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn:400,400i,600" rel="stylesheet">
