@@ -12,13 +12,12 @@ import App exposing (Msg(..))
 import Css
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes exposing (css)
-import Html.Styled.Events as Events exposing (defaultOptions)
-import Json.Decode exposing (succeed)
 import Route exposing (Route)
 import Styles.Elements as Elements
 import Styles.Text as Text
 import Svg.Styled as Svg
 import Svg.Styled.Attributes as SvgA
+import View.Elements.Events exposing (onClickPreventDefaultForLinkWithHref)
 
 
 container : List (Html Msg) -> Html Msg
@@ -47,12 +46,7 @@ link route base children =
             case route of
                 Route.Internal { html } ->
                     [ Attributes.href html
-                    , Events.onWithOptions "click"
-                        -- TODO: this is blocking cmd-click
-                        { stopPropagation = True
-                        , preventDefault = True
-                        }
-                        (succeed <| GoTo route)
+                    , onClickPreventDefaultForLinkWithHref (GoTo route)
                     ]
 
                 Route.External html ->
