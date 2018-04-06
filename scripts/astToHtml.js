@@ -18,11 +18,19 @@ function main(input) {
     <!DOCTYPE html>
     <html>
       <head>
+        <!-- icons -->
+        <link rel="icon" type="image/png" href="/images/icon-browser.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/images/icon-taskbar.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/images/icon-desktop.png" sizes="96x96">
+
+        <!-- mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- TODO: make these stylesheets load async -->
+
+        <!-- page metadata -->
+        <title>${frontMatter.title}</title>
+
         <link rel="stylesheet" href="/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Vollkorn:400,400i,600" rel="stylesheet">
-        <title>${frontMatter.title}</title>
       </head>
       <body>
         <script src="/index.js"></script>
