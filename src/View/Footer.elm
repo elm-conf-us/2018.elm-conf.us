@@ -22,7 +22,7 @@ sections : Html Msg
 sections =
     Html.div
         []
-        [ Elements.spacer 5
+        [ Elements.spacer 6
         , waves "footer" "rgba(255,95,109,0.8)"
         , Html.div
             [ css
