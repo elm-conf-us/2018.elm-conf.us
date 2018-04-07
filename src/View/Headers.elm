@@ -36,8 +36,6 @@ frontPage =
                     (stop2 Colors.white <| Text.scale 1)
                     (stop2 Colors.peach <| Text.scale 5)
                     [ stop Colors.orange ]
-            , Breakpoints.belowFullSize
-                [ padding2 zero <| Text.scale 1 ]
             ]
         ]
         [ navBar LightOnDark
@@ -62,6 +60,8 @@ frontPage =
                     , Breakpoints.belowWideColumnSize
                         [ fontSize (Text.scale 2) |> important
                         , lineHeight (Text.scale 3) |> important
+                        , paddingLeft <| Text.scale 1
+                        , paddingRight <| Text.scale 1
                         ]
                     ]
                 ]
