@@ -106,6 +106,18 @@ sections =
                                 [ Text.aReversedInline ]
                                 [ Html.text "Mastodon" ]
                             ]
+                        , Html.li []
+                            [ Elements.link
+                                (Route.External "https://2017.elm-conf.us")
+                                [ Text.aReversedInline ]
+                                [ Html.text "2017 site" ]
+                            ]
+                        , Html.li []
+                            [ Elements.link
+                                (Route.External "https://2016.elm-conf.us")
+                                [ Text.aReversedInline ]
+                                [ Html.text "2016 site" ]
+                            ]
                         ]
                     ]
                 , section "Code of Conduct"
