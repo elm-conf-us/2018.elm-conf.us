@@ -76,7 +76,7 @@ frontPage =
                 ]
                 [ Html.text "submit a talk" ]
             ]
-        , Elements.spacer 5
+        , Elements.spacer 6
         , waves "rgba(255,255,255,0.5)"
         ]
 
