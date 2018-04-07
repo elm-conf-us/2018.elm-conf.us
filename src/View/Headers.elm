@@ -9,6 +9,7 @@ import Styles.Breakpoints as Breakpoints
 import Styles.Colors as Colors
 import Styles.Text as Text
 import View.Elements as Elements
+import View.Waves exposing (waves)
 
 
 forPage : Route -> Html Msg
@@ -29,19 +30,14 @@ frontPage =
     Html.header
         [ spaceAfter
         , css
-            [ backgroundImage <| linearGradient (stop Colors.orange) (stop Colors.peach) []
+            [ backgroundImage <|
+                linearGradient2
+                    (deg 0)
+                    (stop2 Colors.white <| Text.scale 1)
+                    (stop2 Colors.peach <| Text.scale 3)
+                    [ stop Colors.orange ]
             , Breakpoints.belowFullSize
                 [ padding2 zero <| Text.scale 1 ]
-
-            -- TODO: restore this when we make the waves. The white helps with
-            -- the transition. Removing for now so that it's not blocking
-            -- shipping if we run out of time to do so.
-            --
-            -- linearGradient2
-            --     (deg 0)
-            --     (stop Colors.white)
-            --     (stop2 Colors.peach <| Text.scale 2)
-            --     [ stop Colors.orange ]
             ]
         ]
         [ navBar LightOnDark
@@ -81,6 +77,7 @@ frontPage =
                 [ Html.text "submit a talk" ]
             ]
         , Elements.spacer 5
+        , waves "rgba(255,255,255,0.5)"
         ]
 
 
