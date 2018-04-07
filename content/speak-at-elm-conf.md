@@ -48,7 +48,7 @@ See the note under "Anonymity" at the bottom of this page.
 
 However, elm-conf talk submissions should not be speculative about what *other people* might do, and should not specifically pressure anyone to change direction or prioritization.
 The one-way nature of the elm-conf stage makes it unsuitable for debate.
-If you have suggestions for what the language and ecosystem might do in the future, [Discourse](discourse.elm-lang.org) and the [Elm Slack](http://elmlang.herokuapp.com/) are more appropriate venues.
+If you have suggestions for what the language and ecosystem might do in the future, [Discourse](https://discourse.elm-lang.org) and the [Elm Slack](http://elmlang.herokuapp.com/) are more appropriate venues.
 
 In addition, we probably won't accept:
 
