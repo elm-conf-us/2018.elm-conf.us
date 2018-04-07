@@ -4,15 +4,19 @@ module Styles.Text
         , aReversed
         , aReversedInline
         , body
+        , code
+        , em
         , fullSize
         , h1
         , h2
         , h2Reversed
+        , h3
         , hero
         , li
         , ol
         , p
         , scale
+        , strong
         , ul
         , wideColumnSize
         )
@@ -107,8 +111,13 @@ h2Reversed =
         ]
 
 
-
--- H3 is Vollkorn at regular text size, but semibold (600 weight)
+h3 : Attribute msg
+h3 =
+    css
+        [ baseText
+        , fontWeight (int 600)
+        , marginBottom <| scale 1
+        ]
 
 
 baseText : Style
@@ -199,4 +208,22 @@ hero =
         , lineHeight <| scale 4
         , textAlign center
         , color Colors.white
+        ]
+
+
+em : Attribute msg
+em =
+    css [ fontStyle italic ]
+
+
+strong : Attribute msg
+strong =
+    css [ fontWeight (int 600) ]
+
+
+code : Attribute msg
+code =
+    css
+        [ fontFamily monospace
+        , fontSize (Css.rem 0.9)
         ]

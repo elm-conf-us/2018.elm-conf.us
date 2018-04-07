@@ -24,11 +24,13 @@ type Content
     | Link String (List Content)
     | Text String
     | Emphasized EmphasisAmount (List Content)
+    | Code (List Content)
 
 
 type Level
     = First
     | Second
+    | Third
 
 
 type Ordering
@@ -85,6 +87,9 @@ element tag =
         "h2" ->
             map (Heading Second) children
 
+        "h3" ->
+            map (Heading Third) children
+
         "hr" ->
             succeed SemanticBreak
 
@@ -108,6 +113,9 @@ element tag =
 
         "strong" ->
             map (Emphasized Strong) children
+
+        "code" ->
+            map Code children
 
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")

@@ -74,7 +74,6 @@ frontPage =
                 , Html.text "Join us on September 26, 2018!"
                 ]
             , Elements.linkGhostButton
-                -- TODO: the right link here
                 Route.speakAtElmConf
                 [ Text.aReversed
                 , css [ fontSize <| Text.scale 2 ]

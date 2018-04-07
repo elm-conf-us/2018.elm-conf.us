@@ -46,7 +46,7 @@ endif
 
 generated/Route.elm: $(MARKDOWN) scripts/routing.py
 	@mkdir -p $(@D)
-	python ./scripts/routing.py lookup \
+	@python ./scripts/routing.py lookup \
 		--module-name=Route \
 		--sources='${MARKDOWN}' \
 		--jsons='${MARKDOWN_AST}' \

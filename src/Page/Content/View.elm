@@ -29,6 +29,9 @@ content node =
         Heading Second children ->
             Html.h2 [ Text.h2 ] (List.map content children)
 
+        Heading Third children ->
+            Html.h3 [ Text.h3 ] (List.map content children)
+
         SemanticBreak ->
             Html.hr [] []
 
@@ -54,7 +57,10 @@ content node =
             Html.text stuff
 
         Emphasized Regular children ->
-            Html.em [] (List.map content children)
+            Html.em [ Text.em ] (List.map content children)
 
         Emphasized Strong children ->
-            Html.strong [] (List.map content children)
+            Html.strong [ Text.strong ] (List.map content children)
+
+        Code children ->
+            Html.code [ Text.code ] (List.map content children)
