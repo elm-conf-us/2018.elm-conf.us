@@ -22,6 +22,12 @@ waves id color =
         [ HAttributes.style
             [ ( "width", "100%" )
             , ( "height", toString height ++ "px" )
+
+            -- so there's a very little gap between the bottom of the SVG and the
+            -- rest of the content everywhere I'm calling this function. It's
+            -- annoying and I don't have time to fix it properly... so for now,
+            -- negative margins! :\
+            , ( "margin-bottom", "-5px" )
             ]
         ]
         [ Svg.defs [] <|
