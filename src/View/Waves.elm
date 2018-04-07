@@ -15,7 +15,7 @@ waves color =
         waves =
             [ ( "little", 900, 100 )
             , ( "medium", 1100, 300 )
-            , ( "large", 1300, 500 )
+            , ( "big", 1300, 500 )
             ]
     in
     Svg.svg
