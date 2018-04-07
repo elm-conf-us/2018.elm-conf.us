@@ -6,16 +6,16 @@ import Svg.Styled as Svg exposing (Attribute, Svg)
 import Svg.Styled.Attributes as Attributes
 
 
-waves : String -> Html msg
-waves color =
+waves : String -> String -> Html msg
+waves id color =
     let
         height =
             100
 
         waves =
-            [ ( "little", 900, 100 )
-            , ( "medium", 1100, 300 )
-            , ( "big", 1300, 500 )
+            [ ( id ++ "-little", 900, 100 )
+            , ( id ++ "-medium", 1100, 300 )
+            , ( id ++ "-big", 1300, 500 )
             ]
     in
     Svg.svg
