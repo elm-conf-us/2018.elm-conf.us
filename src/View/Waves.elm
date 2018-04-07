@@ -10,12 +10,12 @@ waves : String -> Html msg
 waves color =
     let
         height =
-            70
+            100
 
         waves =
-            [ ( "little", 900 )
-            , ( "medium", 1100 )
-            , ( "large", 1300 )
+            [ ( "little", 900, 100 )
+            , ( "medium", 1100, 300 )
+            , ( "large", 1300, 500 )
             ]
     in
     Svg.svg
@@ -26,26 +26,24 @@ waves color =
         ]
         [ Svg.defs [] <|
             List.map
-                (\( name, wavelength ) ->
+                (\( name, wavelength, offset ) ->
                     Svg.pattern
                         [ Attributes.id name
                         , Attributes.width <| toString wavelength
                         , Attributes.height <| toString height
                         , Attributes.patternUnits "userSpaceOnUse"
-                        , Attributes.x <| toString <| wavelength * -0.25
+                        , Attributes.x <| toString offset
                         ]
                         [ waveSegment color wavelength height ]
                 )
                 waves
         , Svg.g [] <|
             List.map
-                (\( name, wavelength ) ->
+                (\( name, wavelength, _ ) ->
                     Svg.rect
                         [ Attributes.fill <| "url(#" ++ name ++ ")"
                         , Attributes.width "100%"
                         , Attributes.height "100%"
-
-                        -- , Attributes.x <| toString <| wavelength / -2
                         ]
                         []
                 )
