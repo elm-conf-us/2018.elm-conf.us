@@ -12,6 +12,7 @@ The quick facts:
 - You can submit as many talks as you like.
 - Your talk will be reviewed anonymously by a small group (see "Anonymity" below.)
 - We're happy to give you feedback on your ideas before before you send them in: [email elm-conf@thestrangeloop.com](mailto:elm-conf@thestrangeloop.com).
+- We'll give you one round of feedback on your submitted talk if you submit before May 6 (one week before the deadline.)
 
 ## Talk Subjects and Format
 
