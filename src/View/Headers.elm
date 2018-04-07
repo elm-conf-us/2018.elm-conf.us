@@ -34,7 +34,7 @@ frontPage =
                 linearGradient2
                     (deg 0)
                     (stop2 Colors.white <| Text.scale 1)
-                    (stop2 Colors.peach <| Text.scale 3)
+                    (stop2 Colors.peach <| Text.scale 5)
                     [ stop Colors.orange ]
             , Breakpoints.belowFullSize
                 [ padding2 zero <| Text.scale 1 ]
