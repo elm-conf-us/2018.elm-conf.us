@@ -15,7 +15,7 @@ If you're interested in Elm, functional programming, or frontend development in 
 
 ## Conference Venue and General Schedule
 
-elm-conf will be taking place on September 26 at the historic Peabody Opera house.
+elm-conf will be taking place on September 26 at the historic Peabody Opera house in St. Louis, MO.
 We are returning as a Strange Loop pre-conference event, and attendees are welcome at the Strange Loop party at City Museum during the evening of the 26th.
 We encourage you to attend Strange Loop as well as elm-conf.
 If you like one you'll probably like the other!
