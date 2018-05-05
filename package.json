@@ -28,7 +28,7 @@
     "remark-frontmatter": "^1.2.0",
     "remark-parse": "^5.0.0",
     "remark-rehype": "^3.0.0",
-    "to-vfile": "^3.0.0",
+    "to-vfile": "^4.0.0",
     "uglify-js": "^3.3.17",
     "unified": "^6.1.6"
   }
