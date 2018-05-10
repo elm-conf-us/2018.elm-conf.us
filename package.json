@@ -30,6 +30,6 @@
     "remark-rehype": "^3.0.0",
     "to-vfile": "^4.0.0",
     "uglify-js": "^3.3.17",
-    "unified": "^6.1.6"
+    "unified": "^7.0.0"
   }
 }
