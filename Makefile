@@ -58,7 +58,7 @@ generated/Route.elm: $(MARKDOWN) scripts/routing.py
 clean:
 	rm -rf node_modules elm-stuff public generated
 
-node_modules: package.json
+node_modules: package.json package-lock.json
 	npm install
 	touch -m $@
 
