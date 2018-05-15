@@ -13,7 +13,8 @@ If you like one you'll probably like the other!
 
 For domestic travel, Southwest Airlines has nonstop flights to St. Louis from many cities in the United States.
 
-For international travel, most carriers will go through immigration and customs at Chicago O'Hare with a connection to St. Louis. WOW air recently opened connecting flights through Reykjavik, if that's more convenient for you.
+For international travel, most carriers will go through immigration and customs at Chicago O'Hare with a connection to St. Louis.
+WOW air recently opened connecting flights through Reykjavik, if that's more convenient for you.
 
 From the airport, here are some ways you can to the hotels and conference venue:
 
