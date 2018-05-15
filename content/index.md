@@ -2,12 +2,6 @@
 title: elm-conf 2018
 ---
 
-## Call for Speakers
-
-Want to [speak at elm-conf](speak-at-elm-conf.md)?
-You can!
-The elm-conf call for proposals (CFP) opens April 9th and runs through May 13th.
-
 ## So, what's elm-conf?
 
 elm-conf is a conference for the Elm programming language community, currently in its third year.
