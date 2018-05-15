@@ -102,5 +102,3 @@ That said, we recognize that any process involving humans will be imperfect.
 The Elm community is fairly small and sometimes it's impossible to avoid putting identifying information in a proposal.
 If you find yourself in that situation, focus on making a *high-quality* proposal over an *anonymized* one.
 We lean on the committee members outside the Elm community here; they can give these proposals the fairest shot.
-
-
