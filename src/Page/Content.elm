@@ -1,6 +1,7 @@
 module Page.Content
     exposing
-        ( Content(..)
+        ( Alignment(..)
+        , Content(..)
         , EmphasisAmount(..)
         , Level(..)
         , Ordering(..)
@@ -28,9 +29,9 @@ type Content
     | Table (List Content)
     | TableRow (List Content)
     | TableHead (List Content)
-    | TableHeadCell (List Content)
+    | TableHeadCell Alignment (List Content)
     | TableBody (List Content)
-    | TableCell (List Content)
+    | TableCell Alignment (List Content)
 
 
 type Level
@@ -47,6 +48,13 @@ type Ordering
 type EmphasisAmount
     = Regular
     | Strong
+
+
+type Alignment
+    = Unset
+    | Left
+    | Right
+    | Center
 
 
 decoder : Decoder Root
@@ -136,10 +144,14 @@ element tag =
             map TableRow children
 
         "td" ->
-            map TableCell children
+            map2 TableCell
+                (at [ "properties", "align" ] alignment)
+                children
 
         "th" ->
-            map TableHeadCell children
+            map2 TableHeadCell
+                (at [ "properties", "align" ] alignment)
+                children
 
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")
@@ -148,3 +160,26 @@ element tag =
 taggedType : (String -> Decoder a) -> Decoder a
 taggedType fn =
     field "type" string |> andThen fn
+
+
+alignment : Decoder Alignment
+alignment =
+    oneOf
+        [ string
+            |> andThen
+                (\align ->
+                    case align of
+                        "left" ->
+                            succeed Left
+
+                        "center" ->
+                            succeed Center
+
+                        "right" ->
+                            succeed Right
+
+                        _ ->
+                            fail ("I don't know how to interpret a '" ++ align ++ "' alignment.")
+                )
+        , null Unset
+        ]

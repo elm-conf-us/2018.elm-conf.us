@@ -13,7 +13,7 @@ Lambert-St. Louis International Airport (STL) is the closest airport to the venu
 Here's how you can get downtown:
 
 | How? | Cost | Extra Information |
-|-|-|-|
+|:-|-:|:-|
 | Metrolink Train | $3 | Get off at the Union Station Stop |
 | Lyft | ~$35 | |
 | Taxi | ~$40 | |

@@ -78,8 +78,8 @@ content node =
         TableRow children ->
             Html.tr [] (List.map content children)
 
-        TableHeadCell children ->
-            Html.th [ Text.strong ] (List.map content children)
+        TableHeadCell alignment children ->
+            Html.th [ Text.strong, Text.align alignment ] (List.map content children)
 
-        TableCell children ->
-            Html.td [] (List.map content children)
+        TableCell alignment children ->
+            Html.td [ Text.align alignment ] (List.map content children)
