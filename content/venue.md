@@ -26,7 +26,7 @@ From the airport, here are some ways you can to the hotels and conference venue:
 
 ## Staying in St. Louis
 
-Hotel stays can be booked in the Strange Loo at Union Station (~10min walk) or the Ballpark Hilton (~15 minute walk.)
+Hotel stays can be booked in the Strange Loop blocks at Union Station (~10min walk) or the Ballpark Hilton (~15 minute walk.)
 See [their hotel page](https://thestrangeloop.com/register.html) for more details.
 Strange Loop will be providing shuttle service from Union Station and Hilton Ballpark to events such as the conference party.
 
