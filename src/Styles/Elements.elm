@@ -1,9 +1,15 @@
-module Styles.Elements exposing (fillWidth, ghostButton)
+module Styles.Elements
+    exposing
+        ( ghostButton
+        , table
+        , tableCell
+        )
 
 import Css exposing (..)
 import Html.Styled exposing (Attribute)
 import Html.Styled.Attributes exposing (css)
 import Styles.Colors as Colors
+import Styles.Text as Text
 
 
 ghostButton : Attribute msg
@@ -18,6 +24,20 @@ ghostButton =
         ]
 
 
-fillWidth : Attribute msg
-fillWidth =
-    css [ width (pct 100) ]
+table : Attribute msg
+table =
+    css
+        [ marginBottom (Text.scale 1)
+        , width (pct 100)
+        ]
+
+
+tableCell : Attribute msg
+tableCell =
+    css
+        [ padding (Text.scale 0)
+        , fontFeatureSettingsList
+            [ featureTag "tnum"
+            , featureTag "zero"
+            ]
+        ]

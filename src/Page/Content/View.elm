@@ -67,7 +67,7 @@ content node =
             Html.code [ Text.code ] (List.map content children)
 
         Table children ->
-            Html.table [ SElements.fillWidth ] (List.map content children)
+            Html.table [ SElements.table ] (List.map content children)
 
         TableHead children ->
             Html.thead [] (List.map content children)
@@ -79,7 +79,16 @@ content node =
             Html.tr [] (List.map content children)
 
         TableHeadCell alignment children ->
-            Html.th [ Text.strong, Text.align alignment ] (List.map content children)
+            Html.th
+                [ SElements.tableCell
+                , Text.strong
+                , Text.align alignment
+                ]
+                (List.map content children)
 
         TableCell alignment children ->
-            Html.td [ Text.align alignment ] (List.map content children)
+            Html.td
+                [ SElements.tableCell
+                , Text.align alignment
+                ]
+                (List.map content children)
