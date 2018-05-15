@@ -19,17 +19,17 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-elm-pre-minify": "^0.1.2",
     "elm": "^0.18.0",
-    "html-minifier": "^3.5.13",
+    "html-minifier": "^3.5.15",
     "imagemin-cli": "^3.0.0",
     "imagemin-optipng": "^5.2.1",
     "js-yaml": "^3.11.0",
-    "node-sass": "^4.8.3",
+    "node-sass": "^4.9.0",
     "remark": "^9.0.0",
     "remark-frontmatter": "^1.2.0",
     "remark-parse": "^5.0.0",
     "remark-rehype": "^3.0.0",
     "to-vfile": "^4.0.0",
-    "uglify-js": "^3.3.17",
+    "uglify-js": "^3.3.25",
     "unified": "^7.0.0"
   }
 }
