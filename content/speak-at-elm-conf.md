@@ -2,10 +2,9 @@
 title: Speak at elm-conf
 ---
 
-The elm-conf call for speakers is open from April 9th through May 13th.
+The elm-conf call for speakers ran from April 9th through May 13th, and is now closed.
+Thank you for all your proposals!
 We intend to notify speakers by June 18th.
-
-[Submit a talk at cfp.elm-conf.us](https://cfp.elm-conf.us/events/elm-conf-2018).
 
 The quick facts:
 
