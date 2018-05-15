@@ -1,4 +1,4 @@
-module Styles.Elements exposing (ghostButton)
+module Styles.Elements exposing (fillWidth, ghostButton)
 
 import Css exposing (..)
 import Html.Styled exposing (Attribute)
@@ -16,3 +16,8 @@ ghostButton =
         , hover [ textDecoration none ]
         , backgroundColor Colors.ghostlyWhite
         ]
+
+
+fillWidth : Attribute msg
+fillWidth =
+    css [ width (pct 100) ]

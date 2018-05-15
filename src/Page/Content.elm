@@ -25,6 +25,12 @@ type Content
     | Text String
     | Emphasized EmphasisAmount (List Content)
     | Code (List Content)
+    | Table (List Content)
+    | TableRow (List Content)
+    | TableHead (List Content)
+    | TableHeadCell (List Content)
+    | TableBody (List Content)
+    | TableCell (List Content)
 
 
 type Level
@@ -116,6 +122,24 @@ element tag =
 
         "code" ->
             map Code children
+
+        "table" ->
+            map Table children
+
+        "thead" ->
+            map TableHead children
+
+        "tbody" ->
+            map TableBody children
+
+        "tr" ->
+            map TableRow children
+
+        "td" ->
+            map TableCell children
+
+        "th" ->
+            map TableHeadCell children
 
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")

@@ -11,6 +11,7 @@ import Page.Content
         , Root(Root)
         )
 import Route
+import Styles.Elements as SElements
 import Styles.Text as Text
 import View.Elements as Elements
 
@@ -64,3 +65,21 @@ content node =
 
         Code children ->
             Html.code [ Text.code ] (List.map content children)
+
+        Table children ->
+            Html.table [ SElements.fillWidth ] (List.map content children)
+
+        TableHead children ->
+            Html.thead [] (List.map content children)
+
+        TableBody children ->
+            Html.tbody [] (List.map content children)
+
+        TableRow children ->
+            Html.tr [] (List.map content children)
+
+        TableHeadCell children ->
+            Html.th [ Text.strong ] (List.map content children)
+
+        TableCell children ->
+            Html.td [] (List.map content children)
