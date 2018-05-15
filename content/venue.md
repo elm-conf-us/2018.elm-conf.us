@@ -7,7 +7,7 @@ We are returning as a Strange Loop pre-conference event, and attendees are welco
 We encourage you to attend Strange Loop as well as elm-conf.
 If you like one you'll probably like the other!
 
-## Flying In
+## Flights to St. Louis
 
 [St. Louis Lambert International Airport (STL)](https://www.flystl.com/flights-and-airlines/airlines) is the closest airport to the venue.
 
