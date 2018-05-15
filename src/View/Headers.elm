@@ -69,12 +69,14 @@ frontPage =
                 , Html.br [] []
                 , Html.text "Join us on September 26, 2018!"
                 ]
-            , Elements.linkGhostButton
-                Route.speakAtElmConf
-                [ Text.aReversed
-                , css [ fontSize <| Text.scale 2 ]
-                ]
-                [ Html.text "submit a talk" ]
+
+            -- TODO: add registration button here when we have that available
+            -- , Elements.linkGhostButton
+            --     Route.speakAtElmConf
+            --     [ Text.aReversed
+            --     , css [ fontSize <| Text.scale 2 ]
+            --     ]
+            --     [ Html.text "submit a talk" ]
             ]
         , Elements.spacer 6
         , waves "header" "rgba(255,255,255,0.5)"
@@ -141,7 +143,9 @@ navLinks : NavVariant -> Html Msg
 navLinks variant =
     Html.nav []
         [ navLink variant Route.about <| Html.text "about"
-        , navLink variant Route.speakAtElmConf <| Html.text "speak at elm-conf"
+
+        -- TODO: add registration and speakers links when available
+        -- , navLink variant Route.speakAtElmConf <| Html.text "speak at elm-conf"
         ]
 
 
