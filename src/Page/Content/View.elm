@@ -70,7 +70,7 @@ content node =
             Html.table [ SElements.table ] (List.map content children)
 
         TableHead children ->
-            Html.thead [] (List.map content children)
+            Html.thead [ SElements.tableHead ] (List.map content children)
 
         TableBody children ->
             Html.tbody [] (List.map content children)

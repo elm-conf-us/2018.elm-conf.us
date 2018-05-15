@@ -3,6 +3,7 @@ module Styles.Elements
         ( ghostButton
         , table
         , tableCell
+        , tableHead
         )
 
 import Css exposing (..)
@@ -32,10 +33,18 @@ table =
         ]
 
 
+tableHead : Attribute msg
+tableHead =
+    css
+        [ color Colors.peach
+        , borderBottom3 (px 1) solid Colors.peach
+        ]
+
+
 tableCell : Attribute msg
 tableCell =
     css
-        [ padding (Text.scale 0)
+        [ padding (px 10)
         , fontFeatureSettingsList
             [ featureTag "tnum"
             , featureTag "zero"
