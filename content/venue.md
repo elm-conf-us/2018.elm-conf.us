@@ -18,7 +18,7 @@ Here's how you can get downtown:
 | Lyft | ~$35 | |
 | Taxi | ~$40 | |
 
-Hotel stays can be booked in the Strange Loop blocks at Union Station (~10min walk) or the Ballpark Hilton (~15 minute walk.) See Strange Loops Hotel Page for more details.
+Hotel stays can be booked in the Strange Loop blocks at Union Station (~10min walk) or the Ballpark Hilton (~15 minute walk.) See [Strange Loops Hotel Page](https://thestrangeloop.com/register.html) for more details.
 
 ## Dress Code
 
