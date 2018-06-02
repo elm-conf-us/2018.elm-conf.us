@@ -12,7 +12,7 @@ CSS=$(CSS_SRC:static/%.css=public/%.css)
 IMAGES_SRC=$(shell find static/images -type f)
 IMAGES=$(IMAGES_SRC:static/%=public/%)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) public/index.js
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) public/index.js public/speakers/index.json
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
@@ -21,6 +21,9 @@ public/index.json: content/index.md scripts/mdToAst.js node_modules
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
+
+public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
+	python scripts/sectionToAst.py public/speakers $@ --title Speakers
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
