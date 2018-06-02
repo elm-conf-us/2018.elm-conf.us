@@ -8,7 +8,7 @@ import json
 
 
 def main(args):
-    out = []
+    pages = []
 
     for dirname, dirnames, filenames in os.walk(args.source):
         for filename in filenames:
@@ -19,7 +19,15 @@ def main(args):
 
             if filename.endswith('.json'):
                 with open(current, 'r') as fh:
-                    out.append(json.load(fh))
+                    pages.append(json.load(fh))
+
+    out = {
+        'type': 'section',
+        'frontMatter': {
+            'title': args.title or os.path.dirname(args.destination)
+        },
+        'pages': pages,
+    }
 
     with open(args.destination, 'w') as fh:
         json.dump(out, fh)
@@ -31,6 +39,6 @@ if __name__ == '__main__':
     parser = ArgumentParser(__file__)
     parser.add_argument('source')
     parser.add_argument('destination')
-    parser.add_argument('--title')
+    parser.add_argument('--title', default=None)
 
     sys.exit(main(parser.parse_args()))
