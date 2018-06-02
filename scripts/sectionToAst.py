@@ -30,7 +30,7 @@ def main(args):
     }
 
     with open(args.destination, 'w') as fh:
-        json.dump(out, fh)
+        json.dump(out, fh, separators=(',', ':'))
 
     return 0
 
