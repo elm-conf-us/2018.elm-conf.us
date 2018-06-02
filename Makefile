@@ -55,9 +55,9 @@ generated/Route.elm: $(MARKDOWN) scripts/routing.py
 	@mkdir -p $(@D)
 	@python ./scripts/routing.py lookup \
 		--module-name=Route \
-		--sources='${MARKDOWN}' \
-		--jsons='${MARKDOWN_AST}' \
-		--htmls='${MARKDOWN_HTML}' \
+		--sources='${MARKDOWN} ${SECTIONS}' \
+		--jsons='${MARKDOWN_AST} ${SECTIONS_AST}' \
+		--htmls='${MARKDOWN_HTML} ${SECTIONS_HTML}' \
 		--output-if-changed=$@
 
 # plumbing
