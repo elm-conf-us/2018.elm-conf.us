@@ -8,7 +8,7 @@ MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
 SECTIONS=$(shell find content -type d -mindepth 1)
 SECTIONS_HTML=$(SECTIONS:content/%=public/%/index.html)
-SECTIONS_AST=(SECTIONS_HTML:%.html=%.json)
+SECTIONS_AST=$(SECTIONS_HTML:%.html=%.json)
 
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
 CSS=$(CSS_SRC:static/%.css=public/%.css)
