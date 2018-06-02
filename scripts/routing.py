@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 from __future__ import unicode_literals, print_function
 import argparse
-import sys
 import os.path
+import re
+import sys
 
 
 def remove_prefix(prefix, paths):
@@ -10,7 +11,7 @@ def remove_prefix(prefix, paths):
 
 
 def camelize(name):
-    segments = name.split('-')
+    segments = re.split(r'[-/]', name)
 
     return ''.join(
         [segments[0]] + [segment.capitalize() for segment in segments[1:]]
