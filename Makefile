@@ -6,24 +6,28 @@ MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(patsubst %/index/index.json,%/index.json,$(MARKDOWN:content/%.md=public/%/index.json))
 MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
+SECTIONS=$(shell find content -type d -mindepth 1 -exec echo '{}/index.html' \;)
+SECTIONS_HTML=$(SECTIONS:content/%=public/%)
+SECTIONS_AST=(SECTIONS_HTML:%.html=%.json)
+
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
 CSS=$(CSS_SRC:static/%.css=public/%.css)
 
 IMAGES_SRC=$(shell find static/images -type f)
 IMAGES=$(IMAGES_SRC:static/%=public/%)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) public/index.js public/speakers/index.json
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(SECTIONS_HTML) public/index.js
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
 
+public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
+	python scripts/sectionToAst.py public/speakers $@ --title Speakers
+
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
-
-public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
-	python scripts/sectionToAst.py public/speakers $@ --title Speakers
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
