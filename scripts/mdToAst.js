@@ -42,6 +42,7 @@ const parseWithFrontmatter = unified()
 
     this.Compiler = function(tree, file) {
       return JSON.stringify({
+        type: "page",
         frontMatter: frontmatter,
         content: tree
       });
