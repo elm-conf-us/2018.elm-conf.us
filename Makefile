@@ -6,8 +6,8 @@ MARKDOWN=$(wildcard content/*.md content/**/*.md)
 MARKDOWN_AST=$(patsubst %/index/index.json,%/index.json,$(MARKDOWN:content/%.md=public/%/index.json))
 MARKDOWN_HTML=$(MARKDOWN_AST:public/%.json=public/%.html)
 
-SECTIONS=$(shell find content -type d -mindepth 1 -exec echo '{}/index.html' \;)
-SECTIONS_HTML=$(SECTIONS:content/%=public/%)
+SECTIONS=$(shell find content -type d -mindepth 1)
+SECTIONS_HTML=$(SECTIONS:content/%=public/%/index.html)
 SECTIONS_AST=(SECTIONS_HTML:%.html=%.json)
 
 CSS_SRC=$(wildcard static/*.css static/**/*.css)
