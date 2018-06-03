@@ -5,6 +5,7 @@ module Page
         , Page
         , decoder
         , hasImages
+        , mapSource
         )
 
 import Json.Decode exposing (..)
@@ -66,3 +67,8 @@ hasImages ({ frontMatter } as page) =
 
         Section subPages ->
             frontMatter.image /= Nothing || List.any hasImages subPages
+
+
+mapSource : (String -> a) -> Page -> Maybe a
+mapSource fn { frontMatter } =
+    Maybe.map fn frontMatter.source

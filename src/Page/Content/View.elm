@@ -24,7 +24,7 @@ root ({ frontMatter } as page) =
 
         Page.Section pages ->
             pages
-                |> List.map cutOffAtMore
+                |> List.map readMore
                 |> List.map insertTitleAsHeading
                 |> List.map reduceHeadings
                 |> List.map root
@@ -79,13 +79,19 @@ reduceHeadings page =
             { page | content = Page.Section (List.map reduceHeadings pages) }
 
 
-cutOffAtMore : Page -> Page
-cutOffAtMore page =
+readMore : Page -> Page
+readMore page =
     let
+        link caption =
+            page
+                |> Page.mapSource
+                    (\source -> [ Link source caption ])
+                |> Maybe.withDefault []
+
         untilMore contents =
             case contents of
-                (Paragraph [ Text "!!more" ]) :: _ ->
-                    []
+                (Paragraph [ Link "directive:more" caption ]) :: _ ->
+                    link caption
 
                 el :: els ->
                     el :: untilMore els
@@ -98,7 +104,7 @@ cutOffAtMore page =
             { page | content = Page.Single <| Root <| untilMore children }
 
         Page.Section pages ->
-            { page | content = Page.Section (List.map cutOffAtMore pages) }
+            { page | content = Page.Section (List.map readMore pages) }
 
 
 content : Content -> Html Msg
@@ -132,6 +138,9 @@ content node =
 
         Paragraph children ->
             Html.p [ Text.p ] (List.map content children)
+
+        Link "directive:more" children ->
+            Html.text ""
 
         Link href children ->
             Elements.link
