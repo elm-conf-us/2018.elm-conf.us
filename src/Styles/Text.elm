@@ -89,6 +89,7 @@ h1 =
         , lineHeight <| scale 4
         , marginBottom <| scale 0.5
         , marginTop <| scale 2
+        , firstChild [ marginTop zero ]
         ]
 
 
@@ -100,6 +101,7 @@ h2 =
         , lineHeight <| scale 3
         , marginBottom <| scale 0.5
         , marginTop <| scale 2
+        , firstChild [ marginTop zero ]
         ]
 
 
@@ -112,6 +114,7 @@ h2Reversed =
         , lineHeight <| scale 3
         , marginBottom <| scale 0.5
         , marginTop <| scale 2
+        , firstChild [ marginTop zero ]
         ]
 
 
