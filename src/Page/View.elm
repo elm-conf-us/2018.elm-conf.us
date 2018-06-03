@@ -21,14 +21,22 @@ view route ({ frontMatter } as page) =
                 Html.text ""
             else
                 Html.h1 [ Text.h1 ] [ Html.text frontMatter.title ]
-    in
-    Html.main_
-        [ css
+
+        rules =
             [ Css.maxWidth Text.wideColumnSize
             , Css.margin2 Css.zero Css.auto
             , Breakpoints.belowWideColumnSize [ Css.padding2 Css.zero <| Text.scale 1 ]
             ]
-        ]
+
+        finalRules =
+            if Page.hasImages page then
+                -- TODO: make this not a magic number
+                Css.paddingLeft (Css.px 264) :: rules
+            else
+                rules
+    in
+    Html.main_
+        [ css finalRules ]
         [ heading
         , root page
         ]
