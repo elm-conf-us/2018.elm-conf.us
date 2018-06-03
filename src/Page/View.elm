@@ -1,4 +1,4 @@
-module Page.View exposing (content)
+module Page.View exposing (view)
 
 import App exposing (Msg)
 import Css
@@ -11,8 +11,8 @@ import Styles.Breakpoints as Breakpoints
 import Styles.Text as Text
 
 
-content : Route -> Page -> Html Msg
-content route ({ frontMatter } as page) =
+view : Route -> Page -> Html Msg
+view route ({ frontMatter } as page) =
     let
         heading : Html Msg
         heading =
