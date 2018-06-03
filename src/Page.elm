@@ -32,20 +32,18 @@ decoder =
                 (field "image" (maybe string))
                 (field "video" (maybe string))
 
-        body : String -> Decoder Page
+        body : String -> Decoder Content
         body type_ =
             case type_ of
                 "page" ->
-                    map2 Page
-                        (field "frontMatter" frontMatter)
-                        (map Single <| field "content" Content.decoder)
+                    map Single (field "content" Content.decoder)
 
                 "section" ->
-                    map2 Page
-                        (field "frontMatter" frontMatter)
-                        (map Section <| field "pages" <| list decoder)
+                    map Section (field "pages" (list decoder))
 
                 _ ->
                     fail <| "I don't know how to decode a '" ++ type_ ++ "'"
     in
-    field "type" string |> andThen body
+    map2 Page
+        (field "frontMatter" frontMatter)
+        (field "type" string |> andThen body)
