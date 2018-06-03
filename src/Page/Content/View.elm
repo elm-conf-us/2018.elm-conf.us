@@ -142,6 +142,9 @@ content node =
         Link "directive:more" children ->
             Html.text ""
 
+        Link "directive:youtube" [ Text id ] ->
+            Elements.youtube id
+
         Link href children ->
             Elements.link
                 (Route.lookup href)

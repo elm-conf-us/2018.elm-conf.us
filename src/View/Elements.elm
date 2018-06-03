@@ -9,12 +9,14 @@ module View.Elements
         , section
         , sectionWithImage
         , spacer
+        , youtube
         )
 
 import App exposing (Msg(..))
 import Css exposing ((|*|), (|-|))
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes exposing (css)
+import Json.Encode as Encode
 import Route exposing (Route)
 import Styles.Breakpoints as Breakpoints
 import Styles.Elements as Elements
@@ -169,3 +171,20 @@ sectionWithImage image contents =
             ]
             contents
         ]
+
+
+youtube : String -> Html msg
+youtube id =
+    Html.iframe
+        [ css
+            [ Css.width (Css.pct 100)
+
+            -- TODO: look up how to actually make a responsive iframe at a given aspect ratio
+            , Css.height (Text.wideColumnSize |*| Css.px (9 / 16))
+            ]
+        , Attributes.src ("https://www.youtube-nocookie.com/embed/" ++ id)
+        , Attributes.property "frameBorder" (Encode.int 0)
+        , Attributes.property "allow" (Encode.string "autoplay; encrypted-media")
+        , Attributes.attribute "allowfullscreen" ""
+        ]
+        []
