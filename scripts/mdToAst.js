@@ -41,6 +41,8 @@ const parseWithFrontmatter = unified()
     var frontmatter = {};
 
     this.Compiler = function(tree, file) {
+      frontmatter.source = file.history[0].replace("content/", "");
+
       return JSON.stringify({
         type: "page",
         frontMatter: frontmatter,
