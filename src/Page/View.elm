@@ -12,7 +12,7 @@ import Styles.Text as Text
 
 
 content : Route -> Page -> Html Msg
-content route page =
+content route ({ frontMatter } as page) =
     let
         heading : Html Msg
         heading =
@@ -20,7 +20,7 @@ content route page =
                 -- this is taken care of by the fancy heading
                 Html.text ""
             else
-                Html.h1 [ Text.h1 ] [ Html.text page.title ]
+                Html.h1 [ Text.h1 ] [ Html.text frontMatter.title ]
 
         body : List (Html Msg)
         body =

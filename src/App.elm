@@ -71,12 +71,12 @@ update msg model =
     case msg of
         NewRoute (Just (Internal route)) ->
             case Dict.get route.json model.cache of
-                Just page ->
+                Just ({ frontMatter } as page) ->
                     ( { model
                         | page = Ok page
                         , route = Just (Internal route)
                       }
-                    , setTitle page.title
+                    , setTitle frontMatter.title
                     )
 
                 Nothing ->
@@ -99,12 +99,12 @@ update msg model =
         GoTo (Internal route) ->
             ( model, Navigation.newUrl route.html )
 
-        NewPage (Ok ( key, page )) ->
+        NewPage (Ok ( key, { frontMatter } as page )) ->
             ( { model
                 | page = Ok page
                 , cache = Dict.insert key page model.cache
               }
-            , setTitle page.title
+            , setTitle frontMatter.title
             )
 
         NewPage (Err err) ->

@@ -1,13 +1,17 @@
-module Page exposing (Content(..), Page, decoder)
+module Page exposing (Content(..), FrontMatter, Page, decoder)
 
 import Json.Decode exposing (..)
 import Page.Content as Content
 
 
 type alias Page =
-    { title : String
+    { frontMatter : FrontMatter
     , content : Content
     }
+
+
+type alias FrontMatter =
+    { title : String }
 
 
 type Content
@@ -18,9 +22,9 @@ type Content
 decoder : Decoder Page
 decoder =
     let
-        frontMatter : Decoder String
+        frontMatter : Decoder FrontMatter
         frontMatter =
-            at [ "frontMatter", "title" ] string
+            map FrontMatter <| at [ "frontMatter", "title" ] string
 
         body : String -> Decoder Page
         body type_ =
