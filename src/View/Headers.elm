@@ -143,6 +143,7 @@ navLinks : NavVariant -> Html Msg
 navLinks variant =
     Html.nav []
         [ navLink variant Route.about <| Html.text "about"
+        , navLink variant Route.speakers <| Html.text "speakers"
 
         -- TODO: add registration and speakers links when available
         -- , navLink variant Route.speakAtElmConf <| Html.text "speak at elm-conf"
