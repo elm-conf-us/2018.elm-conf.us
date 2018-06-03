@@ -15,9 +15,11 @@ import Styles.Text as Text
 import View.Elements as Elements
 
 
-root : Root -> List (Html Msg)
+root : Root -> Html Msg
 root (Root children) =
-    List.map content children
+    children
+        |> List.map content
+        |> Html.section []
 
 
 content : Content -> Html Msg

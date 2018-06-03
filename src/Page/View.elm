@@ -22,15 +22,14 @@ view route ({ frontMatter } as page) =
             else
                 Html.h1 [ Text.h1 ] [ Html.text frontMatter.title ]
 
-        body : List (Html Msg)
+        body : Html Msg
         body =
             case page.content of
                 Single single ->
                     root single
 
                 Section section ->
-                    -- TODO
-                    []
+                    Html.text ""
     in
     Html.main_
         [ css
@@ -39,4 +38,6 @@ view route ({ frontMatter } as page) =
             , Breakpoints.belowWideColumnSize [ Css.padding2 Css.zero <| Text.scale 1 ]
             ]
         ]
-        (heading :: body)
+        [ heading
+        , body
+        ]
