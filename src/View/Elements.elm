@@ -16,6 +16,7 @@ import Css exposing ((|*|), (|-|))
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes exposing (css)
 import Route exposing (Route)
+import Styles.Breakpoints as Breakpoints
 import Styles.Elements as Elements
 import Styles.Text as Text
 import Svg.Styled as Svg
@@ -133,12 +134,19 @@ sectionWithImage image contents =
             , Css.displayFlex
             , Css.flexDirection Css.row
             , Css.marginLeft (leftColumnSize |*| Css.px -1)
+            , Breakpoints.belowFullSize
+                [ Css.flexDirection Css.column
+                , Css.marginLeft Css.zero
+                ]
             ]
         ]
         [ Html.div
             [ css
-                [ Css.width (leftColumnSize |-| Css.px 25)
+                [ -- TODO: make these not magic values
+                  Css.width (leftColumnSize |-| Css.px 25)
+                , Css.height (leftColumnSize |-| Css.px 25)
                 , Css.marginRight (Text.scale 2)
+                , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 2) Css.auto ]
                 ]
             ]
             [ Html.img
@@ -153,7 +161,10 @@ sectionWithImage image contents =
                 []
             ]
         , Html.div
-            [ css [ Css.width Text.wideColumnSize ]
+            [ css
+                [ Css.width Text.wideColumnSize
+                , Breakpoints.belowFullSize [ Css.width Css.auto ]
+                ]
             ]
             contents
         ]

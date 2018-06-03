@@ -1,8 +1,18 @@
-module Styles.Breakpoints exposing (belowFullSize, belowWideColumnSize)
+module Styles.Breakpoints
+    exposing
+        ( aboveFullSize
+        , belowFullSize
+        , belowWideColumnSize
+        )
 
 import Css exposing (Style, px)
 import Css.Media exposing (..)
 import Styles.Text exposing (fullSize, wideColumnSize)
+
+
+aboveFullSize : List Style -> Style
+aboveFullSize =
+    withMedia [ only screen [ minWidth fullSize ] ]
 
 
 belowFullSize : List Style -> Style

@@ -28,10 +28,13 @@ view route ({ frontMatter } as page) =
             , Breakpoints.belowWideColumnSize [ Css.padding2 Css.zero <| Text.scale 1 ]
             ]
 
+        imagesRule =
+            -- TODO: make this not a magic number
+            Breakpoints.aboveFullSize [ Css.paddingLeft (Css.px 264) ]
+
         finalRules =
             if Page.hasImages page then
-                -- TODO: make this not a magic number
-                Css.paddingLeft (Css.px 264) :: rules
+                imagesRule :: rules
             else
                 rules
     in
