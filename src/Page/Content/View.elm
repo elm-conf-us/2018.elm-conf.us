@@ -2,6 +2,7 @@ module Page.Content.View exposing (root)
 
 import App exposing (Msg)
 import Html.Styled as Html exposing (Attribute, Html)
+import Page exposing (FrontMatter, Page)
 import Page.Content
     exposing
         ( Content(..)
@@ -15,11 +16,27 @@ import Styles.Text as Text
 import View.Elements as Elements
 
 
-root : Root -> Html Msg
-root (Root children) =
-    children
-        |> List.map content
-        |> Html.section []
+root : Page -> Html Msg
+root ({ frontMatter } as page) =
+    case page.content of
+        Page.Single root ->
+            single frontMatter root
+
+        Page.Section pages ->
+            Html.text "dunno yet"
+
+
+single : FrontMatter -> Root -> Html Msg
+single { image, title } (Root children) =
+    case image of
+        Just imageSrc ->
+            Elements.sectionWithImage
+                (Elements.Image imageSrc title)
+                (List.map content children)
+
+        Nothing ->
+            Elements.section
+                (List.map content children)
 
 
 content : Content -> Html Msg

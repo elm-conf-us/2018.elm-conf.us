@@ -21,15 +21,6 @@ view route ({ frontMatter } as page) =
                 Html.text ""
             else
                 Html.h1 [ Text.h1 ] [ Html.text frontMatter.title ]
-
-        body : Html Msg
-        body =
-            case page.content of
-                Single single ->
-                    root single
-
-                Section section ->
-                    Html.text ""
     in
     Html.main_
         [ css
@@ -39,5 +30,5 @@ view route ({ frontMatter } as page) =
             ]
         ]
         [ heading
-        , body
+        , root page
         ]

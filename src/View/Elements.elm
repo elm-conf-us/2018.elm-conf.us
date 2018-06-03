@@ -1,15 +1,18 @@
 module View.Elements
     exposing
-        ( container
+        ( Image
+        , container
         , elmLogo
         , link
         , linkGhostButton
         , nav
+        , section
+        , sectionWithImage
         , spacer
         )
 
 import App exposing (Msg(..))
-import Css
+import Css exposing ((|*|), (|-|))
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes exposing (css)
 import Route exposing (Route)
@@ -103,4 +106,54 @@ elmLogo scale rest =
                     []
                 ]
             ]
+        ]
+
+
+section : List (Html Msg) -> Html Msg
+section contents =
+    Html.section [] contents
+
+
+type alias Image =
+    -- TODO srcset sizes stuff for retina displays
+    { src : String
+    , alt : String
+    }
+
+
+sectionWithImage : Image -> List (Html Msg) -> Html Msg
+sectionWithImage image contents =
+    let
+        leftColumnSize =
+            Text.fullSize |-| Text.wideColumnSize
+    in
+    Html.section
+        [ css
+            [ Css.maxWidth Text.fullSize
+            , Css.displayFlex
+            , Css.flexDirection Css.row
+            , Css.marginLeft (leftColumnSize |*| Css.px -1)
+            ]
+        ]
+        [ Html.div
+            [ css
+                [ Css.width (leftColumnSize |-| Css.px 25)
+                , Css.marginRight (Text.scale 2)
+                ]
+            ]
+            [ Html.img
+                [ css
+                    [ Css.width (Css.pct 100)
+                    , Css.height Css.auto
+                    , Css.borderRadius (Css.pct 100)
+                    ]
+                , Attributes.src image.src
+                , Attributes.alt image.alt
+                ]
+                []
+            ]
+        , Html.div
+            [ css [ Css.width Text.wideColumnSize ]
+            ]
+            contents
         ]

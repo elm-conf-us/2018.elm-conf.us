@@ -47,11 +47,15 @@ scale place =
     ratio ^ (place - 1) |> Css.rem
 
 
+{-| TODO: make into rems
+-}
 fullSize : Px
 fullSize =
     px 900
 
 
+{-| TODO: make into rems
+-}
 wideColumnSize : Px
 wideColumnSize =
     px 636
