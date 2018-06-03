@@ -133,6 +133,7 @@ sectionWithImage image contents =
             [ Css.maxWidth Text.fullSize
             , Css.displayFlex
             , Css.flexDirection Css.row
+            , Css.justifyContent Css.spaceAround
             , Css.marginLeft (leftColumnSize |*| Css.px -1)
             , Breakpoints.belowFullSize
                 [ Css.flexDirection Css.column
@@ -143,17 +144,17 @@ sectionWithImage image contents =
         [ Html.div
             [ css
                 [ -- TODO: make these not magic values
-                  Css.width (leftColumnSize |-| Css.px 25)
-                , Css.height (leftColumnSize |-| Css.px 25)
-                , Css.marginRight (Text.scale 2)
-                , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 2) Css.auto ]
+                  Css.width leftColumnSize
+                , Css.height leftColumnSize
+                , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 1) Css.auto ]
                 ]
             ]
             [ Html.img
                 [ css
-                    [ Css.width (Css.pct 100)
+                    [ Css.width (Text.scale 8.25)
                     , Css.height Css.auto
                     , Css.borderRadius (Css.pct 100)
+                    , Breakpoints.belowFullSize [ Css.width (Css.pct 100) ]
                     ]
                 , Attributes.src image.src
                 , Attributes.alt image.alt
