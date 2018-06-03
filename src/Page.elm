@@ -29,8 +29,8 @@ decoder =
         frontMatter =
             map3 FrontMatter
                 (field "title" string)
-                (field "image" (maybe string))
-                (field "video" (maybe string))
+                (maybe (field "image" string))
+                (maybe (field "video" string))
 
         body : String -> Decoder Content
         body type_ =
