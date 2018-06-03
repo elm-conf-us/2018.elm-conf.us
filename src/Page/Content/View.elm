@@ -24,6 +24,7 @@ root ({ frontMatter } as page) =
 
         Page.Section pages ->
             pages
+                |> List.map cutOffAtMore
                 |> List.map insertTitleAsHeading
                 |> List.map reduceHeadings
                 |> List.map root
@@ -78,9 +79,36 @@ reduceHeadings page =
             { page | content = Page.Section (List.map reduceHeadings pages) }
 
 
+cutOffAtMore : Page -> Page
+cutOffAtMore page =
+    let
+        untilMore contents =
+            case contents of
+                (Paragraph [ Text "!!more" ]) :: _ ->
+                    []
+
+                el :: els ->
+                    el :: untilMore els
+
+                [] ->
+                    []
+    in
+    case page.content of
+        Page.Single (Root children) ->
+            { page | content = Page.Single <| Root <| untilMore children }
+
+        Page.Section pages ->
+            { page | content = Page.Section (List.map cutOffAtMore pages) }
+
+
 content : Content -> Html Msg
 content node =
     case node of
+        -- directives
+        Paragraph [ Text "!!more" ] ->
+            Html.text ""
+
+        -- everything else
         Heading First children ->
             Html.h1 [ Text.h1 ] (List.map content children)
 
