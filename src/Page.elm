@@ -1,4 +1,11 @@
-module Page exposing (Content(..), FrontMatter, Page, decoder)
+module Page
+    exposing
+        ( Content(..)
+        , FrontMatter
+        , Page
+        , decoder
+        , hasImages
+        )
 
 import Json.Decode exposing (..)
 import Page.Content as Content
@@ -47,3 +54,13 @@ decoder =
     map2 Page
         (field "frontMatter" frontMatter)
         (field "type" string |> andThen body)
+
+
+hasImages : Page -> Bool
+hasImages ({ frontMatter } as page) =
+    case page.content of
+        Single _ ->
+            frontMatter.image /= Nothing
+
+        Section subPages ->
+            frontMatter.image /= Nothing || List.any hasImages subPages
