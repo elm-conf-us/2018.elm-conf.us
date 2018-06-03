@@ -23,7 +23,11 @@ root ({ frontMatter } as page) =
             single frontMatter root
 
         Page.Section pages ->
-            Html.text "dunno yet"
+            pages
+                |> List.map insertTitleAsHeading
+                |> List.map reduceHeadings
+                |> List.map root
+                |> Html.div []
 
 
 single : FrontMatter -> Root -> Html Msg
@@ -37,6 +41,41 @@ single { image, title } (Root children) =
         Nothing ->
             Elements.section
                 (List.map content children)
+
+
+{-| this really only makes sense for single pages
+-}
+insertTitleAsHeading : Page -> Page
+insertTitleAsHeading ({ frontMatter } as page) =
+    case page.content of
+        Page.Single (Root children) ->
+            { page | content = Page.Single <| Root <| Heading First [ Text frontMatter.title ] :: children }
+
+        _ ->
+            page
+
+
+reduceHeadings : Page -> Page
+reduceHeadings page =
+    let
+        reduceHeadingsContent : Content -> Content
+        reduceHeadingsContent content =
+            case content of
+                Heading First children ->
+                    Heading Second children
+
+                Heading Second children ->
+                    Heading Third children
+
+                _ ->
+                    content
+    in
+    case page.content of
+        Page.Single (Root children) ->
+            { page | content = Page.Single <| Root <| List.map reduceHeadingsContent children }
+
+        Page.Section pages ->
+            { page | content = Page.Section (List.map reduceHeadings pages) }
 
 
 content : Content -> Html Msg
