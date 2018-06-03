@@ -1,6 +1,6 @@
 ---
 title: Jim Henson
-photo: /images/speakers/jim-henson.jpg
+image: /images/speakers/jim-henson.jpg
 video: https://youtu.be/jSFLZ-MzIhM
 ---
 James Maury "Jim" Henson (September 24, 1936 – May 16, 1990) was an American puppeteer, artist, cartoonist, inventor, screenwriter, and filmmaker who achieved international fame as the creator of the Muppets.

@@ -11,7 +11,10 @@ type alias Page =
 
 
 type alias FrontMatter =
-    { title : String }
+    { title : String
+    , image : Maybe String
+    , video : Maybe String
+    }
 
 
 type Content
@@ -24,19 +27,22 @@ decoder =
     let
         frontMatter : Decoder FrontMatter
         frontMatter =
-            map FrontMatter <| at [ "frontMatter", "title" ] string
+            map3 FrontMatter
+                (field "title" string)
+                (field "image" (maybe string))
+                (field "video" (maybe string))
 
         body : String -> Decoder Page
         body type_ =
             case type_ of
                 "page" ->
                     map2 Page
-                        frontMatter
+                        (field "frontMatter" frontMatter)
                         (map Single <| field "content" Content.decoder)
 
                 "section" ->
                     map2 Page
-                        frontMatter
+                        (field "frontMatter" frontMatter)
                         (map Section <| field "pages" <| list decoder)
 
                 _ ->
