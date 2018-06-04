@@ -170,16 +170,27 @@ sectionWithImage image contents =
 
 youtube : String -> Html msg
 youtube id =
-    Html.iframe
+    Html.div
         [ css
-            [ Css.width (Css.pct 100)
-
-            -- TODO: look up how to actually make a responsive iframe at a given aspect ratio
-            , Css.height (Text.wideColumnSize |*| Css.rem (9 / 16))
+            [ Css.position Css.relative
+            , Css.paddingBottom (Css.pct 56.25)
+            , Css.height Css.zero
+            , Css.overflow Css.hidden
+            , Css.maxWidth (Css.pct 100)
             ]
-        , Attributes.src ("https://www.youtube-nocookie.com/embed/" ++ id)
-        , Attributes.property "frameBorder" (Encode.int 0)
-        , Attributes.property "allow" (Encode.string "autoplay; encrypted-media")
-        , Attributes.attribute "allowfullscreen" ""
         ]
-        []
+        [ Html.iframe
+            [ css
+                [ Css.position Css.absolute
+                , Css.top Css.zero
+                , Css.left Css.zero
+                , Css.width (Css.pct 100)
+                , Css.height (Css.pct 100)
+                ]
+            , Attributes.src ("https://www.youtube-nocookie.com/embed/" ++ id)
+            , Attributes.property "frameBorder" (Encode.int 0)
+            , Attributes.property "allow" (Encode.string "autoplay; encrypted-media")
+            , Attributes.attribute "allowfullscreen" ""
+            ]
+            []
+        ]
