@@ -141,8 +141,7 @@ sectionWithImage image contents =
         ]
         [ Html.div
             [ css
-                [ -- TODO: make these not magic values
-                  Css.width Text.narrowColumnSize
+                [ Css.width Text.narrowColumnSize
                 , Css.height Text.narrowColumnSize
                 , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 1) Css.auto ]
                 ]
