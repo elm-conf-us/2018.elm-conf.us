@@ -29,8 +29,7 @@ view route ({ frontMatter } as page) =
             ]
 
         imagesRule =
-            -- TODO: make this not a magic number
-            Breakpoints.aboveFullSize [ Css.paddingLeft (Css.px 264) ]
+            Breakpoints.aboveFullSize [ Css.paddingLeft Text.narrowColumnSize ]
 
         finalRules =
             if Page.hasImages page then
