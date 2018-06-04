@@ -21,6 +21,8 @@ def main(args):
                 with open(current, 'r') as fh:
                     pages.append(json.load(fh))
 
+    pages.sort(key=lambda item: item['frontMatter'].get(args.sort_by))
+
     out = {
         'type': 'section',
         'frontMatter': {
@@ -40,5 +42,6 @@ if __name__ == '__main__':
     parser.add_argument('source')
     parser.add_argument('destination')
     parser.add_argument('--title', default=None)
+    parser.add_argument('--sort-by', default='title')
 
     sys.exit(main(parser.parse_args()))
