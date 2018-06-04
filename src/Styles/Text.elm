@@ -13,6 +13,7 @@ module Styles.Text
         , h3
         , hero
         , li
+        , narrowColumnSize
         , ol
         , p
         , scale
@@ -47,18 +48,19 @@ scale place =
     ratio ^ (place - 1) |> Css.rem
 
 
-{-| TODO: make into rems
--}
-fullSize : Px
+fullSize : Rem
 fullSize =
-    px 900
+    Css.rem 50
 
 
-{-| TODO: make into rems
--}
-wideColumnSize : Px
+wideColumnSize : Rem
 wideColumnSize =
-    px 636
+    Css.rem 35
+
+
+narrowColumnSize : Rem
+narrowColumnSize =
+    fullSize |-| wideColumnSize
 
 
 body : Html msg

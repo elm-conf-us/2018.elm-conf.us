@@ -126,17 +126,13 @@ type alias Image =
 
 sectionWithImage : Image -> List (Html Msg) -> Html Msg
 sectionWithImage image contents =
-    let
-        leftColumnSize =
-            Text.fullSize |-| Text.wideColumnSize
-    in
     Html.section
         [ css
             [ Css.maxWidth Text.fullSize
             , Css.displayFlex
             , Css.flexDirection Css.row
             , Css.justifyContent Css.spaceAround
-            , Css.marginLeft (leftColumnSize |*| Css.px -1)
+            , Css.marginLeft (Text.narrowColumnSize |*| Css.rem -1)
             , Breakpoints.belowFullSize
                 [ Css.flexDirection Css.column
                 , Css.marginLeft Css.zero
@@ -146,8 +142,8 @@ sectionWithImage image contents =
         [ Html.div
             [ css
                 [ -- TODO: make these not magic values
-                  Css.width leftColumnSize
-                , Css.height leftColumnSize
+                  Css.width Text.narrowColumnSize
+                , Css.height Text.narrowColumnSize
                 , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 1) Css.auto ]
                 ]
             ]
@@ -180,7 +176,7 @@ youtube id =
             [ Css.width (Css.pct 100)
 
             -- TODO: look up how to actually make a responsive iframe at a given aspect ratio
-            , Css.height (Text.wideColumnSize |*| Css.px (9 / 16))
+            , Css.height (Text.wideColumnSize |*| Css.rem (9 / 16))
             ]
         , Attributes.src ("https://www.youtube-nocookie.com/embed/" ++ id)
         , Attributes.property "frameBorder" (Encode.int 0)
