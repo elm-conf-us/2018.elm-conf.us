@@ -117,7 +117,7 @@ sharedSectionStyles : Attribute msg
 sharedSectionStyles =
     css
         [ Foreign.adjacentSiblings
-            [ Foreign.section [ Css.marginBottom (Text.scale 4) ]
+            [ Foreign.section [ Css.marginTop (Text.scale 4) ]
             ]
         ]
 
