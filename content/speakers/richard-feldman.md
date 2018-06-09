@@ -4,8 +4,10 @@ image: /images/speakers/richard-feldman.jpg
 time: 2018-09-28T09:00:00
 ---
 
-Richard's bio
+Richard is the author of "Elm in Action" from Manning Publications, and the instructor for the Frontend Masters 2-Day Elm Workshop. When he's not writing about Elm, teaching Elm, speaking about Elm, or co-hosting the San Francisco Elm meetup, he likes to take a break from his job at NoRedInk (where front-end programmers spend almost almost all their coding time writing production Elm code) by kicking back and working on some of his open-source Elm projects.
 
-[Richard's talk: *Keynote TBD* &raquo;](directive:more)
+Some have said he’s "into Elm," but he’s not sure where they got that wild idea.
 
-## Richard's talk: *Keynote TBD*
+<!-- [Richard's Keynote &raquo;](directive:more) -->
+
+<!-- ## Richard's Keynote -->
