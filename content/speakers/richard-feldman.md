@@ -1,5 +1,6 @@
 ---
 title: Richard Feldman
+image: /images/speakers/richard-feldman.jpg
 time: 2018-09-28T09:00:00-06:00
 ---
 
