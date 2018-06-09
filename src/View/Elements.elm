@@ -14,6 +14,7 @@ module View.Elements
 
 import App exposing (Msg(..))
 import Css exposing ((|*|), (|-|))
+import Css.Foreign as Foreign
 import Html.Styled as Html exposing (Attribute, Html)
 import Html.Styled.Attributes as Attributes exposing (css)
 import Json.Encode as Encode
@@ -112,9 +113,18 @@ elmLogo scale rest =
         ]
 
 
+sharedSectionStyles : Attribute msg
+sharedSectionStyles =
+    css
+        [ Foreign.adjacentSiblings
+            [ Foreign.section [ Css.marginBottom (Text.scale 4) ]
+            ]
+        ]
+
+
 section : List (Html Msg) -> Html Msg
 section contents =
-    Html.section [] contents
+    Html.section [ sharedSectionStyles ] contents
 
 
 type alias Image =
@@ -127,7 +137,8 @@ type alias Image =
 sectionWithImage : Image -> List (Html Msg) -> Html Msg
 sectionWithImage image contents =
     Html.section
-        [ css
+        [ sharedSectionStyles
+        , css
             [ Css.maxWidth Text.fullSize
             , Css.displayFlex
             , Css.flexDirection Css.row
