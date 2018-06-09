@@ -1,6 +1,7 @@
 ---
 title: Dillon Kearns
 image: /images/speakers/dillon-kearns.jpeg
+time: 2018-09-28T13:40:00
 ---
 
 Dillon is an Agile Coach and Software Craftsman based out of Southern California. As an Agile Consultant, Dillon introduced Elm at a Fortune 10 company and trained several teams to help them adopt it as their primary front-end framework. He is a big proponent of emergent design, test-driven development, and continuous refactorings and hopes to help the community explore these techniques in the context of Elm. In his free time, he loves backpacking and playing the piano.
