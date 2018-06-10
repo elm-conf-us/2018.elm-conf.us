@@ -10,6 +10,6 @@ Anthony started out programming LEGO robots when he was young. Now that he's gro
 
 ## Anthony's talk: *Programming Robots with Elm*
 
-Elm is most often used to make webapps, but it's a great language for other domains as well. Using ports and the actor model, we can embed Elm in another environment&mdash;whether it's a larger application or just a thin layer of glue code.
+Elm is most often used to make webapps, but by using ports and a bit of glue code Elm can be embeded anywhere we can use Javascript. This opens up a lot of possibilities.
 
-In this talk we will learn how to use Elm to program a robot. This will involve both imperative and functional programming, and play to the strengths of each of them.
+In this talk we will use Elm to program a robot. This will involve both imperative and functional programming, and play to the strengths of each of them. We'll also discover how the patterns we use in webapps translate to other domains.
