@@ -1,6 +1,7 @@
 ---
 title: Tereza Sokol
 time: 2018-09-28T16:00:00
+image: /images/speakers/tereza-sokol.jpg
 ---
 
 I make Elm visualization libraries and now parsers too!
