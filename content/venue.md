@@ -37,7 +37,3 @@ Wear whatever you're comfortable with as long as it does not violate the [code o
 
 If you're a first-time conference-goer and nervous about what to wear, [business casual](https://en.wikipedia.org/wiki/Business_casual) is a safe bet.
 In past years, people have dressed in a wide range from [casual](https://en.wikipedia.org/wiki/Casual) to business casual.
-
-## Accessibility
-
-TODO
