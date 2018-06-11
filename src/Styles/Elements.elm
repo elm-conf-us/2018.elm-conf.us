@@ -1,9 +1,16 @@
-module Styles.Elements exposing (ghostButton)
+module Styles.Elements
+    exposing
+        ( ghostButton
+        , table
+        , tableCell
+        , tableHead
+        )
 
 import Css exposing (..)
 import Html.Styled exposing (Attribute)
 import Html.Styled.Attributes exposing (css)
 import Styles.Colors as Colors
+import Styles.Text as Text
 
 
 ghostButton : Attribute msg
@@ -15,4 +22,31 @@ ghostButton =
         , borderRadius (px 4)
         , hover [ textDecoration none ]
         , backgroundColor Colors.ghostlyWhite
+        ]
+
+
+table : Attribute msg
+table =
+    css
+        [ marginBottom (Text.scale 1)
+        , width (pct 100)
+        ]
+
+
+tableHead : Attribute msg
+tableHead =
+    css
+        [ color Colors.peach
+        , borderBottom3 (px 1) solid Colors.peach
+        ]
+
+
+tableCell : Attribute msg
+tableCell =
+    css
+        [ padding (px 10)
+        , fontFeatureSettingsList
+            [ featureTag "tnum"
+            , featureTag "zero"
+            ]
         ]

@@ -3,6 +3,7 @@ module Styles.Text
         ( a
         , aReversed
         , aReversedInline
+        , align
         , body
         , code
         , em
@@ -36,6 +37,7 @@ import Css exposing (..)
 import Css.Foreign as Foreign
 import Html.Styled exposing (Attribute, Html)
 import Html.Styled.Attributes exposing (css)
+import Page.Content exposing (Alignment(..))
 import Styles.Colors as Colors
 
 
@@ -236,3 +238,20 @@ code =
         [ fontFamily monospace
         , fontSize (Css.rem 0.9)
         ]
+
+
+align : Alignment -> Attribute msg
+align alignment =
+    css <|
+        case alignment of
+            Left ->
+                [ textAlign left ]
+
+            Center ->
+                [ textAlign center ]
+
+            Right ->
+                [ textAlign right ]
+
+            Unset ->
+                []

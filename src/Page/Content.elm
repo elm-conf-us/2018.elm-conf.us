@@ -1,6 +1,7 @@
 module Page.Content
     exposing
-        ( Content(..)
+        ( Alignment(..)
+        , Content(..)
         , EmphasisAmount(..)
         , Level(..)
         , Ordering(..)
@@ -25,6 +26,12 @@ type Content
     | Text String
     | Emphasized EmphasisAmount (List Content)
     | Code (List Content)
+    | Table (List Content)
+    | TableRow (List Content)
+    | TableHead (List Content)
+    | TableHeadCell Alignment (List Content)
+    | TableBody (List Content)
+    | TableCell Alignment (List Content)
 
 
 type Level
@@ -41,6 +48,13 @@ type Ordering
 type EmphasisAmount
     = Regular
     | Strong
+
+
+type Alignment
+    = Unset
+    | Left
+    | Right
+    | Center
 
 
 decoder : Decoder Root
@@ -117,6 +131,28 @@ element tag =
         "code" ->
             map Code children
 
+        "table" ->
+            map Table children
+
+        "thead" ->
+            map TableHead children
+
+        "tbody" ->
+            map TableBody children
+
+        "tr" ->
+            map TableRow children
+
+        "td" ->
+            map2 TableCell
+                (at [ "properties", "align" ] alignment)
+                children
+
+        "th" ->
+            map2 TableHeadCell
+                (at [ "properties", "align" ] alignment)
+                children
+
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")
 
@@ -124,3 +160,26 @@ element tag =
 taggedType : (String -> Decoder a) -> Decoder a
 taggedType fn =
     field "type" string |> andThen fn
+
+
+alignment : Decoder Alignment
+alignment =
+    oneOf
+        [ string
+            |> andThen
+                (\align ->
+                    case align of
+                        "left" ->
+                            succeed Left
+
+                        "center" ->
+                            succeed Center
+
+                        "right" ->
+                            succeed Right
+
+                        _ ->
+                            fail ("I don't know how to interpret a '" ++ align ++ "' alignment.")
+                )
+        , null Unset
+        ]

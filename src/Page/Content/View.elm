@@ -12,6 +12,7 @@ import Page.Content
         , Root(Root)
         )
 import Route
+import Styles.Elements as SElements
 import Styles.Text as Text
 import View.Elements as Elements
 
@@ -162,3 +163,30 @@ content node =
 
         Code children ->
             Html.code [ Text.code ] (List.map content children)
+
+        Table children ->
+            Html.table [ SElements.table ] (List.map content children)
+
+        TableHead children ->
+            Html.thead [ SElements.tableHead ] (List.map content children)
+
+        TableBody children ->
+            Html.tbody [] (List.map content children)
+
+        TableRow children ->
+            Html.tr [] (List.map content children)
+
+        TableHeadCell alignment children ->
+            Html.th
+                [ SElements.tableCell
+                , Text.strong
+                , Text.align alignment
+                ]
+                (List.map content children)
+
+        TableCell alignment children ->
+            Html.td
+                [ SElements.tableCell
+                , Text.align alignment
+                ]
+                (List.map content children)
