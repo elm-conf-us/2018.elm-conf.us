@@ -2,16 +2,14 @@
 title: Venue
 ---
 
-elm-conf will be taking place on September 26 at the historic Peabody Opera house in St. Louis, MO.
+elm-conf will be taking place on September 26, 2018 at the historic Peabody Opera House in St. Louis, MO.
 We are returning as a Strange Loop pre-conference event, and attendees are welcome at the Strange Loop party at City Museum during the evening of the 26th.
 We encourage you to attend Strange Loop as well as elm-conf.
 If you like one you'll probably like the other!
 
 ## Flights to St. Louis
 
-[St. Louis Lambert International Airport (STL)](https://www.flystl.com/flights-and-airlines/airlines) is the closest airport to the venue.
-
-For domestic travel, Southwest Airlines has nonstop flights to St. Louis from many cities in the United States.
+[St. Louis Lambert International Airport (STL)](https://www.flystl.com/) is the closest airport to the venue. They publish a [full list of carriers that fly into St. Louis](https://www.flystl.com/flights-and-airlines/airlines).
 
 For international travel, most carriers will go through immigration and customs at Chicago O'Hare with a connection to St. Louis.
 WOW air recently opened connecting flights through Reykjavik, if that's more convenient for you.
