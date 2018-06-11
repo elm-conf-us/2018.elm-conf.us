@@ -18,7 +18,7 @@ WOW air recently opened connecting flights through Reykjavik, if that's more con
 
 From the airport, here are some ways you can to the hotels and conference venue:
 
-| How? | Cost | Extra Information |
+| Travel Option | Cost | Extra Information |
 |:-|-:|:-|
 | Metrolink Train | $3 | Get off at the Union Station Stop |
 | Lyft | $28-37 | Get updated estimates at [Lyft's Fare Estimator](https://www.lyft.com/fare-estimate) |
