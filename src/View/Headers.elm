@@ -146,9 +146,6 @@ navLinks variant =
         , navLink variant Route.venue <| Html.text "venue"
         , navLink variant Route.speakers <| Html.text "speakers"
         , navLink variant (Route.External "https://thestrangeloop.com/register.html") <| Html.text "registration"
-
-        -- TODO: add registration and speakers links when available
-        -- , navLink variant Route.speakAtElmConf <| Html.text "speak at elm-conf"
         ]
 
 
