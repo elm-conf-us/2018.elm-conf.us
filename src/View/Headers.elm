@@ -69,14 +69,12 @@ frontPage =
                 , Html.br [] []
                 , Html.text "Join us on September 26, 2018!"
                 ]
-
-            -- TODO: add registration button here when we have that available
-            -- , Elements.linkGhostButton
-            --     Route.speakAtElmConf
-            --     [ Text.aReversed
-            --     , css [ fontSize <| Text.scale 2 ]
-            --     ]
-            --     [ Html.text "submit a talk" ]
+            , Elements.linkGhostButton
+                (Route.External "https://thestrangeloop.com/register.html")
+                [ Text.aReversed
+                , css [ fontSize <| Text.scale 2 ]
+                ]
+                [ Html.text "get your ticket" ]
             ]
         , Elements.spacer 6
         , waves "header" "rgba(255,255,255,0.5)"
