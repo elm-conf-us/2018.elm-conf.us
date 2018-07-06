@@ -2,6 +2,8 @@
 title: Sponsor elm-conf
 ---
 
+([download this page as a PDF](/elm-conf-2018-prospectus.pdf))
+
 elm-conf is a single-day, one-track conference for the Elm programming language community. As in prior years, elm-conf takes place on the Strange Loop preconference day, September 26, at the Peabody Opera House in St. Louis.
 
 As a sponsor of elm-conf, you’ll have the opportunity to connect and recruit at the largest annual gathering of Elm developers in the world! Last year about 300 people attended elm-conf, more than half of whom were using Elm in a production setting. Our sponsorship packages allow you to feature your logo and members of your team around the venue while also helping us bring in great speakers and provide a fun, accessible, and safe event. Sponsors in past years include NoRedInk, thoughtbot, and Ableton.

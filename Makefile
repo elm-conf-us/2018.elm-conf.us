@@ -16,7 +16,10 @@ CSS=$(CSS_SRC:static/%.css=public/%.css)
 IMAGES_SRC=$(shell find static/images -type f)
 IMAGES=$(IMAGES_SRC:static/%=public/%)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(SECTIONS_HTML) public/index.js
+PDFS_SRC=$(shell find static -name '*.pdf' -type f)
+PDFS=$(PDFS_SRC:static/%.pdf=public/%.pdf)
+
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(PDFS) $(SECTIONS_HTML) public/index.js
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
@@ -28,6 +31,9 @@ public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
+
+public/%.pdf: static/%.pdf
+	cp $< $@
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
