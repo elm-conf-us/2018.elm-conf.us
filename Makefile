@@ -33,6 +33,7 @@ public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	node scripts/mdToAst.js $< > $@
 
 public/%.pdf: static/%.pdf
+	@mkdir -p $(@D)
 	cp $< $@
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
