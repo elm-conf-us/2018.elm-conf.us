@@ -79,7 +79,12 @@ sections =
                         ]
                     ]
                 , section "Sponsorships"
-                    [ Html.text "Sponsorships are available for elm-conf 2018 at a variety of levels. Email "
+                    [ Html.text "Sponsorships are available for elm-conf 2018 at a variety of levels. See the "
+                    , Elements.link
+                        Route.sponsorElmConf
+                        [ Text.aReversedInline ]
+                        [ Html.text "sponsorship prospectus" ]
+                    , Html.text " or email "
                     , Elements.link
                         (Route.External "mailto:elm-conf@thestrangeloop.com")
                         [ Text.aReversedInline ]
