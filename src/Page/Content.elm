@@ -32,6 +32,7 @@ type Content
     | TableHeadCell Alignment (List Content)
     | TableBody (List Content)
     | TableCell Alignment (List Content)
+    | Deleted (List Content)
 
 
 type Level
@@ -152,6 +153,9 @@ element tag =
             map2 TableHeadCell
                 (at [ "properties", "align" ] alignment)
                 children
+
+        "del" ->
+            map Deleted children
 
         _ ->
             fail ("The '" ++ tag ++ "' tag is not allowed!")

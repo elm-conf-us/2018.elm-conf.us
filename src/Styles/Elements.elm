@@ -1,6 +1,7 @@
 module Styles.Elements
     exposing
         ( ghostButton
+        , strikethrough
         , table
         , tableCell
         , tableHead
@@ -50,3 +51,8 @@ tableCell =
             , featureTag "zero"
             ]
         ]
+
+
+strikethrough : Attribute msg
+strikethrough =
+    css [ textDecoration lineThrough ]

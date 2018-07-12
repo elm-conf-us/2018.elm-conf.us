@@ -190,3 +190,8 @@ content node =
                 , Text.align alignment
                 ]
                 (List.map content children)
+
+        Deleted children ->
+            Html.span
+                [ SElements.strikethrough ]
+                (List.map content children)
