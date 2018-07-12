@@ -2,7 +2,7 @@
 title: Attending elm-conf
 ---
 
-elm-conf will be taking place on September 26, 2018 at the historic Peabody Opera House in St. Louis, MO.
+elm-conf will take place on September 26, 2018 at the historic Peabody Opera House in St. Louis, MO.
 We are returning as a Strange Loop pre-conference event, and attendees are welcome at the Strange Loop party at City Museum during the evening of the 26th.
 We encourage you to attend Strange Loop as well as elm-conf.
 If you like one you'll probably like the other!
@@ -28,7 +28,7 @@ From the airport, here are some ways you can to the hotels and conference venue:
 
 Hotel stays can be booked in the Strange Loop blocks at Union Station (~10 minute walk) or the Ballpark Hilton (~15 minute walk.)
 See [their hotel page](https://thestrangeloop.com/register.html) for more details.
-Strange Loop will be providing shuttle service from Union Station and Hilton Ballpark to the conference and party.
+Strange Loop will provide shuttle service from Union Station and Hilton Ballpark to the conference and party.
 
 Some nice restaurants in downtown St. Louis:
 
@@ -104,7 +104,7 @@ It's a small group of people who work together to advance Elm, and who are takin
 - **"Noah"** is probably `@eeue56` on the Elm Slack, a prolific Elm contributor.
 - **"Tereza"** is probably Tereza Sokol, creator of `elm-plot`. [Here's her talk](speakers/tereza-sokol.md).
 - **"Aaron"** is probably Aaron VonderHaar, creator of `elm-format`.
-- **"Luke"** is probably Luke Westby, creator of [Ellie](https://www.ellie-app.com). (TODO: verify www)
+- **"Luke"** is probably Luke Westby, creator of [Ellie](https://ellie-app.com).
 
 ### What's "make impossible states impossible"?
 
