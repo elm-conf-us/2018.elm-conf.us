@@ -32,15 +32,16 @@ Strange Loop will provide shuttle service from Union Station and Hilton Ballpark
 
 Some nice restaurants in downtown St. Louis:
 
-| Name | Cuisine | Price Range |
-|:-|:-|:-|
-| Bailey's Range | Hamburgers | ? |
-| Mango * | Peruvian | ? |
-| Pappy's Smokehouse | Barbecue | ? |
-| Rooster | Brunch | ? |
-| Schlafly Taproom | American Pub | ? |
-| Sen Thai | Thai | ? |
-| Sugarfire | Barbecue | ? |
+| Name | Cuisine |
+|:-|:-|
+| Bailey's Range * | Hamburgers |
+| Mango * | Peruvian |
+| Pappy's Smokehouse | Barbecue |
+| Rooster | Brunch |
+| Schlafly Taproom * | American Pub |
+| Sen Thai | Thai |
+| Sugarfire | Barbecue |
+| Small Batch * † | American |
 
 \* vegetarian options available
 
@@ -48,7 +49,7 @@ Some nice restaurants in downtown St. Louis:
 
 ## Conference Party
 
-elm-conf attendees are invited to attend the [Strange Loop conference party](TODO:link) at [City Museum](TODO:link) the night of September 26.
+elm-conf attendees are invited to attend the Strange Loop conference party at [City Museum](https://www.citymuseum.org/) the night of September 26.
 Shuttles will run from the Peabody Opera House, Union Station, and Hilton Ballpark.
 
 City Museum is a giant playground for all ages.
@@ -83,7 +84,7 @@ As for getting *around* the venue, we plan to do a quick venue tour on the morni
 ### What's this Slack everyone is talking about? Can I get in on that?
 
 It's the Elm Slack!
-You can join by [entering your email on the inviter page](TODO:link).
+You can join by [entering your email on the inviter page](http://elmlang.herokuapp.com/).
 
 There's probably going to be a lot of chatter in the `#conferences` channel during the conference, including folks making meal plans.
 It's worth your time!
@@ -108,7 +109,7 @@ It's a small group of people who work together to advance Elm, and who are takin
 
 ### What's "make impossible states impossible"?
 
-"Make impossible states impossible" is a variation on "make illegal states unrepresentable" introduced by [Richard Feldman in his 2016 elm-conf talk](TODO:link).
+"Make impossible states impossible" is a variation on "make illegal states unrepresentable" introduced by [Richard Feldman in his 2016 elm-conf talk](https://www.youtube.com/watch?v=IcgmSRJHu_8).
 It generally means modeling an application to minimize situations which don't make sense for the situation.
 For example, if a number must always be present you'd use `Int` instead of `Maybe Int`, since `Nothing` wouldn't make sense if it's always required.
 
