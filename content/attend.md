@@ -38,7 +38,7 @@ Some nice restaurants in downtown St. Louis:
 | Mango * | Peruvian |
 | Pappy's Smokehouse | Barbecue |
 | Pi † | Pizza |
-| Rooster † | Brunch |
+| Rooster * | Brunch |
 | Schlafly Taproom * | American Pub |
 | Sen Thai * | Thai |
 | Small Batch † | American |
