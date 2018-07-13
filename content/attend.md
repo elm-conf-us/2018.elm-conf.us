@@ -34,14 +34,14 @@ Some nice restaurants in downtown St. Louis:
 
 | Name | Cuisine |
 |:-|:-|
-| Bailey's Range * | Hamburgers |
+| Bailey's Range † | Hamburgers |
 | Mango * | Peruvian |
 | Pappy's Smokehouse | Barbecue |
-| Rooster | Brunch |
+| Rooster † | Brunch |
 | Schlafly Taproom * | American Pub |
-| Sen Thai | Thai |
+| Sen Thai * | Thai |
 | Sugarfire | Barbecue |
-| Small Batch * † | American |
+| Small Batch † | American |
 
 \* vegetarian options available
 
