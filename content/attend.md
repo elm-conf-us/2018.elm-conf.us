@@ -42,6 +42,7 @@ Some nice restaurants in downtown St. Louis:
 | Sen Thai * | Thai |
 | Sugarfire | Barbecue |
 | Small Batch † | American |
+| Pi † | Pizza |
 
 \* vegetarian options available
 
