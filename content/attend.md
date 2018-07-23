@@ -2,7 +2,7 @@
 title: Attending elm-conf
 ---
 
-elm-conf will take place on September 26, 2018 at the historic Peabody Opera House in St. Louis, MO.
+elm-conf will take place on September 26, 2018 at the historic Stifel Theatre in St. Louis, MO.
 We are returning as a Strange Loop pre-conference event, and attendees are welcome at the Strange Loop party at City Museum during the evening of the 26th.
 We encourage you to attend Strange Loop as well as elm-conf.
 If you like one you'll probably like the other!
@@ -51,7 +51,7 @@ Some nice restaurants in downtown St. Louis:
 ## Conference Party
 
 elm-conf attendees are invited to attend the Strange Loop conference party at [City Museum](https://www.citymuseum.org/) the night of September 26.
-Shuttles will run from the Peabody Opera House, Union Station, and Hilton Ballpark.
+Shuttles will run from the Stifel Theatre, Union Station, and Hilton Ballpark.
 
 City Museum is a giant playground for all ages.
 There are giant slides, rebar jungle gyms, caves, and a schoolbus dangling from the roof.

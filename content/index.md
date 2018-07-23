@@ -15,5 +15,5 @@ We're happy to announce a great lineup of talks for this year on everything from
 
 ## Conference Venue and Travel
 
-elm-conf will be taking place on September 26 at the historic Peabody Opera House in St. Louis, MO.
+elm-conf will be taking place on September 26 at the historic Stifel Theatre (formerly the Peabody Opera House) in St. Louis, MO.
 [More info about the venue and travel to elm-conf &raquo;](venue.md)
