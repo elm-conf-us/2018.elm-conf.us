@@ -139,7 +139,14 @@ navLogo variant =
 
 navLinks : NavVariant -> Html Msg
 navLinks variant =
-    Html.nav []
+    Html.nav
+        [ css
+            [ Breakpoints.belowFullSize
+                [ textAlign center
+                , maxWidth (pct 80)
+                ]
+            ]
+        ]
         [ navLink variant Route.about <| Html.text "about"
         , navLink variant Route.attend <| Html.text "attend"
         , navLink variant Route.speakers <| Html.text "speakers"
@@ -154,8 +161,11 @@ navLink variant route caption =
         route
         [ css
             [ padding (Text.scale 0.5)
-            , firstChild [ paddingLeft zero ]
-            , lastChild [ paddingRight zero ]
+            , display inlineBlock
+            , Breakpoints.aboveWideColumnSize
+                [ firstChild [ paddingLeft zero ]
+                , lastChild [ paddingRight zero ]
+                ]
             ]
         , case variant of
             DarkOnLight ->

@@ -1,6 +1,7 @@
 module Styles.Breakpoints
     exposing
         ( aboveFullSize
+        , aboveWideColumnSize
         , belowFullSize
         , belowWideColumnSize
         )
@@ -23,3 +24,8 @@ belowFullSize =
 belowWideColumnSize : List Style -> Style
 belowWideColumnSize =
     withMedia [ only screen [ maxWidth wideColumnSize ] ]
+
+
+aboveWideColumnSize : List Style -> Style
+aboveWideColumnSize =
+    withMedia [ only screen [ minWidth wideColumnSize ] ]
