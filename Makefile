@@ -29,7 +29,7 @@ public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 	python scripts/sectionToAst.py public/speakers $@ --title Speakers
 
 public/sponsors/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
-	python scripts/sectionToAst.py public/sponsors $@ --title Sponsors
+	python scripts/sectionToAst.py public/sponsors $@ --sort-by order --title Sponsors
 
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)

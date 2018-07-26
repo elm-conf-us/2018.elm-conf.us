@@ -1,5 +1,6 @@
 ---
 title: "Video Sponsor: BigBinary"
+order: 1
 image:
   source: /images/sponsors/bigbinary.svg
   round: false

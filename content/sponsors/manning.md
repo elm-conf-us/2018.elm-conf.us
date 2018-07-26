@@ -1,5 +1,6 @@
 ---
 title: "Media Partner: Manning Publications"
+order: 2
 image:
   source: /images/sponsors/manning.png
   round: false
