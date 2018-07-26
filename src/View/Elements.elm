@@ -154,14 +154,13 @@ sectionWithImage image contents =
         [ Html.div
             [ css
                 [ Css.width Text.narrowColumnSize
-                , Css.height Text.narrowColumnSize
+                , Css.maxHeight Text.narrowColumnSize
                 , Breakpoints.belowFullSize [ Css.margin4 Css.zero Css.auto (Text.scale 1) Css.auto ]
                 ]
             ]
             [ Html.img
                 [ css
                     [ Css.width (Text.scale 8.25)
-                    , Css.height Css.auto
                     , Breakpoints.belowFullSize [ Css.width (Css.pct 100) ]
                     ]
                 , if image.round then
