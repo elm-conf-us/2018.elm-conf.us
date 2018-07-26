@@ -35,9 +35,9 @@ root ({ frontMatter } as page) =
 single : FrontMatter -> Root -> Html Msg
 single { image, title } (Root children) =
     case image of
-        Just imageSrc ->
+        Just image ->
             Elements.sectionWithImage
-                (Elements.Image imageSrc title)
+                (Elements.Image image.source title image.round)
                 (List.map content children)
 
         Nothing ->

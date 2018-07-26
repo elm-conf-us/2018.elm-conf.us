@@ -16,7 +16,7 @@ import App exposing (Msg(..))
 import Css exposing ((|*|), (|-|))
 import Css.Foreign as Foreign
 import Html.Styled as Html exposing (Attribute, Html)
-import Html.Styled.Attributes as Attributes exposing (css)
+import Html.Styled.Attributes as Attributes exposing (css, property)
 import Json.Encode as Encode
 import Route exposing (Route)
 import Styles.Breakpoints as Breakpoints
@@ -131,6 +131,7 @@ type alias Image =
     -- TODO srcset sizes stuff for retina displays
     { src : String
     , alt : String
+    , round : Bool
     }
 
 
@@ -161,9 +162,12 @@ sectionWithImage image contents =
                 [ css
                     [ Css.width (Text.scale 8.25)
                     , Css.height Css.auto
-                    , Css.borderRadius (Css.pct 100)
                     , Breakpoints.belowFullSize [ Css.width (Css.pct 100) ]
                     ]
+                , if image.round then
+                    css [ Css.borderRadius (Css.pct 100) ]
+                  else
+                    property "" Encode.null
                 , Attributes.src image.src
                 , Attributes.alt image.alt
                 ]

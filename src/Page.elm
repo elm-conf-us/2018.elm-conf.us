@@ -18,10 +18,16 @@ type alias Page =
     }
 
 
+type alias HeroImage =
+    { source : String
+    , round : Bool
+    }
+
+
 type alias FrontMatter =
     { title : String
     , source : Maybe String
-    , image : Maybe String
+    , image : Maybe HeroImage
     }
 
 
@@ -38,7 +44,7 @@ decoder =
             map3 FrontMatter
                 (field "title" string)
                 (maybe (field "source" string))
-                (maybe (field "image" string))
+                (maybe (field "image" heroImage))
 
         body : String -> Decoder Content
         body type_ =
@@ -55,6 +61,16 @@ decoder =
     map2 Page
         (field "frontMatter" frontMatter)
         (field "type" string |> andThen body)
+
+
+heroImage : Decoder HeroImage
+heroImage =
+    oneOf
+        [ map (\src -> HeroImage src True) string
+        , map2 HeroImage
+            (field "source" string)
+            (field "round" bool)
+        ]
 
 
 hasImages : Page -> Bool
