@@ -121,3 +121,6 @@ Wear whatever you're comfortable with as long as it doesn't violate the [code of
 
 In past years, people have dressed roughly from [casual](https://en.wikipedia.org/wiki/Casual) to [business casual](https://en.wikipedia.org/wiki/Business_casual).
 If you're a first-time conference-goer and nervous about what to wear, business casual is a safe bet.
+
+The weather in September in St. Louis is unpredictable.
+It will probably be cool enough to need long pants and sleeves, 
