@@ -1,6 +1,6 @@
 ---
 title: Grant Maki
-time: 2018-09-28T09:40:00
+time: "9:40"
 image: /images/speakers/grant-maki.jpg
 ---
 

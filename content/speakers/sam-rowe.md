@@ -1,6 +1,6 @@
 ---
 title: Sam Rowe
-time: 2018-09-28T14:40:00
+time: "2:40"
 image: /images/speakers/sam-rowe.jpg
 ---
 
