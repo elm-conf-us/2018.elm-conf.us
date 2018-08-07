@@ -43,6 +43,11 @@ const parseWithFrontmatter = unified()
     this.Compiler = function(tree, file) {
       frontmatter.source = file.history[0].replace("content/", "");
 
+      if (frontmatter.time) {
+        var date = new Date(frontmatter.time);
+        frontmatter.time = date.getTime() / 1000;
+      }
+
       return JSON.stringify({
         type: "page",
         frontMatter: frontmatter,
