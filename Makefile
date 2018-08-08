@@ -25,8 +25,8 @@ public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
 
-public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
-	python scripts/sectionToAst.py public/speakers $@ --sort-by order --title Speakers
+public/schedule/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
+	python scripts/sectionToAst.py public/schedule $@ --sort-by order --title Schedule
 
 public/sponsors/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 	python scripts/sectionToAst.py public/sponsors $@ --sort-by order --title Sponsors
