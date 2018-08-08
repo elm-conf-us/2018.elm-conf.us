@@ -19,7 +19,7 @@ IMAGES=$(IMAGES_SRC:static/%=public/%)
 PDFS_SRC=$(shell find static -name '*.pdf' -type f)
 PDFS=$(PDFS_SRC:static/%.pdf=public/%.pdf)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(PDFS) $(SECTIONS_HTML) public/index.js
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(PDFS) $(SECTIONS_HTML) public/index.js public/_redirects
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
@@ -35,10 +35,6 @@ public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
 
-public/%.pdf: static/%.pdf
-	@mkdir -p $(@D)
-	cp $< $@
-
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
 
@@ -49,6 +45,10 @@ public/%.css: static/%.css node_modules
 public/images/%: static/images/% node_modules
 	@mkdir -p $(@D)
 	./node_modules/.bin/imagemin $< > $@
+
+public/%: static/%
+	@mkdir -p $(@D)
+	cp $< $@
 
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)
