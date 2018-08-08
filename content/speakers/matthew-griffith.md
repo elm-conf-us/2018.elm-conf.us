@@ -2,6 +2,7 @@
 title: Matthew Griffith
 image: /images/speakers/matthew-griffith.jpeg
 time: "1:00"
+order: 7
 ---
 
 Matthew Griffith is a developer in residence at Cornell Tech. He's the author of the Style Elements library, Elm Style Animation, and the *Why Elm* book from O'Reilly.

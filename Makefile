@@ -26,7 +26,7 @@ public/index.json: content/index.md scripts/mdToAst.js node_modules
 	node scripts/mdToAst.js $< > $@
 
 public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
-	python scripts/sectionToAst.py public/speakers $@ --title Speakers
+	python scripts/sectionToAst.py public/speakers $@ --sort-by order --title Speakers
 
 public/sponsors/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 	python scripts/sectionToAst.py public/sponsors $@ --sort-by order --title Sponsors

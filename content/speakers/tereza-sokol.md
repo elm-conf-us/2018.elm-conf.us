@@ -2,6 +2,7 @@
 title: Tereza Sokol
 time: "4:00"
 image: /images/speakers/tereza-sokol.jpg
+order: 12
 ---
 
 I make Elm visualization libraries and now parsers too!

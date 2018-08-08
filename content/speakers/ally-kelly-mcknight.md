@@ -2,6 +2,7 @@
 title: Ally Kelly McKnight
 time: "3:20"
 image: /images/speakers/ally-kelly-mcknight.jpeg
+order: 11
 ---
 
 Ally is a software engineer at NoRedInk. On any given day you can find her coding in Elm, Ruby, or Python. Previously a Lab Instructor at Hackbright Academy, Ally has also spent much of her life running safaris and treks in Southern Africa. In her free time, she cooks, plays video games, and camps in the Sierras. She lives in Oakland, California with her wife, dog, and leopard gecko.

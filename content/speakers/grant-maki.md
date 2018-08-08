@@ -2,6 +2,7 @@
 title: Grant Maki
 time: "9:40"
 image: /images/speakers/grant-maki.jpg
+order: 2
 ---
 
 Grant Maki is a software engineer at Ford Motor Company, where he has been working with Elm for just over a year. He was a lawyer briefly, but not anymore. Nothing in this talk constitutes legal advice.
