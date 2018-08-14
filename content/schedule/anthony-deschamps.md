@@ -1,7 +1,8 @@
 ---
 title: Anthony Deschamps
 image: /images/speakers/anthony-deschamps.jpeg
-time: 2018-09-28T11:30:00
+time: "11:30"
+order: 5
 ---
 
 Anthony started out programming LEGO robots when he was young. Now that he's grown up he's still doing the same thing, but with bigger robots.

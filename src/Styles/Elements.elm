@@ -1,6 +1,7 @@
 module Styles.Elements
     exposing
         ( ghostButton
+        , small
         , strikethrough
         , table
         , tableCell
@@ -56,3 +57,8 @@ tableCell =
 strikethrough : Attribute msg
 strikethrough =
     css [ textDecoration lineThrough ]
+
+
+small : Attribute msg
+small =
+    css [ fontSize (Text.scale 1.5) ]

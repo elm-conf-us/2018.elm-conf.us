@@ -149,7 +149,7 @@ navLinks variant =
         ]
         [ navLink variant Route.about <| Html.text "about"
         , navLink variant Route.attend <| Html.text "attend"
-        , navLink variant Route.speakers <| Html.text "speakers"
+        , navLink variant Route.schedule <| Html.text "schedule"
         , navLink variant Route.sponsors <| Html.text "sponsors"
         , navLink variant (Route.External "https://thestrangeloop.com/register.html") <| Html.text "registration"
         ]

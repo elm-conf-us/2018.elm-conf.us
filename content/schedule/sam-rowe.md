@@ -1,7 +1,8 @@
 ---
 title: Sam Rowe
-time: 2018-09-28T14:40:00
+time: "2:40"
 image: /images/speakers/sam-rowe.jpg
+order: 10
 ---
 
 I'm a full stack developer with a strong interest in using functional languages and static typing to make development better for everyone (especially me!). I currently work at [Entale](https://www.entale.co/) where we are trying to make podcasts more interactive and compelling.

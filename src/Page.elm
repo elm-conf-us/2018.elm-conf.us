@@ -28,6 +28,7 @@ type alias FrontMatter =
     { title : String
     , source : Maybe String
     , image : Maybe HeroImage
+    , time : Maybe String
     }
 
 
@@ -41,10 +42,11 @@ decoder =
     let
         frontMatter : Decoder FrontMatter
         frontMatter =
-            map3 FrontMatter
+            map4 FrontMatter
                 (field "title" string)
                 (maybe (field "source" string))
                 (maybe (field "image" heroImage))
+                (maybe (field "time" string))
 
         body : String -> Decoder Content
         body type_ =

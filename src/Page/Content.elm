@@ -33,6 +33,7 @@ type Content
     | TableBody (List Content)
     | TableCell Alignment (List Content)
     | Deleted (List Content)
+    | Small (List Content)
 
 
 type Level

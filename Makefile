@@ -19,14 +19,14 @@ IMAGES=$(IMAGES_SRC:static/%=public/%)
 PDFS_SRC=$(shell find static -name '*.pdf' -type f)
 PDFS=$(PDFS_SRC:static/%.pdf=public/%.pdf)
 
-public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(PDFS) $(SECTIONS_HTML) public/index.js
+public: $(MARKDOWN_AST) $(MARKDOWN_HTML) $(CSS) $(IMAGES) $(PDFS) $(SECTIONS_HTML) public/index.js public/_redirects
 
 public/index.json: content/index.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
 
-public/speakers/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
-	python scripts/sectionToAst.py public/speakers $@ --title Speakers
+public/schedule/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
+	python scripts/sectionToAst.py public/schedule $@ --sort-by order --title Schedule
 
 public/sponsors/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 	python scripts/sectionToAst.py public/sponsors $@ --sort-by order --title Sponsors
@@ -34,10 +34,6 @@ public/sponsors/index.json: $(MARKDOWN_AST) scripts/sectionToAst.py
 public/%/index.json: content/%.md scripts/mdToAst.js node_modules
 	@mkdir -p $(@D)
 	node scripts/mdToAst.js $< > $@
-
-public/%.pdf: static/%.pdf
-	@mkdir -p $(@D)
-	cp $< $@
 
 public/%.html: public/%.json scripts/astToHtml.js node_modules
 	node scripts/astToHtml.js $< > $@
@@ -49,6 +45,10 @@ public/%.css: static/%.css node_modules
 public/images/%: static/images/% node_modules
 	@mkdir -p $(@D)
 	./node_modules/.bin/imagemin $< > $@
+
+public/%: static/%
+	@mkdir -p $(@D)
+	cp $< $@
 
 public/index.js: node_modules elm-stuff $(ELM) generated/Route.elm
 	@mkdir -p $(@D)

@@ -49,9 +49,18 @@ single { image, title } (Root children) =
 -}
 insertTitleAsHeading : Page -> Page
 insertTitleAsHeading ({ frontMatter } as page) =
+    let
+        time =
+            case frontMatter.time of
+                Just when ->
+                    Small [ Text when, Text ": " ]
+
+                Nothing ->
+                    Text ""
+    in
     case page.content of
         Page.Single (Root children) ->
-            { page | content = Page.Single <| Root <| Heading First [ Text frontMatter.title ] :: children }
+            { page | content = Page.Single <| Root <| Heading First [ time, Text frontMatter.title ] :: children }
 
         _ ->
             page
@@ -194,4 +203,9 @@ content node =
         Deleted children ->
             Html.span
                 [ SElements.strikethrough ]
+                (List.map content children)
+
+        Small children ->
+            Html.small
+                [ SElements.small ]
                 (List.map content children)
