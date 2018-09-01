@@ -123,4 +123,4 @@ In past years, people have dressed roughly from [casual](https://en.wikipedia.or
 If you're a first-time conference-goer and nervous about what to wear, business casual is a safe bet.
 
 The weather in September in St. Louis is unpredictable.
-It will probably be cool enough to need long pants and sleeves, 
+Pack for a variety of weather conditions, and check the forecast before you leave!
