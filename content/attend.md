@@ -48,6 +48,8 @@ Some nice restaurants in downtown St. Louis:
 
 † vegan options available
 
+The closest grocery story and pharmacy to the venue and hotels is [Culinaria at 9th and Olive](https://goo.gl/maps/p8yYc4xUZoM2).
+
 ## Conference Party
 
 elm-conf attendees are invited to attend the Strange Loop conference party at [City Museum](https://www.citymuseum.org/) the night of September 26.
