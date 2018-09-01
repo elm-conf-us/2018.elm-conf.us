@@ -92,7 +92,7 @@ It's worth your time!
 
 ### Why are people avoiding the word "components"?
 
-Since "component" means "React component" to many people, it's generally easier to communicate if we avoid using this term when we mean "a smaller part of a larger application."
+Since "component" means "stateful component" or "React component" to many people, it's generally easier to communicate if we avoid using this term when we mean "a smaller part of a larger application."
 Try using "widget" or "doodad" instead.
 
 ### What's "the core team"?
