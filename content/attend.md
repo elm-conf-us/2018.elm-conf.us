@@ -20,8 +20,8 @@ From the airport, here are some ways you can to the hotels and conference venue:
 
 | Travel Option | Cost | Extra Information |
 |:-|-:|:-|
-| [Metrolink Train](http://www.metrostlouis.org/fares-and-passes/) | [$3](http://www.metrostlouis.org/fares-and-passes/) | Disembark at the Union Station Stop |
-| Lyft | $28-37 | Get updated estimates at [Lyft's Fare Estimator](https://www.lyft.com/fare-estimate) |
+| [Metrolink Train](http://www.metrostlouis.org/fares-and-passes/) | [$4](http://www.metrostlouis.org/fares-and-passes/) | Disembark at the Union Station Stop |
+| Lyft | $32-36 | Get updated estimates at [Lyft's Fare Estimator](https://www.lyft.com/fare-estimate) |
 | Taxi | ~$40 | |
 
 ## Staying in St. Louis
