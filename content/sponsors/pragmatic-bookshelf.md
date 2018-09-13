@@ -1,6 +1,6 @@
 ---
 title: "Media Partner: The Pragmatic Bookshelf"
-order: 4
+order: 5
 image:
   source: /images/sponsors/the-pragmatic-bookshelf.png
   round: false
