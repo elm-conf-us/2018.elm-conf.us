@@ -34,7 +34,7 @@ Some nice restaurants in downtown St. Louis:
 
 | Name | Cuisine |
 |:-|:-|
-| Bailey's Range † | Hamburgers |
+| Bailey's Range * | Hamburgers |
 | Mango * | Peruvian |
 | Pappy's Smokehouse | Barbecue |
 | Pi † | Pizza |
