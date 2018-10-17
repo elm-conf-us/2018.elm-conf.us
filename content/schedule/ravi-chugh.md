@@ -14,3 +14,5 @@ Ravi Chugh is an Assistant Professor of Computer Science at the University of Ch
 We are building a code editor, called Deuce, that adds support for structured editing to a conventional text editor. Deuce supports an Elm-like language and is implemented in Elm.
 
 In this editor, the user can hover over and select expressions and other code items of interest (using direct manipulation). Then, the editor displays a menu of context-sensitive program transformations, such as Introduce Variable, Introduce Function, and Refactor Data Type. We will demonstrate the kinds of interactions enabled by this combination of text- and structured-editing.
+
+[-TFL6E1uSHE](directive:youtube)

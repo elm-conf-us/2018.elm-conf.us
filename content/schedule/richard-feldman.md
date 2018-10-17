@@ -9,6 +9,8 @@ Richard is the author of "Elm in Action" from Manning Publications, and the inst
 
 Some have said he’s "into Elm," but he’s not sure where they got that wild idea.
 
-<!-- [Richard's Keynote &raquo;](directive:more) -->
+[Richard's Talk: *Immutable Relational Data* &raquo;](directive:more)
 
-<!-- ## Richard's Keynote -->
+## Richard's Keynote
+
+[28OdemxhfbU](directive:youtube)
