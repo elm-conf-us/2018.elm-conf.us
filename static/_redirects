@@ -1,2 +1,6 @@
 /speakers /schedule
 /speakers/* /schedule/:splat
+
+https://www.elm-conf.us/*           https://2018.elm-conf.us/:splat 302!
+https://elm-conf.us/*               https://2018.elm-conf.us/:splat 302!
+https://elm-conf-2018.netlify.com/* https://2018.elm-conf.us/:splat 301!
