@@ -19,7 +19,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-elm-pre-minify": "^0.1.2",
     "elm": "^0.18.0",
-    "html-minifier": "^3.5.15",
+    "html-minifier": "^4.0.0",
     "imagemin-cli": "^3.0.0",
     "imagemin-optipng": "^5.2.1",
     "js-yaml": "^3.11.0",
