@@ -21,7 +21,7 @@
     "elm": "^0.18.0",
     "html-minifier": "^3.5.15",
     "imagemin-cli": "^3.0.0",
-    "imagemin-optipng": "^5.2.1",
+    "imagemin-optipng": "^7.0.0",
     "js-yaml": "^3.11.0",
     "node-sass": "^4.9.0",
     "remark": "^9.0.0",
